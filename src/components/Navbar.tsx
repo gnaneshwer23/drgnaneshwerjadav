@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "Engines", href: "#engines" },
@@ -63,10 +64,11 @@ const Navbar = () => {
             </a>
           ))}
           <Button
+            asChild
             size="sm"
             className="bg-saffron-gradient text-accent-foreground font-semibold rounded-lg shadow-saffron hover:opacity-90 transition-opacity"
           >
-            Get Started
+            <Link to="/onboarding">Get Started</Link>
           </Button>
         </div>
 
@@ -101,8 +103,8 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button className="bg-saffron-gradient text-accent-foreground font-semibold rounded-lg shadow-saffron mt-2">
-                Get Started
+              <Button asChild className="bg-saffron-gradient text-accent-foreground font-semibold rounded-lg shadow-saffron mt-2">
+                <Link to="/onboarding">Get Started</Link>
               </Button>
             </div>
           </motion.div>
