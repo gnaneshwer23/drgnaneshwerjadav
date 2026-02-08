@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
@@ -58,11 +59,14 @@ const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
+              asChild
               size="lg"
               className="bg-saffron-gradient text-accent-foreground shadow-saffron font-semibold text-base px-8 py-6 rounded-xl hover:opacity-90 transition-opacity"
             >
-              Start Your Journey
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Link to="/onboarding">
+                Start Your Journey
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
             <Button
               size="lg"

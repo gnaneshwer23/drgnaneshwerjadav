@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTASection = () => {
   return (
@@ -26,11 +27,14 @@ const CTASection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              asChild
               size="lg"
               className="bg-saffron-gradient text-accent-foreground shadow-saffron font-semibold text-base px-8 py-6 rounded-xl hover:opacity-90 transition-opacity animate-pulse-saffron"
             >
-              Get Early Access
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Link to="/onboarding">
+                Get Early Access
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
             <Button
               size="lg"
