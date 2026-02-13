@@ -14,8 +14,10 @@ import {
   Users,
   BarChart3,
   Briefcase,
+  AlertCircle,
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { useOnboardingProfile } from "@/lib/use-onboarding-profile";
 
 const container = {
   hidden: { opacity: 0 },
@@ -25,36 +27,6 @@ const item = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0 },
 };
-
-// Mock data — would come from DB after onboarding
-const profile = {
-  name: "Priya Sharma",
-  status: "Working Professional",
-  role: "Software Developer",
-  education: "Bachelor's Degree · Computer Science",
-  experience: "2–5 years",
-  goal: "Move into leadership",
-  timeline: "1 year",
-};
-
-const trustScore = {
-  overall: 72,
-  components: [
-    { label: "Skills Verified", value: 80, icon: Zap },
-    { label: "Projects Completed", value: 60, icon: Award },
-    { label: "Peer Validations", value: 65, icon: Users },
-    { label: "Consistency", value: 85, icon: TrendingUp },
-  ],
-};
-
-const skills = [
-  { name: "JavaScript", level: 78 },
-  { name: "Python", level: 65 },
-  { name: "Leadership", level: 45 },
-  { name: "System Design", level: 55 },
-  { name: "Communication", level: 82 },
-  { name: "Cloud Computing", level: 40 },
-];
 
 const learningPaths = [
   {
@@ -91,7 +63,17 @@ const upcomingActions = [
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { profile, skills, hasData } = useOnboardingProfile();
 
+  const trustScore = {
+    overall: hasData ? Math.min(Math.round(skills.reduce((a, s) => a + s.level, 0) / Math.max(skills.length, 1)), 100) : 0,
+    components: [
+      { label: "Skills Verified", value: hasData ? Math.min(skills.length * 15, 80) : 0, icon: Zap },
+      { label: "Projects Completed", value: 0, icon: Award },
+      { label: "Peer Validations", value: 0, icon: Users },
+      { label: "Consistency", value: hasData ? 30 : 0, icon: TrendingUp },
+    ],
+  };
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -111,7 +93,7 @@ const Dashboard = () => {
             <span className="font-heading text-sm font-bold text-foreground">Dashboard</span>
           </div>
           <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent font-heading text-xs font-bold">
-            PS
+            CE
           </div>
         </div>
       </div>
@@ -121,11 +103,17 @@ const Dashboard = () => {
           {/* Welcome */}
           <motion.div variants={item}>
             <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
-              Welcome back, {profile.name.split(" ")[0]} 👋
+              Welcome, {profile.name} 👋
             </h1>
             <p className="text-muted-foreground text-sm mt-1">
               Here's your career progress at a glance.
             </p>
+            {!hasData && (
+              <div className="mt-3 flex items-center gap-2 px-4 py-3 rounded-lg border border-accent/30 bg-accent/5 text-sm text-accent">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>Complete your <button onClick={() => navigate("/onboarding")} className="underline font-semibold hover:opacity-80">onboarding</button> to populate your dashboard with real data.</span>
+              </div>
+            )}
           </motion.div>
 
           {/* Top row: Profile + Trust Score */}
@@ -214,6 +202,9 @@ const Dashboard = () => {
               </h3>
               <span className="text-xs text-muted-foreground">{skills.length} skills tracked</span>
             </div>
+            {skills.length === 0 ? (
+              <p className="text-sm text-muted-foreground py-4 text-center">No skills profiled yet. Complete onboarding to see your skill progress.</p>
+            ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {skills.map((skill) => (
                 <div key={skill.name} className="space-y-2">
@@ -240,6 +231,7 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
+            )}
           </motion.div>
 
           {/* Learning Paths + Actions */}

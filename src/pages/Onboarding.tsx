@@ -65,8 +65,7 @@ const Onboarding = () => {
   };
 
   const handleFinish = () => {
-    // In production, this would save to the database
-    console.log("Onboarding complete:", data);
+    localStorage.setItem("onboarding-data", JSON.stringify(data));
     navigate("/dashboard");
   };
 
