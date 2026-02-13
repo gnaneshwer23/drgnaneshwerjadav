@@ -17,7 +17,9 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useOnboardingProfile } from "@/lib/use-onboarding-profile";
+import { useAILearningPaths } from "@/hooks/use-ai-learning-paths";
 
 const container = {
   hidden: { opacity: 0 },
@@ -28,33 +30,9 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const learningPaths = [
-  {
-    title: "Engineering Leadership",
-    description: "Transition from IC to engineering manager with decision labs and team simulations.",
-    modules: 12,
-    duration: "8 weeks",
-    progress: 25,
-    tag: "Recommended",
-  },
-  {
-    title: "System Design Mastery",
-    description: "Build scalable architectures with real-world project assignments.",
-    modules: 10,
-    duration: "6 weeks",
-    progress: 0,
-    tag: "Skill Gap",
-  },
-  {
-    title: "Cloud & DevOps Foundations",
-    description: "AWS, Docker, CI/CD pipelines, and infrastructure-as-code modules.",
-    modules: 8,
-    duration: "5 weeks",
-    progress: 10,
-    tag: "Trending",
-  },
+const fallbackPaths = [
+  { title: "Complete your onboarding", description: "Fill out your career profile to get AI-powered recommendations.", modules: 0, duration: "—", progress: 0, tag: "Recommended" as const },
 ];
-
 const upcomingActions = [
   { label: "Complete Python project submission", due: "2 days", icon: Target },
   { label: "Leadership simulation: Crisis Response", due: "5 days", icon: Shield },
@@ -64,6 +42,8 @@ const upcomingActions = [
 const Dashboard = () => {
   const navigate = useNavigate();
   const { profile, skills, hasData } = useOnboardingProfile();
+  const { paths: aiPaths, loading: pathsLoading, error: pathsError } = useAILearningPaths(profile, skills, hasData);
+  const learningPaths = aiPaths.length > 0 ? aiPaths : fallbackPaths;
 
   const trustScore = {
     overall: hasData ? Math.min(Math.round(skills.reduce((a, s) => a + s.level, 0) / Math.max(skills.length, 1)), 100) : 0,
@@ -241,10 +221,25 @@ const Dashboard = () => {
               variants={item}
               className="lg:col-span-2 rounded-xl border border-border bg-card p-6 space-y-5"
             >
-              <h3 className="font-heading text-lg font-bold text-foreground flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-accent" />
-                Recommended Learning Paths
-              </h3>
+              <div className="flex items-center justify-between">
+                <h3 className="font-heading text-lg font-bold text-foreground flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-accent" />
+                  AI-Powered Learning Paths
+                </h3>
+                {pathsLoading && <span className="text-xs text-muted-foreground animate-pulse">Generating with AI…</span>}
+                {pathsError && <span className="text-xs text-destructive">Failed to load</span>}
+              </div>
+              {pathsLoading ? (
+                <div className="space-y-4">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="p-4 rounded-lg border border-border space-y-3">
+                      <Skeleton className="h-4 w-2/3" />
+                      <Skeleton className="h-3 w-full" />
+                      <Skeleton className="h-3 w-1/3" />
+                    </div>
+                  ))}
+                </div>
+              ) : (
               <div className="space-y-4">
                 {learningPaths.map((path) => (
                   <div
@@ -290,6 +285,7 @@ const Dashboard = () => {
                   </div>
                 ))}
               </div>
+              )}
             </motion.div>
 
             {/* Upcoming Actions */}
