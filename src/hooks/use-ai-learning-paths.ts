@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
 
+export interface ModuleDetail {
+  name: string;
+  steps: string[];
+}
+
 export interface LearningPath {
   title: string;
   description: string;
@@ -7,6 +12,7 @@ export interface LearningPath {
   duration: string;
   tag: "Recommended" | "Skill Gap" | "Trending";
   progress: number;
+  module_details?: ModuleDetail[];
 }
 
 interface ProfileInput {

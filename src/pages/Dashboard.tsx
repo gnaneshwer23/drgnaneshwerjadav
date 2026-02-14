@@ -20,6 +20,7 @@ import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useOnboardingProfile } from "@/lib/use-onboarding-profile";
 import { useAILearningPaths } from "@/hooks/use-ai-learning-paths";
+import LearningPathCard from "@/components/dashboard/LearningPathCard";
 
 const container = {
   hidden: { opacity: 0 },
@@ -242,47 +243,7 @@ const Dashboard = () => {
               ) : (
               <div className="space-y-4">
                 {learningPaths.map((path) => (
-                  <div
-                    key={path.title}
-                    className="group p-4 rounded-lg border border-border hover:border-accent/30 hover:shadow-card transition-all cursor-pointer"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-heading text-sm font-bold text-foreground">
-                            {path.title}
-                          </h4>
-                          <span
-                            className={`text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full ${
-                              path.tag === "Recommended"
-                                ? "bg-accent/10 text-accent"
-                                : path.tag === "Skill Gap"
-                                ? "bg-destructive/10 text-destructive"
-                                : "bg-emerald/10 text-emerald"
-                            }`}
-                          >
-                            {path.tag}
-                          </span>
-                        </div>
-                        <p className="text-xs text-muted-foreground">{path.description}</p>
-                      </div>
-                      <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors shrink-0 mt-1" />
-                    </div>
-                    <div className="flex items-center gap-4 mt-3">
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <BookOpen className="w-3 h-3" /> {path.modules} modules
-                      </span>
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <Clock className="w-3 h-3" /> {path.duration}
-                      </span>
-                      {path.progress > 0 && (
-                        <div className="flex items-center gap-2 flex-1">
-                          <Progress value={path.progress} className="h-1.5 bg-muted flex-1" />
-                          <span className="text-xs font-semibold text-accent">{path.progress}%</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <LearningPathCard key={path.title} path={path} />
                 ))}
               </div>
               )}
