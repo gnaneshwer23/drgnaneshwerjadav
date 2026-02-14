@@ -22,6 +22,7 @@ Each learning path should:
 - Be directly relevant to closing the gap between current skills and the target role
 - Include a clear title, description, number of modules, estimated duration, and a tag (one of: "Recommended", "Skill Gap", "Trending")
 - Be actionable and specific to the Indian workforce context
+- Include a "module_details" array with one entry per module. Each entry needs a "name" (short module title) and "steps" (array of 2-3 actionable step strings the learner should complete)
 
 Return your response using the suggest_paths tool.`;
 
@@ -69,8 +70,20 @@ Generate 3 personalized learning paths to help this user reach their goal.`;
                         modules: { type: "number" },
                         duration: { type: "string" },
                         tag: { type: "string", enum: ["Recommended", "Skill Gap", "Trending"] },
+                        module_details: {
+                          type: "array",
+                          items: {
+                            type: "object",
+                            properties: {
+                              name: { type: "string" },
+                              steps: { type: "array", items: { type: "string" } },
+                            },
+                            required: ["name", "steps"],
+                            additionalProperties: false,
+                          },
+                        },
                       },
-                      required: ["title", "description", "modules", "duration", "tag"],
+                      required: ["title", "description", "modules", "duration", "tag", "module_details"],
                       additionalProperties: false,
                     },
                   },
