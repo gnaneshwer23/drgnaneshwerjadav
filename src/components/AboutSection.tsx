@@ -3,20 +3,18 @@ import { focusAreas, site } from "@/data/site";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="section-y scroll-mt-24 bg-secondary/60">
+    <section id="about" className="section-y scroll-mt-24 bg-secondary">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-20">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.35 }}
           >
             <p className="eyebrow">About</p>
             <h2 className="display text-foreground">
-              Biology to product.{" "}
-              <span className="font-display-italic">Regulated domains</span> to
-              shipped software.
+              Biology to product. Regulated domains to shipped software.
             </h2>
             <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted-foreground sm:mt-8 sm:space-y-5">
               <p>
@@ -34,17 +32,17 @@ const AboutSection = () => {
             </div>
           </motion.div>
 
-          <dl className="divide-y divide-border/80 border-y border-border/80">
+          <dl className="divide-y divide-border border-y border-border">
             {focusAreas.map((area, i) => (
               <motion.div
                 key={area.title}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: i * 0.05 }}
+                transition={{ duration: 0.3, delay: i * 0.04 }}
                 className="py-6 first:pt-0 last:pb-0 sm:py-7"
               >
-                <dt className="font-heading text-lg font-medium text-foreground sm:text-xl">
+                <dt className="font-heading text-lg font-semibold text-foreground">
                   {area.title}
                 </dt>
                 <dd className="mt-3 space-y-2">

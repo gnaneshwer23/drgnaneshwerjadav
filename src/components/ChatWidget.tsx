@@ -37,7 +37,7 @@ const ChatWidget = () => {
             <div className="min-w-0 flex-1 px-2 py-1">
               <p
                 id={titleId}
-                className="font-display-italic truncate text-lg text-foreground"
+                className="font-heading truncate text-base font-semibold text-foreground"
               >
                 Ask DrJadav
               </p>

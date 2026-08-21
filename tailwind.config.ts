@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Fraunces', 'Georgia', 'serif'],
-        body: ['Outfit', 'sans-serif'],
+        heading: ['Syne', 'sans-serif'],
+        body: ['Manrope', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

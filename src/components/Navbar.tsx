@@ -11,8 +11,8 @@ const homeLinks = [
 ];
 
 const linkClass = (active = false) =>
-  `inline-flex min-h-11 items-center text-sm font-medium transition-colors hover:text-saffron focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron ${
-    active ? "text-saffron" : "text-foreground/70"
+  `inline-flex min-h-11 items-center text-sm font-medium transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+    active ? "text-foreground" : "text-muted-foreground"
   }`;
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
   const onHome = location.pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
+    const handleScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -35,20 +35,20 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -12, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.35 }}
+      transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         scrolled || mobileOpen
-          ? "border-b border-border/80 bg-background/85 shadow-card backdrop-blur-xl"
-          : "bg-transparent"
+          ? "border-b border-border bg-background/90 backdrop-blur-xl"
+          : "bg-background/70"
       }`}
     >
       <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 md:h-[4.5rem]">
         <Link
           to="/"
-          className="flex min-h-11 min-w-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
+          className="flex min-h-11 min-w-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label={`${site.name} home`}
         >
-          <span className="font-display-italic truncate text-xl font-medium tracking-tight text-foreground sm:text-2xl">
+          <span className="font-heading truncate text-lg font-semibold tracking-tight text-foreground sm:text-xl">
             {site.brand}
           </span>
         </Link>
@@ -81,6 +81,12 @@ const Navbar = () => {
           >
             Chat
           </Link>
+          <Link
+            to="/book"
+            className="inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Book
+          </Link>
         </div>
 
         <button
@@ -88,7 +94,7 @@ const Navbar = () => {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-foreground lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
+          className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-foreground lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -100,7 +106,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-border bg-card lg:hidden"
+            className="overflow-hidden border-b border-border bg-background lg:hidden"
           >
             <div className="container mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6">
               {homeLinks.map((link) => (
@@ -126,6 +132,13 @@ const Navbar = () => {
                 className="flex min-h-11 items-center text-sm font-medium text-foreground"
               >
                 Chat
+              </Link>
+              <Link
+                to="/book"
+                onClick={() => setMobileOpen(false)}
+                className="mt-1 mb-2 inline-flex min-h-11 w-fit items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground"
+              >
+                Book
               </Link>
             </div>
           </motion.div>

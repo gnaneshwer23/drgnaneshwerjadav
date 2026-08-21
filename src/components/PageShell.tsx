@@ -58,7 +58,7 @@ export const PrimaryCta = ({
   disabled?: boolean;
 }) => {
   const className =
-    "inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron disabled:pointer-events-none disabled:opacity-40";
+    "inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40";
 
   if (disabled) {
     return (
@@ -101,9 +101,8 @@ export const SecondaryCta = ({
   onNavy?: boolean;
   disabled?: boolean;
 }) => {
-  const className = onNavy
-    ? "inline-flex min-h-11 items-center justify-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-saffron/40 hover:text-saffron focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
-    : "inline-flex min-h-11 items-center justify-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-saffron/40 hover:text-saffron focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron";
+  const className =
+    "inline-flex min-h-11 items-center justify-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
   if (disabled) {
     return (
