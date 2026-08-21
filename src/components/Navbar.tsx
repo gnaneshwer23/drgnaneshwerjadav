@@ -91,6 +91,18 @@ const Navbar = ({ variant = "home" }: NavbarProps) => {
               </Link>
             )
           )}
+          <Link
+            to="/chat"
+            className={`text-sm font-medium transition-colors hover:text-saffron ${
+              location.pathname === "/chat"
+                ? "text-saffron"
+                : lightOnDark
+                  ? "text-primary-foreground/70"
+                  : "text-muted-foreground"
+            }`}
+          >
+            Chat
+          </Link>
           <a
             href={site.github}
             target="_blank"
@@ -135,6 +147,13 @@ const Navbar = ({ variant = "home" }: NavbarProps) => {
                   {link.label}
                 </a>
               ))}
+              <Link
+                to="/chat"
+                onClick={() => setMobileOpen(false)}
+                className="flex min-h-11 items-center text-sm font-medium text-foreground"
+              >
+                Chat
+              </Link>
               <a
                 href={site.github}
                 target="_blank"

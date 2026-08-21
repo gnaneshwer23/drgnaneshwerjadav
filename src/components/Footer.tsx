@@ -15,6 +15,12 @@ const Footer = () => {
         </div>
         <nav className="flex flex-wrap gap-6" aria-label="Footer">
           <Link
+            to="/chat"
+            className="text-sm text-primary-foreground/50 transition-colors hover:text-saffron"
+          >
+            Chat
+          </Link>
+          <Link
             to="/accountable-hindustan"
             className="text-sm text-primary-foreground/50 transition-colors hover:text-saffron"
           >

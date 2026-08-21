@@ -6,9 +6,11 @@ import { MotionConfig } from "framer-motion";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import AccountableHindustan from "./pages/AccountableHindustan";
+import Chat from "./pages/Chat";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import ChatWidget from "./components/ChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -29,10 +31,12 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/accountable-hindustan" element={<AccountableHindustan />} />
+              <Route path="/chat" element={<Chat />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <ChatWidget />
           </div>
         </BrowserRouter>
       </TooltipProvider>

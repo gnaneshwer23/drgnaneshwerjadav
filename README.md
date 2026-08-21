@@ -15,6 +15,15 @@ npm i
 npm run dev
 ```
 
+Chat (`/chat` and the floating guide) needs the Vercel AI Gateway. For a working `/api/chat` locally:
+
+```sh
+vercel env pull .env.local
+vercel dev
+```
+
+On Vercel, enable AI Gateway on the project. OIDC auth is automatic in production. Optional local fallback: `AI_GATEWAY_API_KEY` in `.env.local` (do not commit it).
+
 ## Deploy
 
 Linked to Vercel project `drgnsneshwerjadav`. Pushes to `main` create deployments.
