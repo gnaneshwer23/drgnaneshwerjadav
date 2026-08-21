@@ -4,6 +4,8 @@ import PageShell, { Eyebrow, PageLead, PageTitle } from "@/components/PageShell"
 import Seo from "@/components/Seo";
 import { resume } from "@/data/resume";
 import { site } from "@/data/site";
+import { experience } from "@/data/experience";
+import { education } from "@/data/education";
 import { flagships } from "@/data/work";
 import { proofStrip } from "@/data/evidence";
 
@@ -63,7 +65,7 @@ const Cv = () => {
             Experience
           </h2>
           <ul className="mt-6 divide-y divide-border border-y border-border">
-            {resume.experience.map((item) => (
+            {experience.map((item) => (
               <li key={`${item.organisation}-${item.period}`} className="py-8">
                 <h3 className="font-heading text-lg font-semibold text-foreground">
                   {item.role}
@@ -84,10 +86,14 @@ const Cv = () => {
             Education
           </h2>
           <ul className="mt-6 divide-y divide-border border-y border-border">
-            {resume.education.map((item) => (
-              <li key={item.credential} className="py-6">
-                <h3 className="font-heading text-lg font-semibold">{item.credential}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{item.source}</p>
+            {education.map((item) => (
+              <li key={`${item.credential}-${item.place}`} className="py-6">
+                <h3 className="font-heading text-lg font-semibold">
+                  {item.credential} · {item.field}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {item.place} · {item.period}
+                </p>
               </li>
             ))}
           </ul>
@@ -101,7 +107,7 @@ const Cv = () => {
             {flagships.map((item) => (
               <li key={item.slug}>
                 <Link to={`/work/${item.slug}`} className="text-sm font-medium underline">
-                  {item.number} {item.title}
+                  {item.title}
                 </Link>
                 <p className="mt-1 text-sm text-muted-foreground">{item.role}</p>
               </li>

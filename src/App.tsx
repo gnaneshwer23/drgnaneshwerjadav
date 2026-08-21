@@ -13,8 +13,11 @@ import Book from "./pages/Book";
 import Course from "./pages/Course";
 import Frameworks from "./pages/Frameworks";
 import Shelf from "./pages/Shelf";
-import Work from "./pages/Work";
 import WorkCase from "./pages/WorkCase";
+import Projects from "./pages/Projects";
+import Experience from "./pages/Experience";
+import Education from "./pages/Education";
+import Skills from "./pages/Skills";
 import Think from "./pages/Think";
 import ThinkPiece from "./pages/ThinkPiece";
 import Systems from "./pages/Systems";
@@ -49,8 +52,13 @@ const App = () => (
             <div id="main">
               <Routes>
                 <Route path="/" element={<Index />} />
-                <Route path="/work" element={<Work />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/work" element={<Navigate to="/projects" replace />} />
                 <Route path="/work/:slug" element={<WorkCase />} />
+                <Route path="/projects/:slug" element={<WorkCase />} />
+                <Route path="/experience" element={<Experience />} />
+                <Route path="/education" element={<Education />} />
+                <Route path="/skills" element={<Skills />} />
                 <Route path="/think" element={<Think />} />
                 <Route path="/think/:slug" element={<ThinkPiece />} />
                 <Route path="/systems" element={<Systems />} />

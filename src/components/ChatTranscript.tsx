@@ -6,6 +6,7 @@ import { chatStarterPrompts } from "@/lib/chat-prompts";
 import { ChatActions } from "@/lib/chat-links";
 import { citedSources } from "@/lib/chat-intent";
 import { MessageResponse } from "@/components/ai-elements/message";
+import ChatAvatar from "@/components/ChatAvatar";
 
 type ChatTranscriptProps = {
   layout?: "page" | "widget";
@@ -59,7 +60,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
                   : "text-sm leading-relaxed text-muted-foreground"
               }
             >
-              Ask about the work, the books, or how to book a DrJadav consult.
+              Talk with DrJadav about the work, the books, or how to book a consult.
             </p>
             <div className="flex flex-wrap gap-2">
               {chatStarterPrompts.map((item) => (
@@ -92,11 +93,15 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
               className={
                 message.role === "user"
                   ? "ml-8 rounded-2xl bg-secondary px-4 py-3"
-                  : "mr-4"
+                  : "mr-4 flex gap-3"
               }
             >
+              {message.role === "assistant" ? (
+                <ChatAvatar size="xs" className="mt-0.5" />
+              ) : null}
+              <div className="min-w-0 flex-1">
               <p className="mb-1 font-mono text-[10px] font-medium tracking-[0.14em] text-muted-foreground">
-                {message.role === "user" ? "YOU" : "GUIDE"}
+                {message.role === "user" ? "YOU" : "DRJADAV"}
                 {streaming ? " · STREAMING" : ""}
               </p>
               <div
@@ -125,6 +130,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
                     lastAssistant={text}
                   />
                 )}
+              </div>
             </article>
           );
         })}
@@ -140,7 +146,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
         ) : null}
         {error && (
           <p className="text-sm text-destructive">
-            The guide could not reply. Check that AI Gateway is enabled, then try again.
+            The desk could not reply. Check that AI Gateway is enabled, then try again.
           </p>
         )}
       </div>
@@ -167,7 +173,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
           }}
           disabled={status === "error"}
           rows={isPage ? 3 : 2}
-          placeholder="Ask about the work, books, or a consult…"
+          placeholder="Message DrJadav about work, books, or a consult…"
           className="min-h-11 flex-1 resize-none bg-transparent px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
         {busy ? (

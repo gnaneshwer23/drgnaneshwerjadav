@@ -1,14 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { flagships, work, workBySlug } from "@/data/work";
+import { FLAGSHIP_SLUGS, flagships, work, workBySlug } from "@/data/work";
 import { omittedClaims, proofStrip } from "@/data/evidence";
+import { experience } from "@/data/experience";
+import { education } from "@/data/education";
 
 describe("work inventory", () => {
-  it("has four verified flagships", () => {
-    expect(flagships.map((item) => item.slug)).toEqual([
-      "vigil-modi",
+  it("features Fluent Institute, DeliverX, and Aksh Health", () => {
+    expect(FLAGSHIP_SLUGS).toEqual([
+      "fluent-institute",
+      "deliverx",
       "aksh-health",
-      "akeno-health",
-      "elevare",
+    ]);
+    expect(flagships.map((item) => item.href)).toEqual([
+      "https://fluent.institute",
+      "https://www.deliverx.dev",
+      "https://akshhealth.com",
     ]);
   });
 
@@ -24,5 +30,23 @@ describe("work inventory", () => {
 
   it("keeps home proof as measured-only", () => {
     expect(proofStrip.every((item) => item.status === "MEASURED")).toBe(true);
+  });
+});
+
+describe("experience vs education", () => {
+  it("lists roles reverse-chronologically with Independent first", () => {
+    expect(experience[0]?.organisation).toBe("Independent");
+    expect(experience.some((item) => item.organisation === "Akeno Health")).toBe(
+      true,
+    );
+  });
+
+  it("keeps postdoc in education, not experience", () => {
+    expect(
+      experience.some((item) => /postdoc/i.test(item.role)),
+    ).toBe(false);
+    expect(
+      education.some((item) => item.credential.startsWith("Postdoctoral")),
+    ).toBe(true);
   });
 });

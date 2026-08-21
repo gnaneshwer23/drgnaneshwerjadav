@@ -8,6 +8,7 @@ import PageShell, {
   PageLead,
   PageTitle,
 } from "@/components/PageShell";
+import OfferingsNav from "@/components/OfferingsNav";
 import Seo from "@/components/Seo";
 import {
   readConsultProgress,
@@ -47,6 +48,7 @@ const Book = () => {
           via Stripe. The session is confirmed when both steps are done — in
           that order.
         </PageLead>
+        <OfferingsNav />
 
         <p className="mt-8 font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
           {consult.minutes}-minute strategy session
@@ -182,10 +184,10 @@ const Book = () => {
             This is product and delivery counsel, not medical or legal advice.
             Prefer to start with a book or a waitlist?{" "}
             <Link
-              to="/shelf"
+              to="/books"
               className="font-medium text-foreground underline-offset-4 hover:underline"
             >
-              Open the shelf
+              Browse books
             </Link>
             .
           </p>

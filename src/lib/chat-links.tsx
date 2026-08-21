@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { inferChatActions } from "@/lib/chat-intent";
 
 const TOKEN =
-  /https:\/\/[^\s)]+|\/(?:book|books|about|frameworks|chat|course|courses|consultation|shelf|work|think|systems|lab|patent|research|now|cv|contact|how-i-build)(?:\/[\w-]+)?(?:#[\w-]*)?/g;
+  /https:\/\/[^\s)]+|\/(?:book|books|about|frameworks|chat|course|courses|consultation|shelf|work|projects|education|skills|think|systems|lab|patent|research|now|cv|contact|how-i-build|experience)(?:\/[\w-]+)?(?:#[\w-]*)?/g;
 
 const ALLOWED_HOSTS = new Set([
   "gumroad.com",

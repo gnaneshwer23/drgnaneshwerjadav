@@ -10,7 +10,7 @@ export const now = [
     label: "Shipping",
     items: [
       "50-minute strategy consult — £50. Calendar, then Stripe. Path: /book.",
-      "Ask dock on this site — questions about work, books, and booking.",
+      "DrJadav dock on this site — questions about work, books, and booking.",
     ],
   },
   {

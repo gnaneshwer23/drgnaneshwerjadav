@@ -24,7 +24,7 @@ const WorkCase = () => {
   const item = slug ? workBySlug(slug) : undefined;
 
   if (!item) {
-    return <Navigate to="/work" replace />;
+    return <Navigate to="/projects" replace />;
   }
 
   const index = work.findIndex((entry) => entry.slug === item.slug);

@@ -42,7 +42,7 @@ export const work: WorkItem[] = [
     title: "Vigil-MODI",
     domain: "Regulatory",
     category: "Regulatory AI · Digital health",
-    flagship: true,
+    flagship: false,
     status: "SHIPPED",
     role: "Programme lead",
     summary:
@@ -98,7 +98,7 @@ export const work: WorkItem[] = [
     title: "Akeno Health",
     domain: "HealthTech",
     category: "HealthTech · Chronic care",
-    flagship: true,
+    flagship: false,
     status: "PILOT",
     role: "Founder & product leader",
     summary:
@@ -126,7 +126,7 @@ export const work: WorkItem[] = [
     title: "Elevare",
     domain: "EdTech",
     category: "EdTech · Career readiness",
-    flagship: true,
+    flagship: false,
     status: "IN_DEVELOPMENT",
     role: "Product leader",
     summary:
@@ -330,8 +330,8 @@ export const work: WorkItem[] = [
     title: "Fluent Institute",
     domain: "EdTech",
     category: "EdTech · Learning",
-    flagship: false,
-    status: "LIBRARY",
+    flagship: true,
+    status: "SHIPPED",
     role: "Product",
     summary:
       "Simulation-based learning and career-readiness programmes designed around demonstrated capability, not certificates.",
@@ -356,8 +356,8 @@ export const work: WorkItem[] = [
     title: "DeliverX",
     domain: "Delivery",
     category: "Product · Operations",
-    flagship: false,
-    status: "LIBRARY",
+    flagship: true,
+    status: "SHIPPED",
     role: "Product",
     summary:
       "Project and delivery systems for turning narrative intent into mapped, accountable execution.",
@@ -401,11 +401,23 @@ export const work: WorkItem[] = [
   },
 ];
 
-export const flagships = work.filter((item) => item.flagship);
+export const FLAGSHIP_SLUGS = [
+  "fluent-institute",
+  "deliverx",
+  "aksh-health",
+] as const;
 
 export function workBySlug(slug: string): WorkItem | undefined {
   return work.find((item) => item.slug === slug);
 }
+
+export const flagships = FLAGSHIP_SLUGS.map((slug) => {
+  const item = workBySlug(slug);
+  if (!item) throw new Error(`Missing flagship: ${slug}`);
+  return item;
+});
+
+export const library = work.filter((item) => !item.flagship);
 
 export const workDomains: Array<WorkDomain | "All"> = [
   "All",

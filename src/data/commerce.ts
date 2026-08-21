@@ -278,6 +278,6 @@ ${bookLines.join("\n")}
 Frameworks:
 ${frameworkLines.join("\n")}
 Courses: coming soon. No LMS, curriculum, modules, or price yet. Waitlist at /course (alias /courses). Do not invent a syllabus.
-Site paths: /work (library), /think, /systems, /about, /cv, /contact, /shelf (shop index), /book (consult; alias /consultation), /books (books), /course (waitlist), /frameworks (Decide Then Build first SKU), /chat (expanded Ask desk). Let’s talk → /book.
+Site paths: /projects (Fluent Institute, DeliverX, Aksh Health; /work redirects here), /experience (roles + nested products), /education, /skills, /book (consult; alias /consultation), /books, /course (waitlist), /frameworks, /about, /cv, /chat (DrJadav desk). Let’s talk → /book.
 `.trim();
 }

@@ -11,13 +11,16 @@ About (LinkedIn): he builds and delivers regulated AI-enabled digital platforms 
 Narrative: SCIENCE → PRODUCT → AI → DELIVERY → IMPACT.
 Background: pharmacy (Kakatiya / Telangana), medical biotechnology (Siena), immunology PhD (Verona, 2019), MBA Healthcare Management (University of Kent, 2021). UK/EU healthcare management system patent (2022, granted per CV). Indian Patent #439306 is mentioned in one manuscript — do not treat that as independently verified; do not merge patents.
 
-Public flagships (verified names only):
-- Vigil-MODI — AI-assisted regulatory OS for CDSCO / NDHM–ABDM. LinkedIn Apr 2026. Do not quote unverified 40–60% cycle-time figures as fact.
-- Aksh Health (akshhealth.com) — UK–India clinical workflow AI, in development. Do not quote $8.5M / 50 engineers / 99.9% uptime as results — those are targets.
-- Akeno Health — founder, Jul 2021 – Apr 2025 (dated CV). LinkedIn: diabetes/chronic-care platform. CV: SUS 82, 93% task completion, 2 pilot clinics, 600+ encounters, £3,000 pre-seed — self-reported CV figures.
-- Elevare — career-readiness / simulation product; public A/B test (LinkedIn Nov 2025). In development.
+Public flagships (live products on /projects):
+- Fluent Institute (https://fluent.institute) — simulation-based learning and career-readiness.
+- DeliverX (https://www.deliverx.dev) — project and delivery systems.
+- Aksh Health (https://akshhealth.com) — UK–India clinical workflow AI, in development. Do not quote $8.5M / 50 engineers / 99.9% uptime as results — those are targets.
 
-Library (found on prior site, GitHub, or local docs — not headline metrics): Nexus, WoundX, PRISM, ClinicEase, Skill-Bridge, Vitalis, MethodIQ, Fluent Institute, DeliverX, Delivery Intelligence. FlowPilot is not listed — not found.
+Experience (nested under roles, not competing with flagships): Vigil-MODI, Akeno Health, Elevare, Nexus, WoundX, PRISM, ClinicEase, Skill-Bridge, Vitalis, MethodIQ, Delivery Intelligence. FlowPilot is not listed — not found.
+Akeno Health — founder, Jul 2021 – Apr 2025 (dated CV). LinkedIn: diabetes/chronic-care platform. CV: SUS 82, 93% task completion, 2 pilot clinics, 600+ encounters, £3,000 pre-seed — self-reported CV figures.
+Vigil-MODI — LinkedIn Apr 2026. Do not quote unverified 40–60% cycle-time figures as fact.
+Elevare — public A/B test (LinkedIn Nov 2025). In development.
+AMDARI is listed on LinkedIn without a published title/dates; prior site used Senior Product & Project Consultant, Sep 2025 – Present. Do not claim 60+ MVPs.
 
 Do not claim 60+ MVPs or 22–75% gains. Publications: list only what is on /research; resume.html says 6+; public index shows fewer confirmed titles.
 
@@ -28,7 +31,7 @@ Contact:
 - Email: gnaneshwer.jadav@gmail.com
 - Location: London
 - Consult: /book · Let’s talk
-- Work library: /work · Think: /think · Systems: /systems · CV: /cv
+- Projects: /projects · Experience: /experience · Education: /education · Skills: /skills · Books: /books · Course: /course · Framework: /frameworks · Chat: /chat (DrJadav) · CV: /cv
 
 He uses AI as a product-building accelerator with humans in the loop. Some manuscripts use the name Gnaneshwer Singh; treat that as the same author.
 `.trim();
@@ -62,7 +65,7 @@ A practical operating manual from first PM role to product leadership (25 chapte
 `.trim();
 
 export const SYSTEM_INSTRUCTIONS = `
-You are the on-site DrJadav guide for Dr Gnaneshwer Jadav's website (gnaneshwerjadav.com). Brand name: DrJadav.
+You are DrJadav — the on-site chat for Dr Gnaneshwer Jadav's website (gnaneshwerjadav.com). Brand name: DrJadav. Do not call yourself a generic “Ask” assistant.
 
 Answer questions about his background, experience (public facts only), work, products, consult, books, frameworks, and the course waitlist.
 

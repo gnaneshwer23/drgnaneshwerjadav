@@ -3,22 +3,26 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { site } from "@/data/site";
+import ChatAvatar from "@/components/ChatAvatar";
 
-const primary = [
-  { label: "Work", to: "/work", match: ["/work"] },
-  { label: "Think", to: "/think", match: ["/think", "/shelf", "/books"] },
-  { label: "Systems", to: "/systems", match: ["/systems", "/how-i-build", "/lab"] },
-  { label: "About", to: "/about", match: ["/about", "/now", "/research", "/patent"] },
+const practice = [
+  { label: "Projects", to: "/projects", match: ["/projects", "/work"] },
+  { label: "Experience", to: "/experience", match: ["/experience"] },
+  { label: "Education", to: "/education", match: ["/education"] },
+  { label: "Skills", to: "/skills", match: ["/skills"] },
 ] as const;
 
-const utility = [
-  { label: "CV", to: "/cv" },
-  { label: "LinkedIn", href: site.linkedin },
-  { label: "Contact", to: "/contact" },
+const offerings = [
+  { label: "Books", to: "/books", match: ["/books"] },
+  { label: "Course", to: "/course", match: ["/course"] },
+  { label: "Framework", to: "/frameworks", match: ["/frameworks"] },
+  { label: "Consultation", to: "/book", match: ["/book", "/consultation"] },
 ] as const;
+
+const pages = [...practice, ...offerings];
 
 const linkClass = (active = false) =>
-  `inline-flex min-h-11 items-center text-[12px] font-medium uppercase tracking-[0.16em] transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+  `inline-flex min-h-11 items-center text-[11px] font-medium uppercase tracking-[0.12em] transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
     active ? "text-foreground" : "text-muted-foreground"
   }`;
 
@@ -39,9 +43,11 @@ const Navbar = () => {
 
   const isActive = (match: readonly string[]) =>
     match.some((prefix) =>
-      prefix === "/work"
-        ? location.pathname === "/work" || location.pathname.startsWith("/work/")
-        : location.pathname === prefix || location.pathname.startsWith(`${prefix}/`),
+      prefix === "/work" || prefix === "/projects"
+        ? location.pathname === prefix ||
+          location.pathname.startsWith(`${prefix}/`)
+        : location.pathname === prefix ||
+          location.pathname.startsWith(`${prefix}/`),
     );
 
   return (
@@ -55,7 +61,7 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto] items-center gap-3 px-4 sm:px-6 md:h-[4.25rem] lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+      <div className="container mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-0 px-4 py-1 sm:px-6 lg:min-h-16">
         <Link
           to="/"
           className="flex min-h-11 min-w-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -66,8 +72,22 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-6 lg:flex">
-          {primary.map((item) => (
+        <div className="hidden min-w-0 flex-1 flex-wrap items-center justify-center gap-x-4 xl:gap-x-5 lg:flex">
+          {practice.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className={linkClass(isActive(item.match))}
+              aria-current={isActive(item.match) ? "page" : undefined}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <span
+            className="hidden h-3 w-px bg-border xl:inline-block"
+            aria-hidden="true"
+          />
+          {offerings.map((item) => (
             <Link
               key={item.to}
               to={item.to}
@@ -79,28 +99,29 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden items-center justify-end gap-5 lg:flex">
-          {utility.map((item) =>
-            "href" in item ? (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className={linkClass()}
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={linkClass(location.pathname === item.to)}
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
+        <div className="ml-auto hidden items-center gap-3 lg:flex">
+          <Link
+            to="/chat"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card pl-1.5 pr-3 text-[11px] font-medium uppercase tracking-[0.12em] text-foreground hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-current={location.pathname === "/chat" ? "page" : undefined}
+          >
+            <ChatAvatar size="sm" />
+            DrJadav
+          </Link>
+          <Link
+            to="/contact"
+            className={linkClass(location.pathname === "/contact")}
+          >
+            Contact
+          </Link>
+          <a
+            href={site.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className={linkClass()}
+          >
+            LinkedIn
+          </a>
         </div>
 
         <button
@@ -108,7 +129,7 @@ const Navbar = () => {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          className="flex min-h-11 min-w-11 items-center justify-center justify-self-end rounded-full text-foreground lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="ml-auto flex min-h-11 min-w-11 items-center justify-center rounded-full text-foreground lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -123,27 +144,36 @@ const Navbar = () => {
             className="overflow-hidden border-b border-border bg-background lg:hidden"
           >
             <div className="container mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6">
-              {[...primary, ...utility].map((item) =>
-                "href" in item ? (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex min-h-11 items-center text-sm font-medium text-foreground"
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    className="flex min-h-11 items-center text-sm font-medium text-foreground"
-                  >
-                    {item.label}
-                  </Link>
-                ),
-              )}
+              {pages.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="flex min-h-11 items-center text-sm font-medium text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                to="/chat"
+                className="flex min-h-11 items-center gap-2 text-sm font-medium text-foreground"
+              >
+                <ChatAvatar size="sm" />
+                DrJadav
+              </Link>
+              <Link
+                to="/contact"
+                className="flex min-h-11 items-center text-sm font-medium text-foreground"
+              >
+                Contact
+              </Link>
+              <a
+                href={site.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="flex min-h-11 items-center text-sm font-medium text-foreground"
+              >
+                LinkedIn
+              </a>
             </div>
           </motion.div>
         ) : null}

@@ -179,6 +179,26 @@
     }
   }
 
+  .portrait-frame {
+    isolation: isolate;
+  }
+
+  .portrait-photo {
+    object-fit: cover;
+    object-position: center 18%;
+    transform: scale(1.08);
+    transform-origin: center 22%;
+  }
+
+  /* Face crop for src/assets/drjadav-chat.png — Gnaneshwer is upper-right
+     (red cap). Zoom so a tiny circle is his face, not the whole scene. */
+  .chat-avatar-photo {
+    object-fit: cover;
+    object-position: 82% 8%;
+    transform: scale(2.55);
+    transform-origin: 82% 10%;
+  }
+
   .streaming-caret::after {
     content: "";
     display: inline-block;

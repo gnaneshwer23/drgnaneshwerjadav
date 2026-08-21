@@ -3,30 +3,30 @@ import { site } from "@/data/site";
 
 const groups = [
   {
-    title: "Work",
+    title: "Practice",
     links: [
-      { label: "Selected work", to: "/work" },
-      { label: "How I build", to: "/how-i-build" },
-      { label: "AI Lab", to: "/lab" },
-      { label: "Patent", to: "/patent" },
+      { label: "Projects", to: "/projects" },
+      { label: "Experience", to: "/experience" },
+      { label: "Education", to: "/education" },
+      { label: "Skills", to: "/skills" },
     ],
   },
   {
-    title: "Think",
+    title: "Offerings",
     links: [
-      { label: "Latest thinking", to: "/think" },
-      { label: "Shelf", to: "/shelf" },
       { label: "Books", to: "/books" },
-      { label: "Frameworks", to: "/frameworks" },
+      { label: "Course", to: "/course" },
+      { label: "Framework", to: "/frameworks" },
+      { label: "Consultation", to: "/book" },
     ],
   },
   {
-    title: "About",
+    title: "Studio",
     links: [
+      { label: "DrJadav", to: "/chat" },
       { label: "About", to: "/about" },
-      { label: "Now", to: "/now" },
-      { label: "Research", to: "/research" },
       { label: "Web CV", to: "/cv" },
+      { label: "Contact", to: "/contact" },
     ],
   },
 ] as const;
@@ -50,10 +50,7 @@ const Footer = () => {
               {site.email}
             </a>
           </div>
-          <nav
-            className="grid gap-10 sm:grid-cols-3"
-            aria-label="Footer"
-          >
+          <nav className="grid gap-10 sm:grid-cols-3" aria-label="Footer">
             {groups.map((group) => (
               <div key={group.title}>
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-background/45">
@@ -81,8 +78,7 @@ const Footer = () => {
           </p>
           <div className="flex flex-wrap gap-1">
             {[
-              { label: "Consult", to: "/book" },
-              { label: "Ask", to: "/chat" },
+              { label: "DrJadav", to: "/chat" },
               { label: "Contact", to: "/contact" },
               { label: "GitHub", href: site.github },
               { label: "LinkedIn", href: site.linkedin },
