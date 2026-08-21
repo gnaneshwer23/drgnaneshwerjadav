@@ -1,81 +1,114 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { site } from "@/data/site";
 
-const navLinks = [
+const homeLinks = [
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+
+const projectLinks = [
   { label: "Engines", href: "#engines" },
   { label: "Segments", href: "#segments" },
   { label: "Journey", href: "#journey" },
   { label: "Philosophy", href: "#philosophy" },
 ];
 
-const Navbar = () => {
+type NavbarProps = {
+  variant?: "home" | "project";
+};
+
+const Navbar = ({ variant = "home" }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const links = variant === "project" ? projectLinks : homeLinks;
+  const onHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const lightOnDark = !scrolled && (variant === "home" || variant === "project");
+
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-card/80 backdrop-blur-xl border-b border-border shadow-card"
+          ? "border-b border-border bg-card/80 shadow-card backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-saffron-gradient flex items-center justify-center">
+      <div className="container mx-auto flex h-16 items-center justify-between px-6 md:h-20">
+        <Link
+          to="/"
+          className="flex min-h-11 items-center gap-2"
+          aria-label={`${site.name} home`}
+        >
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-saffron-gradient">
             <span className="font-heading text-sm font-bold text-accent-foreground">
-              AH
+              {site.shortName}
             </span>
-          </div>
+          </span>
           <span
-            className={`font-heading text-lg font-bold transition-colors ${
+            className={`font-heading text-base font-bold transition-colors md:text-lg ${
               scrolled ? "text-foreground" : "text-primary-foreground"
             }`}
           >
-            Accountable Hindustan
+            {variant === "project" ? "Accountable Hindustan" : site.name}
           </span>
-        </a>
+        </Link>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-saffron ${
-                scrolled
-                  ? "text-muted-foreground"
-                  : "text-primary-foreground/70"
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
-          <Button
-            asChild
-            size="sm"
-            className="bg-saffron-gradient text-accent-foreground font-semibold rounded-lg shadow-saffron hover:opacity-90 transition-opacity"
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) =>
+            onHome || variant === "project" ? (
+              <a
+                key={link.label}
+                href={link.href}
+                className={`text-sm font-medium transition-colors hover:text-saffron ${
+                  lightOnDark ? "text-primary-foreground/70" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                to={`/${link.href}`}
+                className={`text-sm font-medium transition-colors hover:text-saffron ${
+                  lightOnDark ? "text-primary-foreground/70" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
+          <a
+            href={site.github}
+            target="_blank"
+            rel="noreferrer"
+            className={`text-sm font-medium transition-colors hover:text-saffron ${
+              lightOnDark ? "text-primary-foreground/70" : "text-muted-foreground"
+            }`}
           >
-            <Link to="/onboarding">Get Started</Link>
-          </Button>
+            GitHub
+          </a>
         </div>
 
-        {/* Mobile toggle */}
         <button
+          type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`md:hidden p-2 ${
+          aria-expanded={mobileOpen}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          className={`flex min-h-11 min-w-11 items-center justify-center md:hidden ${
             scrolled ? "text-foreground" : "text-primary-foreground"
           }`}
         >
@@ -83,29 +116,33 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card border-b border-border overflow-hidden"
+            className="overflow-hidden border-b border-border bg-card md:hidden"
           >
-            <div className="container mx-auto px-6 py-4 flex flex-col gap-3">
-              {navLinks.map((link) => (
+            <div className="container mx-auto flex flex-col gap-1 px-6 py-4">
+              {links.map((link) => (
                 <a
                   key={link.label}
-                  href={link.href}
+                  href={variant === "project" || onHome ? link.href : `/${link.href}`}
                   onClick={() => setMobileOpen(false)}
-                  className="text-sm font-medium text-foreground py-2"
+                  className="flex min-h-11 items-center text-sm font-medium text-foreground"
                 >
                   {link.label}
                 </a>
               ))}
-              <Button asChild className="bg-saffron-gradient text-accent-foreground font-semibold rounded-lg shadow-saffron mt-2">
-                <Link to="/onboarding">Get Started</Link>
-              </Button>
+              <a
+                href={site.github}
+                target="_blank"
+                rel="noreferrer"
+                className="flex min-h-11 items-center text-sm font-medium text-foreground"
+              >
+                GitHub
+              </a>
             </div>
           </motion.div>
         )}
