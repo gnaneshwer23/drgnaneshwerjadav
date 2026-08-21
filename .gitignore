@@ -15,6 +15,10 @@ dist-ssr
 .env.*
 !.env.example
 
+# Unpublished Product Book 2026 manuscripts (keep on disk, do not commit)
+content/books/*.docx
+content/books/*.doc
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

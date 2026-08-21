@@ -34,7 +34,7 @@ const Books = () => {
                 {String(index + 1).padStart(2, "0")}
               </span>
               <div>
-                <h2 className="font-heading text-2xl font-bold text-foreground md:text-3xl">
+                <h2 className="font-heading text-2xl font-medium text-foreground md:text-3xl">
                   {book.title}
                 </h2>
                 <p className="mt-2 text-sm font-medium text-muted-foreground">
@@ -50,7 +50,7 @@ const Books = () => {
                     href={book.gumroadUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-11 items-center rounded-xl bg-saffron-gradient px-5 py-3 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90"
+                    className="inline-flex min-h-11 items-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
                   >
                     Buy on Gumroad
                     <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />

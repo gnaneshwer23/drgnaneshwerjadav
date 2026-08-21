@@ -20,12 +20,12 @@ const About = () => {
           {site.name}
         </PageTitle>
         <PageLead>
-          {resume.headline} · {resume.location}. Currently {resume.current.role}{" "}
-          at {resume.current.organisation}.
+          {resume.headline} · {resume.location}.
         </PageLead>
 
         <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          {resume.provenance}
+          Public profile from LinkedIn and local 2025 resume documents. Dates
+          and titles follow LinkedIn where they were published.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -39,14 +39,14 @@ const About = () => {
           </p>
           <div className="mt-6 grid gap-2 md:grid-cols-[8rem_1fr]">
             <p className="font-heading text-sm font-semibold text-saffron">
-              {resume.current.period}
+              Public profile
             </p>
             <div>
               <h2 className="font-heading text-2xl font-bold text-foreground">
-                {resume.current.role}, {resume.current.organisation}
+                {resume.headline}
               </h2>
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                {resume.current.summary}
+                {resume.about} {resume.current.summary}
               </p>
             </div>
           </div>

@@ -80,13 +80,13 @@ export function ChatHandoff() {
     <div className="mt-3 flex flex-wrap gap-2">
       <Link
         to="/book"
-        className="inline-flex min-h-9 items-center rounded-full bg-saffron-gradient px-4 py-1.5 text-xs font-semibold text-accent-foreground"
+        className="inline-flex min-h-9 items-center rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground"
       >
         Book a consult
       </Link>
       <Link
         to="/books"
-        className="inline-flex min-h-9 items-center rounded-full border border-primary-foreground/20 px-4 py-1.5 text-xs font-semibold text-primary-foreground/85 hover:border-saffron/40 hover:text-saffron"
+        className="inline-flex min-h-9 items-center rounded-full border border-border px-4 py-1.5 text-xs font-semibold text-foreground hover:border-saffron/50 hover:text-saffron"
       >
         Shop books
       </Link>

@@ -33,22 +33,22 @@ const Book = () => {
   const { consult } = storefront;
 
   return (
-    <StorefrontLayout tone="navy">
+    <StorefrontLayout tone="paper">
       <PageShell>
         <Eyebrow>Consult</Eyebrow>
-        <PageTitle tone="navy">
+        <PageTitle>
           {consult.minutes} minutes with {site.brand}.
         </PageTitle>
-        <PageLead tone="navy">
+        <PageLead>
           A paid strategy session for founders and product leaders who need a
           decision, not a pep talk. Book on Google Calendar, then complete
           payment via Stripe.
         </PageLead>
 
-        <p className="mt-8 font-heading text-4xl font-bold text-saffron md:text-5xl">
+        <p className="font-display-italic mt-8 text-4xl text-saffron md:text-5xl">
           {consult.priceLabel}
         </p>
-        <p className="mt-2 text-sm text-primary-foreground/50">
+        <p className="mt-2 text-sm text-muted-foreground">
           {consult.minutes}-minute strategy session · {consult.currency}
         </p>
 
@@ -62,19 +62,19 @@ const Book = () => {
             <PrimaryCta disabled>Calendar link coming</PrimaryCta>
           )}
           {consult.hasStripe ? (
-            <SecondaryCta href={consult.stripeUrl ?? undefined} external onNavy>
+            <SecondaryCta href={consult.stripeUrl ?? undefined} external>
               Pay via Stripe
               <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </SecondaryCta>
           ) : (
-            <SecondaryCta disabled onNavy>
+            <SecondaryCta disabled>
               Stripe link coming
             </SecondaryCta>
           )}
         </div>
 
         {!consult.hasCalendar && !consult.hasStripe && (
-          <p className="mt-4 max-w-xl text-sm text-primary-foreground/55">
+          <p className="mt-4 max-w-xl text-sm text-muted-foreground">
             Scheduling and payment links are not published yet. Email{" "}
             <a className="text-saffron hover:underline" href={`mailto:${site.email}`}>
               {site.email}
@@ -87,31 +87,31 @@ const Book = () => {
           {steps.map((step) => (
             <li
               key={step.number}
-              className="rounded-2xl border border-primary-foreground/10 bg-navy-dark/60 p-6"
+              className="rounded-[1.5rem] border border-border bg-card p-6 shadow-card"
             >
-              <p className="font-heading text-sm font-semibold tabular-nums text-saffron">
+              <p className="font-display-italic text-2xl text-saffron">
                 {step.number}
               </p>
-              <h2 className="font-heading mt-4 text-xl font-bold text-primary-foreground">
+              <h2 className="font-heading mt-4 text-xl font-medium text-foreground">
                 {step.title}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-primary-foreground/65">
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {step.body}
               </p>
             </li>
           ))}
         </ol>
 
-        <section className="mt-16 max-w-2xl border-t border-primary-foreground/10 pt-12">
-          <h2 className="font-heading text-2xl font-bold text-primary-foreground">
+        <section className="mt-16 max-w-2xl border-t border-border pt-12">
+          <h2 className="font-heading text-2xl font-medium text-foreground">
             What you get
           </h2>
-          <ul className="mt-6 space-y-3 text-base leading-relaxed text-primary-foreground/70">
+          <ul className="mt-6 space-y-3 text-base leading-relaxed text-muted-foreground">
             <li>A short read of the situation — what {site.brand} thinks, in plain language.</li>
             <li>A decision frame from the books (Decide Then Build, Build Before You Scale) applied to your case, not a manuscript dump.</li>
             <li>Clear next moves, and whether a longer engagement is even worth it.</li>
           </ul>
-          <p className="mt-8 text-sm text-primary-foreground/50">
+          <p className="mt-8 text-sm text-muted-foreground">
             This is product and delivery counsel, not medical or legal advice.
             Prefer to start with a book?{" "}
             <Link to="/books" className="text-saffron hover:underline">

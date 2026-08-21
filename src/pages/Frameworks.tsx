@@ -31,7 +31,7 @@ const Frameworks = () => {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-saffron">
               First SKU
             </p>
-            <h2 className="font-heading mt-4 text-3xl font-bold text-foreground">
+            <h2 className="font-heading mt-4 text-3xl font-medium text-foreground">
               {first.title}
             </h2>
             <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -44,7 +44,7 @@ const Frameworks = () => {
                   href={first.gumroadUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-11 items-center rounded-xl bg-saffron-gradient px-6 py-3 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-11 items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
                 >
                   Buy on Gumroad
                   <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />

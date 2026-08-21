@@ -31,17 +31,17 @@ const ChatWidget = () => {
           role="dialog"
           aria-modal="false"
           aria-labelledby={titleId}
-          className="pointer-events-auto absolute inset-x-0 bottom-0 flex h-[min(70dvh,36rem)] flex-col overflow-hidden rounded-t-3xl border border-saffron/25 bg-navy shadow-saffron md:inset-auto md:bottom-5 md:right-5 md:h-[min(32rem,70dvh)] md:w-[min(24rem,calc(100vw-2.5rem))] md:rounded-2xl"
+          className="pointer-events-auto absolute inset-x-0 bottom-0 flex h-[min(70dvh,36rem)] flex-col overflow-hidden rounded-t-3xl border border-border bg-card shadow-card md:inset-auto md:bottom-5 md:right-5 md:h-[min(32rem,70dvh)] md:w-[min(24rem,calc(100vw-2.5rem))] md:rounded-2xl"
         >
-          <div className="flex flex-wrap items-center justify-between gap-1 border-b border-primary-foreground/10 px-2 py-1.5">
+          <div className="flex flex-wrap items-center justify-between gap-1 border-b border-border px-2 py-1.5">
             <div className="min-w-0 flex-1 px-2 py-1">
               <p
                 id={titleId}
-                className="font-heading truncate text-sm font-bold text-primary-foreground"
+                className="font-display-italic truncate text-lg text-foreground"
               >
                 Ask DrJadav
               </p>
-              <p className="truncate text-xs text-primary-foreground/50">
+              <p className="truncate text-xs text-muted-foreground">
                 Work, products, and books
               </p>
             </div>
@@ -55,7 +55,7 @@ const ChatWidget = () => {
               <button
                 type="button"
                 onClick={() => setPersistedMode("minimized")}
-                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 text-xs font-semibold text-primary-foreground hover:bg-primary-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
+                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 text-xs font-semibold text-foreground hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
                 aria-label="Minimise chat"
               >
                 <Minus className="h-4 w-4" aria-hidden="true" />
@@ -75,7 +75,7 @@ const ChatWidget = () => {
           onClick={() => setPersistedMode("open")}
           aria-expanded={false}
           aria-label="Open chat"
-          className="pointer-events-auto absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-saffron-gradient px-4 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+          className="pointer-events-auto absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-card transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <MessageCircle className="h-5 w-5" aria-hidden="true" />
           Ask

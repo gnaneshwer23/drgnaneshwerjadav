@@ -40,8 +40,8 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
             <p
               className={
                 isPage
-                  ? "text-base leading-relaxed text-primary-foreground/70"
-                  : "text-sm leading-relaxed text-primary-foreground/70"
+                  ? "text-base leading-relaxed text-muted-foreground"
+                  : "text-sm leading-relaxed text-muted-foreground"
               }
             >
               Ask about the work, the books, or how to book a DrJadav consult.
@@ -52,7 +52,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
                   key={prompt}
                   type="button"
                   onClick={() => submit(prompt)}
-                  className="min-h-11 rounded-full border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-2 text-left text-sm text-primary-foreground/85 transition-colors hover:border-saffron/40 hover:text-saffron"
+                  className="min-h-11 rounded-full border border-border bg-card px-4 py-2 text-left text-sm text-foreground transition-colors hover:border-saffron/50 hover:text-saffron"
                 >
                   {prompt}
                 </button>
@@ -66,14 +66,14 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
             key={message.id}
             className={
               message.role === "user"
-                ? "ml-8 rounded-2xl border border-saffron/25 bg-saffron/10 px-4 py-3"
+                ? "ml-8 rounded-2xl border border-saffron/20 bg-saffron/10 px-4 py-3"
                 : "mr-4 border-l-2 border-saffron/40 pl-4"
             }
           >
             <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-saffron">
               {message.role === "user" ? "You" : "DrJadav"}
             </p>
-            <div className="space-y-3 text-sm leading-relaxed text-primary-foreground/90 md:text-[15px]">
+            <div className="space-y-3 text-sm leading-relaxed text-foreground md:text-[15px]">
               {message.parts.map((part, index) =>
                 part.type === "text" ? (
                   <p key={`${message.id}-${index}`} className="whitespace-pre-wrap">
@@ -89,7 +89,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
         ))}
 
         {status === "submitted" && (
-          <p className="text-sm text-primary-foreground/50">Thinking…</p>
+          <p className="text-sm text-muted-foreground">Thinking…</p>
         )}
         {error && (
           <p className="text-sm text-destructive">
@@ -99,7 +99,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
       </div>
 
       <form
-        className="flex items-end gap-2 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-2"
+        className="flex items-end gap-2 rounded-2xl border border-border bg-card p-2"
         onSubmit={(event) => {
           event.preventDefault();
           submit(input);
@@ -121,14 +121,14 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
           disabled={status === "error"}
           rows={isPage ? 3 : 2}
           placeholder="Ask about the work, books, or a consult…"
-          className="min-h-11 flex-1 resize-none bg-transparent px-3 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none"
+          className="min-h-11 flex-1 resize-none bg-transparent px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
         {busy ? (
           <button
             type="button"
             onClick={() => stop()}
             aria-label="Stop generating"
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-primary-foreground/20 text-primary-foreground"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full border border-border text-foreground"
           >
             <Square className="h-4 w-4" />
           </button>
@@ -137,7 +137,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
             type="submit"
             disabled={!input.trim()}
             aria-label="Send message"
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-xl bg-saffron-gradient text-accent-foreground disabled:opacity-40"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full bg-primary text-primary-foreground disabled:opacity-40"
           >
             <ArrowUp className="h-4 w-4" />
           </button>

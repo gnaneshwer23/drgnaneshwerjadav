@@ -4,13 +4,13 @@ import { site } from "@/data/site";
 
 const links = [
   { label: "Email", href: `mailto:${site.email}`, value: site.email },
-  { label: "LinkedIn", href: site.linkedin, value: "gnaneshwer-jadav-healthcare" },
+  { label: "LinkedIn", href: site.linkedin, value: "gnaneshwer-jadav" },
   { label: "GitHub", href: site.github, value: "gnaneshwer23" },
 ] as const;
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="section-y scroll-mt-24 bg-navy">
+    <section id="contact" className="section-y scroll-mt-24 bg-background">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -20,13 +20,13 @@ const ContactSection = () => {
           className="max-w-2xl"
         >
           <p className="eyebrow">Contact</p>
-          <h2 className="display text-primary-foreground">
+          <h2 className="display text-foreground">
             Product leadership, AI-enabled systems, or building in regulated
             domains — get in touch.
           </h2>
         </motion.div>
 
-        <ul className="mt-10 max-w-2xl divide-y divide-primary-foreground/10 border-y border-primary-foreground/10 sm:mt-14">
+        <ul className="mt-10 max-w-2xl divide-y divide-border border-y border-border sm:mt-14">
           {links.map((link, i) => (
             <motion.li
               key={link.label}
@@ -42,15 +42,15 @@ const ContactSection = () => {
                 className="group flex min-h-11 items-center justify-between gap-4 py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
               >
                 <span>
-                  <span className="block text-xs font-medium uppercase tracking-[0.16em] text-primary-foreground/50">
+                  <span className="block text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                     {link.label}
                   </span>
-                  <span className="mt-1 block break-all font-heading text-base font-semibold text-primary-foreground sm:text-lg">
+                  <span className="mt-1 block break-all font-heading text-lg font-medium text-foreground sm:text-xl">
                     {link.value}
                   </span>
                 </span>
                 <ArrowUpRight
-                  className="h-5 w-5 shrink-0 text-primary-foreground/40 transition-colors group-hover:text-saffron"
+                  className="h-5 w-5 shrink-0 text-muted-foreground transition-colors group-hover:text-saffron"
                   aria-hidden="true"
                 />
               </a>

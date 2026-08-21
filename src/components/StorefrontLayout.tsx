@@ -13,7 +13,7 @@ const StorefrontLayout = ({ children, tone = "paper" }: StorefrontLayoutProps) =
     <main
       className={cn(
         "flex min-h-dvh flex-col",
-        tone === "navy" ? "bg-navy" : "bg-background",
+        tone === "navy" ? "bg-background" : "bg-background",
       )}
     >
       <Navbar />

@@ -2,15 +2,15 @@ export const site = {
   name: "Dr Gnaneshwer Jadav",
   brand: "DrJadav",
   shortName: "GJ",
-  role: "Product & project leader",
+  role: "Product & programme leader",
   tagline:
-    "I turn complex clinical, research, and learning problems into shipped products — in HealthTech, EdTech, and AI-enabled systems.",
+    "I build and deliver regulated AI-enabled digital platforms — from 0→1 products in HealthTech and EdTech.",
   location: "London",
   email: "gnaneshwer.jadav@gmail.com",
   url: "https://gnaneshwerjadav.com",
   github: "https://github.com/gnaneshwer23",
-  linkedin: "https://www.linkedin.com/in/gnaneshwer-jadav-healthcare/",
-  company: "Akeno Health",
+  linkedin: "https://www.linkedin.com/in/gnaneshwer-jadav/",
+  credentials: "PhD · MBA · patent holder",
 } as const;
 
 export type WorkItem = {
