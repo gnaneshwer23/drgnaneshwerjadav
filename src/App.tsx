@@ -7,6 +7,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import AccountableHindustan from "./pages/AccountableHindustan";
 import Chat from "./pages/Chat";
+import About from "./pages/About";
+import Books from "./pages/Books";
+import Book from "./pages/Book";
+import Frameworks from "./pages/Frameworks";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
@@ -30,6 +34,10 @@ const App = () => (
           <div id="main">
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/books" element={<Books />} />
+              <Route path="/book" element={<Book />} />
+              <Route path="/frameworks" element={<Frameworks />} />
               <Route path="/accountable-hindustan" element={<AccountableHindustan />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/onboarding" element={<Onboarding />} />

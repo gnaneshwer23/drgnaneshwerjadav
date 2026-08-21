@@ -3,6 +3,7 @@ import { DefaultChatTransport } from "ai";
 import { useMemo, useState } from "react";
 import { ArrowUp, Square } from "lucide-react";
 import { chatStarterPrompts } from "@/lib/chat-prompts";
+import { ChatHandoff, ChatLinkedText } from "@/lib/chat-links";
 
 type ChatTranscriptProps = {
   layout?: "page" | "widget";
@@ -43,8 +44,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
                   : "text-sm leading-relaxed text-primary-foreground/70"
               }
             >
-              Ask about his work, HealthTech and EdTech products, or the books
-              he is writing.
+              Ask about the work, the books, or how to book a DrJadav consult.
             </p>
             <div className="flex flex-wrap gap-2">
               {chatStarterPrompts.map((prompt) => (
@@ -71,17 +71,20 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
             }
           >
             <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-saffron">
-              {message.role === "user" ? "You" : "Guide"}
+              {message.role === "user" ? "You" : "DrJadav"}
             </p>
             <div className="space-y-3 text-sm leading-relaxed text-primary-foreground/90 md:text-[15px]">
               {message.parts.map((part, index) =>
                 part.type === "text" ? (
                   <p key={`${message.id}-${index}`} className="whitespace-pre-wrap">
-                    {part.text}
+                    <ChatLinkedText text={part.text} />
                   </p>
                 ) : null,
               )}
             </div>
+            {message.role === "assistant" &&
+              messages[messages.length - 1]?.id === message.id &&
+              status === "ready" && <ChatHandoff />}
           </article>
         ))}
 
@@ -117,7 +120,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
           }}
           disabled={status === "error"}
           rows={isPage ? 3 : 2}
-          placeholder="Ask about his work or books…"
+          placeholder="Ask about the work, books, or a consult…"
           className="min-h-11 flex-1 resize-none bg-transparent px-3 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none"
         />
         {busy ? (

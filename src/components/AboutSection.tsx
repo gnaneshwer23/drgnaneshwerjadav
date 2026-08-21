@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { focusAreas, site } from "@/data/site";
 
 const AboutSection = () => {
@@ -34,6 +35,15 @@ const AboutSection = () => {
               </p>
               <p>
                 Based in {site.location}, currently building at {site.company}.
+              </p>
+              <p>
+                <Link
+                  to="/about"
+                  className="font-semibold text-saffron hover:underline"
+                >
+                  Full timeline
+                </Link>
+                {" — "}public facts only, until a CV is added.
               </p>
             </div>
           </motion.div>

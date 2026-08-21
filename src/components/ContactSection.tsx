@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { site } from "@/data/site";
 
 const links = [
@@ -24,8 +25,22 @@ const ContactSection = () => {
           </p>
           <h2 className="font-heading text-4xl font-bold text-primary-foreground md:text-5xl">
             Product leadership, AI-enabled systems, or building in regulated
-            domains — get in touch.
+            domains — book a session, or write.
           </h2>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/book"
+              className="inline-flex min-h-11 items-center rounded-xl bg-saffron-gradient px-6 py-3 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90"
+            >
+              Book a consult
+            </Link>
+            <Link
+              to="/books"
+              className="inline-flex min-h-11 items-center rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-6 py-3 text-sm font-semibold text-primary-foreground/90 transition-colors hover:bg-primary-foreground/10"
+            >
+              Shop books
+            </Link>
+          </div>
         </motion.div>
 
         <ul className="mt-14 grid gap-4 md:grid-cols-3">

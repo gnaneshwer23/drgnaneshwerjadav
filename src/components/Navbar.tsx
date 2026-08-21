@@ -4,18 +4,14 @@ import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { site } from "@/data/site";
 
-const homeLinks = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
-
 const projectLinks = [
   { label: "Engines", href: "#engines" },
   { label: "Segments", href: "#segments" },
   { label: "Journey", href: "#journey" },
   { label: "Philosophy", href: "#philosophy" },
 ];
+
+const DARK_HERO_PATHS = new Set(["/", "/chat", "/book", "/accountable-hindustan"]);
 
 type NavbarProps = {
   variant?: "home" | "project";
@@ -25,8 +21,9 @@ const Navbar = ({ variant = "home" }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const links = variant === "project" ? projectLinks : homeLinks;
-  const onHome = location.pathname === "/";
+  const onDarkHero =
+    variant === "project" || DARK_HERO_PATHS.has(location.pathname);
+  const lightOnDark = !scrolled && onDarkHero;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -34,7 +31,13 @@ const Navbar = ({ variant = "home" }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const lightOnDark = !scrolled && (variant === "home" || variant === "project");
+  const muted = lightOnDark ? "text-primary-foreground/70" : "text-muted-foreground";
+  const brandColor = scrolled || !onDarkHero ? "text-foreground" : "text-primary-foreground";
+
+  const navClass = (active: boolean) =>
+    `text-sm font-medium transition-colors hover:text-saffron ${
+      active ? "text-saffron" : muted
+    }`;
 
   return (
     <motion.nav
@@ -42,7 +45,7 @@ const Navbar = ({ variant = "home" }: NavbarProps) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || !onDarkHero
           ? "border-b border-border bg-card/80 shadow-card backdrop-blur-xl"
           : "bg-transparent"
       }`}
@@ -60,60 +63,51 @@ const Navbar = ({ variant = "home" }: NavbarProps) => {
           </span>
           <span
             className={`font-heading text-base font-bold transition-colors md:text-lg ${
-              scrolled ? "text-foreground" : "text-primary-foreground"
+              variant === "project"
+                ? scrolled
+                  ? "text-foreground"
+                  : "text-primary-foreground"
+                : brandColor
             }`}
           >
-            {variant === "project" ? "Accountable Hindustan" : site.name}
+            {variant === "project" ? "Accountable Hindustan" : site.brand}
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
-          {links.map((link) =>
-            onHome || variant === "project" ? (
+        {variant === "project" ? (
+          <div className="hidden items-center gap-8 md:flex">
+            {projectLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-saffron ${
-                  lightOnDark ? "text-primary-foreground/70" : "text-muted-foreground"
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-saffron ${muted}`}
               >
                 {link.label}
               </a>
-            ) : (
-              <Link
-                key={link.label}
-                to={`/${link.href}`}
-                className={`text-sm font-medium transition-colors hover:text-saffron ${
-                  lightOnDark ? "text-primary-foreground/70" : "text-muted-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
-          <Link
-            to="/chat"
-            className={`text-sm font-medium transition-colors hover:text-saffron ${
-              location.pathname === "/chat"
-                ? "text-saffron"
-                : lightOnDark
-                  ? "text-primary-foreground/70"
-                  : "text-muted-foreground"
-            }`}
-          >
-            Chat
-          </Link>
-          <a
-            href={site.github}
-            target="_blank"
-            rel="noreferrer"
-            className={`text-sm font-medium transition-colors hover:text-saffron ${
-              lightOnDark ? "text-primary-foreground/70" : "text-muted-foreground"
-            }`}
-          >
-            GitHub
-          </a>
-        </div>
+            ))}
+            <Link to="/" className={navClass(false)}>
+              DrJadav
+            </Link>
+          </div>
+        ) : (
+          <div className="hidden items-center gap-8 md:flex">
+            <Link to="/#work" className={navClass(location.pathname === "/")}>
+              Work
+            </Link>
+            <Link to="/books" className={navClass(location.pathname === "/books")}>
+              Books
+            </Link>
+            <Link to="/chat" className={navClass(location.pathname === "/chat")}>
+              Chat
+            </Link>
+            <Link
+              to="/book"
+              className="inline-flex min-h-11 items-center rounded-xl bg-saffron-gradient px-4 py-2 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90"
+            >
+              Book
+            </Link>
+          </div>
+        )}
 
         <button
           type="button"
@@ -121,7 +115,7 @@ const Navbar = ({ variant = "home" }: NavbarProps) => {
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           className={`flex min-h-11 min-w-11 items-center justify-center md:hidden ${
-            scrolled ? "text-foreground" : "text-primary-foreground"
+            scrolled || !onDarkHero ? "text-foreground" : "text-primary-foreground"
           }`}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -137,31 +131,58 @@ const Navbar = ({ variant = "home" }: NavbarProps) => {
             className="overflow-hidden border-b border-border bg-card md:hidden"
           >
             <div className="container mx-auto flex flex-col gap-1 px-6 py-4">
-              {links.map((link) => (
-                <a
-                  key={link.label}
-                  href={variant === "project" || onHome ? link.href : `/${link.href}`}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex min-h-11 items-center text-sm font-medium text-foreground"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <Link
-                to="/chat"
-                onClick={() => setMobileOpen(false)}
-                className="flex min-h-11 items-center text-sm font-medium text-foreground"
-              >
-                Chat
-              </Link>
-              <a
-                href={site.github}
-                target="_blank"
-                rel="noreferrer"
-                className="flex min-h-11 items-center text-sm font-medium text-foreground"
-              >
-                GitHub
-              </a>
+              {variant === "project" ? (
+                <>
+                  {projectLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex min-h-11 items-center text-sm font-medium text-foreground"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                  <Link
+                    to="/"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex min-h-11 items-center text-sm font-medium text-foreground"
+                  >
+                    DrJadav
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/#work"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex min-h-11 items-center text-sm font-medium text-foreground"
+                  >
+                    Work
+                  </Link>
+                  <Link
+                    to="/books"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex min-h-11 items-center text-sm font-medium text-foreground"
+                  >
+                    Books
+                  </Link>
+                  <Link
+                    to="/chat"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex min-h-11 items-center text-sm font-medium text-foreground"
+                  >
+                    Chat
+                  </Link>
+                  <Link
+                    to="/book"
+                    onClick={() => setMobileOpen(false)}
+                    className="mt-2 inline-flex min-h-11 items-center justify-center rounded-xl bg-saffron-gradient px-4 text-sm font-semibold text-accent-foreground"
+                  >
+                    Book
+                  </Link>
+                </>
+              )}
             </div>
           </motion.div>
         )}

@@ -1,6 +1,7 @@
 export const site = {
   name: "Dr Gnaneshwer Jadav",
-  shortName: "GJ",
+  brand: "DrJadav",
+  shortName: "DJ",
   role: "Product & project leader",
   tagline:
     "I turn complex clinical, research, and learning problems into shipped products — in HealthTech, EdTech, and AI-enabled systems.",

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import { site } from "@/data/site";
 
 const PersonalHero = () => {
@@ -48,21 +49,24 @@ const PersonalHero = () => {
           transition={{ duration: 0.45, delay: 0.25 }}
           className="mt-10 flex flex-wrap items-center gap-3"
         >
+          <Link
+            to="/book"
+            className="inline-flex min-h-11 items-center rounded-xl bg-saffron-gradient px-6 py-3 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90"
+          >
+            Book a consult
+          </Link>
+          <Link
+            to="/books"
+            className="inline-flex min-h-11 items-center rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-6 py-3 text-sm font-semibold text-primary-foreground/90 backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
+          >
+            Shop books
+          </Link>
           <a
             href="#work"
-            className="inline-flex min-h-11 items-center rounded-xl bg-saffron-gradient px-6 py-3 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90"
+            className="inline-flex min-h-11 items-center px-2 py-3 text-sm font-medium text-primary-foreground/60 transition-colors hover:text-saffron"
           >
             Selected work
             <ArrowDown className="ml-2 h-4 w-4" aria-hidden="true" />
-          </a>
-          <a
-            href={site.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-11 items-center rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-6 py-3 text-sm font-semibold text-primary-foreground/90 backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
-          >
-            LinkedIn
-            <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </a>
         </motion.div>
 

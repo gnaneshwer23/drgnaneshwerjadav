@@ -16,10 +16,10 @@ const ChatWidget = () => {
           <div className="flex items-center justify-between border-b border-primary-foreground/10 px-4 py-3">
             <div>
               <p className="font-heading text-sm font-bold text-primary-foreground">
-                Ask about Gnaneshwer
+                DrJadav
               </p>
               <p className="text-xs text-primary-foreground/50">
-                Work, products, and books in progress
+                Work, books, and booking
               </p>
             </div>
             <Link
@@ -39,10 +39,17 @@ const ChatWidget = () => {
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        aria-label={open ? "Close chat" : "Open chat"}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-saffron-gradient text-accent-foreground shadow-saffron"
+        aria-label={open ? "Close chat" : "Ask me anything"}
+        className="flex min-h-14 items-center justify-center rounded-full bg-[#2196f3] px-4 text-white shadow-[0_8px_24px_rgba(33,150,243,0.35)]"
       >
-        {open ? <X className="h-5 w-5" /> : <MessageCircle className="h-5 w-5" />}
+        {open ? (
+          <X className="h-5 w-5" />
+        ) : (
+          <span className="flex items-center gap-2">
+            <MessageCircle className="h-5 w-5" />
+            <span className="hidden pr-1 text-sm font-medium sm:inline">Ask me anything</span>
+          </span>
+        )}
       </button>
     </div>
   );
