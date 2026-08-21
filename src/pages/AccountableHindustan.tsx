@@ -8,10 +8,11 @@ import PrinciplesSection from "@/components/PrinciplesSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
+/** Same original AH landing as `/`, kept so old project URLs still work. */
 const AccountableHindustan = () => {
   return (
-    <main className="min-h-dvh">
-      <Navbar variant="project" />
+    <main className="min-h-screen">
+      <Navbar />
       <HeroSection />
       <div id="engines">
         <EnginesSection />

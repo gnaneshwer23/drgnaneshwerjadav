@@ -11,7 +11,7 @@ const PageShell = ({ children, className }: PageShellProps) => {
   return (
     <div
       className={cn(
-        "container mx-auto flex flex-1 flex-col px-6 pb-20 pt-28",
+        "container mx-auto flex max-w-6xl flex-1 flex-col px-4 pb-24 pt-24 sm:px-6 sm:pt-28",
         className,
       )}
     >
@@ -21,9 +21,7 @@ const PageShell = ({ children, className }: PageShellProps) => {
 };
 
 export const Eyebrow = ({ children }: { children: ReactNode }) => (
-  <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-saffron">
-    {children}
-  </p>
+  <p className="eyebrow">{children}</p>
 );
 
 export const PageTitle = ({
@@ -35,7 +33,7 @@ export const PageTitle = ({
 }) => (
   <h1
     className={cn(
-      "font-heading max-w-3xl text-4xl font-bold md:text-5xl",
+      "display max-w-3xl",
       tone === "navy" ? "text-primary-foreground" : "text-foreground",
     )}
   >
@@ -74,7 +72,7 @@ export const PrimaryCta = ({
   disabled?: boolean;
 }) => {
   const className =
-    "inline-flex min-h-11 items-center justify-center rounded-xl bg-saffron-gradient px-6 py-3 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90 disabled:pointer-events-none disabled:opacity-40";
+    "inline-flex min-h-11 items-center justify-center rounded-xl bg-saffron-gradient px-6 py-3 text-sm font-semibold text-accent-foreground shadow-saffron transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron disabled:pointer-events-none disabled:opacity-40";
 
   if (disabled) {
     return (
@@ -118,8 +116,8 @@ export const SecondaryCta = ({
   disabled?: boolean;
 }) => {
   const className = onNavy
-    ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-6 py-3 text-sm font-semibold text-primary-foreground/90 backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
-    : "inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-saffron/40 hover:text-saffron";
+    ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-6 py-3 text-sm font-semibold text-primary-foreground/90 backdrop-blur-sm transition-colors hover:bg-primary-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
+    : "inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-saffron/40 hover:text-saffron focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron";
 
   if (disabled) {
     return (

@@ -9,7 +9,7 @@ Background: biology, pharmacy, biotechnology, and a PhD in immunology. He also h
 He works at the intersection of HealthTech, EdTech, and AI-enabled systems — turning complex clinical, research, and learning problems into shipped products in regulated environments.
 
 Public work:
-- Accountable Hindustan — career operating system / workforce infrastructure (on this site at /accountable-hindustan). Related to Fluent Institute (Accountable Hindustan Pvt Ltd).
+- Accountable Hindustan — past product (career operating system / workforce infrastructure). Related to Fluent Institute (Accountable Hindustan Pvt Ltd). It is not hosted as a site on this domain.
 - Aksh Health (akshhealth.com) — UK–India healthcare platforms, clinical workflow, NHS/EU clinical AI.
 - Fluent Institute (fluent.institute) — simulation-based learning and career-readiness.
 - DeliverX (deliverx.dev) — project and delivery systems; AI-native project delivery intelligence.

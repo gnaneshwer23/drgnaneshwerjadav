@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import ClassicNav from "@/components/ClassicNav";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +16,7 @@ const StorefrontLayout = ({ children, tone = "paper" }: StorefrontLayoutProps) =
         tone === "navy" ? "bg-navy" : "bg-background",
       )}
     >
-      <ClassicNav />
+      <Navbar />
       {children}
       <Footer />
     </main>

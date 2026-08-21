@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 const TOKEN =
-  /https:\/\/[^\s)]+|\/(?:book|books|about|frameworks|chat|accountable-hindustan)(?:#[\w-]*)?/g;
+  /https:\/\/[^\s)]+|\/(?:book|books|about|frameworks|chat)(?:#[\w-]*)?/g;
 
 const ALLOWED_HOSTS = new Set([
   "gumroad.com",

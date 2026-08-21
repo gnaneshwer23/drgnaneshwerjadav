@@ -83,7 +83,7 @@ const About = () => {
                   {String(index + 1).padStart(2, "0")}
                 </p>
                 <h3 className="font-heading mt-2 text-2xl font-bold text-foreground">
-                  {item.external ? (
+                  {item.href ? (
                     <a
                       href={item.href}
                       target="_blank"
@@ -93,9 +93,7 @@ const About = () => {
                       {item.title}
                     </a>
                   ) : (
-                    <Link to={item.href} className="hover:text-saffron">
-                      {item.title}
-                    </Link>
+                    item.title
                   )}
                 </h3>
                 <p className="mt-1 text-sm font-medium text-muted-foreground">

@@ -1,7 +1,7 @@
 export const site = {
   name: "Dr Gnaneshwer Jadav",
   brand: "DrJadav",
-  shortName: "DJ",
+  shortName: "GJ",
   role: "Product & project leader",
   tagline:
     "I turn complex clinical, research, and learning problems into shipped products — in HealthTech, EdTech, and AI-enabled systems.",
@@ -13,15 +13,21 @@ export const site = {
   company: "Akeno Health",
 } as const;
 
-export const work = [
+export type WorkItem = {
+  number: string;
+  title: string;
+  category: string;
+  description: string;
+  href?: string;
+};
+
+export const work: WorkItem[] = [
   {
     number: "01",
     title: "Accountable Hindustan",
     category: "EdTech · Workforce",
     description:
-      "A career operating system for converting education into employability, skills into trust, and potential into mobility.",
-    href: "/accountable-hindustan",
-    external: false,
+      "Past product: a career operating system for converting education into employability, skills into trust, and potential into mobility.",
   },
   {
     number: "02",
@@ -30,7 +36,6 @@ export const work = [
     description:
       "UK–India healthcare platforms spanning clinical workflow, regulated operations, and AI-assisted decision support.",
     href: "https://akshhealth.com",
-    external: true,
   },
   {
     number: "03",
@@ -39,7 +44,6 @@ export const work = [
     description:
       "Simulation-based learning and career-readiness programmes designed around real capability, not certificates.",
     href: "https://fluent.institute",
-    external: true,
   },
   {
     number: "04",
@@ -48,7 +52,6 @@ export const work = [
     description:
       "Project and delivery systems for turning narrative intent into mapped, accountable execution.",
     href: "https://www.deliverx.dev",
-    external: true,
   },
 ] as const;
 

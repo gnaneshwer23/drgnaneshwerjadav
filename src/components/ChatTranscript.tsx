@@ -30,8 +30,8 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
   return (
     <div className={`flex min-h-0 flex-1 flex-col ${isPage ? "gap-8" : "gap-4"}`}>
       <div
-        className={`min-h-0 flex-1 space-y-5 overflow-y-auto pr-1 ${
-          isPage ? "max-h-[min(60vh,36rem)]" : "max-h-80"
+        className={`min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain pr-1 ${
+          isPage ? "max-h-[min(55vh,32rem)]" : ""
         }`}
         aria-live="polite"
       >

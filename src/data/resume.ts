@@ -108,7 +108,6 @@ export const resume = {
     category: item.category,
     summary: item.description,
     href: item.href,
-    external: item.external,
   })),
   notes: [
     "2025 resume.html lists a 2022 UK/EU AI-based Healthcare Management System patent. Product Book manuscripts mention Indian Patent #439306. Do not merge them into one claim.",

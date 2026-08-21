@@ -1,25 +1,22 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { focusAreas, site } from "@/data/site";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="scroll-mt-24 bg-secondary/50 py-24 md:py-32">
-      <div className="container mx-auto px-6">
-        <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
+    <section id="about" className="section-y scroll-mt-24 bg-secondary/50">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-20">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.45 }}
+            transition={{ duration: 0.4 }}
           >
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-saffron">
-              About
-            </p>
-            <h2 className="font-heading text-4xl font-bold text-foreground md:text-5xl">
+            <p className="eyebrow">About</p>
+            <h2 className="display text-foreground">
               Biology to product. Regulated domains to shipped software.
             </h2>
-            <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
+            <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted-foreground sm:mt-8 sm:space-y-5">
               <p>
                 I work at the intersection of HealthTech, EdTech, and
                 AI-enabled platforms. My background spans biology, pharmacy,
@@ -36,44 +33,35 @@ const AboutSection = () => {
               <p>
                 Based in {site.location}, currently building at {site.company}.
               </p>
-              <p>
-                <Link
-                  to="/about"
-                  className="font-semibold text-saffron hover:underline"
-                >
-                  Full timeline
-                </Link>
-                {" — "}public facts only, until a CV is added.
-              </p>
             </div>
           </motion.div>
 
-          <div className="space-y-8">
+          <dl className="divide-y divide-border border-y border-border">
             {focusAreas.map((area, i) => (
               <motion.div
                 key={area.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="rounded-2xl border border-border bg-card p-6 shadow-card"
+                transition={{ duration: 0.35, delay: i * 0.05 }}
+                className="py-6 first:pt-0 last:pb-0 sm:py-7"
               >
-                <h3 className="font-heading text-lg font-bold text-foreground">
+                <dt className="font-heading text-base font-bold text-foreground sm:text-lg">
                   {area.title}
-                </h3>
-                <ul className="mt-4 space-y-2">
+                </dt>
+                <dd className="mt-3 space-y-2">
                   {area.items.map((item) => (
-                    <li
+                    <p
                       key={item}
                       className="text-sm leading-relaxed text-muted-foreground"
                     >
                       {item}
-                    </li>
+                    </p>
                   ))}
-                </ul>
+                </dd>
               </motion.div>
             ))}
-          </div>
+          </dl>
         </div>
       </div>
     </section>
