@@ -35,7 +35,7 @@ Add the same `VITE_*` keys to `.env.local` **and** the Vercel project (Productio
 | `VITE_CONSULT_MINUTES` | Length, e.g. `50` |
 | `VITE_CONSULT_PRICE` | Number only, e.g. `50` |
 | `VITE_CONSULT_CURRENCY` | `GBP` |
-| `VITE_CALENDAR_URL` | Calendar `https://…` (prefer a Google Appointment Schedule) |
+| `VITE_CALENDAR_URL` | Google Appointment Schedule `https://calendar.app.google/…` |
 | `VITE_STRIPE_CONSULT_URL` | Stripe Payment Link `https://buy.stripe.com/…` |
 | `VITE_GUMROAD_*` | One Gumroad `https://…` per book, or leave empty / `coming-next-week` |
 

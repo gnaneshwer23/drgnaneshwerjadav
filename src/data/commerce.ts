@@ -187,7 +187,7 @@ export function resolveCommerce(env: EnvMap): Storefront {
   const currency = (env.VITE_CONSULT_CURRENCY?.trim() || "GBP").toUpperCase();
   const calendarUrl = readUrl(
     env.VITE_CALENDAR_URL,
-    "https://calendar.google.com/calendar/u/0/r?pli=1",
+    "https://calendar.app.google/7dYv7ZhNBrBeoDoP9",
   );
   const stripeUrl = readUrl(
     env.VITE_STRIPE_CONSULT_URL,
