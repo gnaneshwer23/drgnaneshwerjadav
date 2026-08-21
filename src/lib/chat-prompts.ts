@@ -1,7 +1,18 @@
 export const chatStarterPrompts = [
-  "Who is Dr Jadav?",
-  "What should I read first?",
-  "I want to build an app — what would he say?",
-  "How do I book a consult?",
-  "Is there a course?",
+  {
+    label: "What should I read first?",
+    prompt: "What should I read first?",
+  },
+  {
+    label: "I want to build an app — what would he say?",
+    prompt: "I want to build an app — what would he say?",
+  },
+  {
+    label: "Book the 50-minute consult",
+    prompt: "How do I book the 50-minute consult?",
+  },
+  {
+    label: "Open Decide Then Build",
+    prompt: "Tell me about Decide Then Build and where to open it.",
+  },
 ] as const;

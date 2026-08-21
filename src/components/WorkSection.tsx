@@ -2,19 +2,13 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { work } from "@/data/site";
 
-const panelClass = [
-  "bg-neutral-800 text-white",
-  "bg-stone-300 text-neutral-900",
-  "bg-neutral-200 text-neutral-900",
-] as const;
-
 const WorkSection = () => {
   return (
     <section id="work" className="section-y scroll-mt-24 bg-background">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-12 flex max-w-3xl flex-col gap-4 sm:mb-16">
           <p className="eyebrow">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-navy" />
             Selected work
           </p>
           <h2 className="display text-foreground">
@@ -22,32 +16,32 @@ const WorkSection = () => {
           </h2>
         </div>
 
-        <ol className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="divide-y divide-border border-y border-border">
           {work.map((item, i) => {
             const href = item.href;
             const inner = (
-              <>
-                <div
-                  className={`relative flex aspect-[4/3] items-end overflow-hidden rounded-[1.75rem] p-6 ${panelClass[i] ?? panelClass[0]}`}
-                >
-                  <span className="text-sm font-medium opacity-70">
+              <div className="grid gap-4 py-8 md:grid-cols-[5rem_minmax(0,1fr)_auto] md:items-start md:gap-8">
+                <p className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
+                  {item.number}
+                </p>
+                <div>
+                  <p className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground">
                     {item.category}
-                  </span>
-                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-foreground text-background">
-                      <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                  </span>
-                </div>
-                <div className="mt-5">
-                  <h3 className="font-heading text-xl font-bold tracking-tight text-foreground">
+                  </p>
+                  <h3 className="font-heading mt-2 text-xl font-bold tracking-tight text-foreground md:text-2xl">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
                     {item.description}
                   </p>
                 </div>
-              </>
+                {href ? (
+                  <span className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-foreground">
+                    Visit
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </span>
+                ) : null}
+              </div>
             );
 
             return (
@@ -63,7 +57,7 @@ const WorkSection = () => {
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className="group block min-h-11 rounded-[1.75rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="group block min-h-11 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     {inner}
                   </a>

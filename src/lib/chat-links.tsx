@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { inferChatActions } from "@/lib/chat-intent";
 
 const TOKEN =
-  /https:\/\/[^\s)]+|\/(?:book|books|about|frameworks|chat|course|courses|consultation)(?:#[\w-]*)?/g;
+  /https:\/\/[^\s)]+|\/(?:book|books|about|frameworks|chat|course|courses|consultation|shelf)(?:#[\w-]*)?/g;
 
 const ALLOWED_HOSTS = new Set([
   "gumroad.com",
@@ -76,27 +77,45 @@ export function ChatLinkedText({ text }: { text: string }) {
   return <>{nodes}</>;
 }
 
-const handoffClass =
-  "inline-flex min-h-9 items-center rounded-full border border-border px-4 py-1.5 text-xs font-semibold text-foreground hover:border-foreground/30";
+const chipClass =
+  "inline-flex min-h-9 items-center rounded-full border border-border px-4 py-1.5 font-mono text-[11px] font-medium tracking-wide text-foreground hover:border-foreground/30";
 
-export function ChatHandoff() {
+const primaryChipClass =
+  "inline-flex min-h-9 items-center rounded-full bg-navy px-4 py-1.5 font-mono text-[11px] font-medium tracking-wide text-white hover:opacity-90";
+
+export function ChatActions({
+  userMessages,
+  lastAssistant,
+}: {
+  userMessages: string[];
+  lastAssistant: string;
+}) {
+  const actions = inferChatActions({ userMessages, lastAssistant });
+  if (actions.length === 0) return null;
+
   return (
     <div className="mt-3 flex flex-wrap gap-2">
-      <Link
-        to="/book"
-        className="inline-flex min-h-9 items-center rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground"
-      >
-        Book a consult
-      </Link>
-      <Link to="/books" className={handoffClass}>
-        Shop books
-      </Link>
-      <Link to="/course" className={handoffClass}>
-        Course waitlist
-      </Link>
-      <Link to="/frameworks" className={handoffClass}>
-        Frameworks
-      </Link>
+      {actions.map((action) =>
+        action.href ? (
+          <a
+            key={action.label}
+            href={action.href}
+            target="_blank"
+            rel="noreferrer"
+            className={action.primary ? primaryChipClass : chipClass}
+          >
+            {action.label}
+          </a>
+        ) : (
+          <Link
+            key={action.label}
+            to={action.to}
+            className={action.primary ? primaryChipClass : chipClass}
+          >
+            {action.label}
+          </Link>
+        ),
+      )}
     </div>
   );
 }

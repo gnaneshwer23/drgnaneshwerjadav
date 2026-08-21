@@ -2,6 +2,8 @@ const STORAGE_KEY = "drjadav-chat-widget";
 
 export type ChatWidgetMode = "minimized" | "open";
 
+export const CHAT_OPEN_EVENT = "drjadav-chat-open";
+
 export function readChatWidgetMode(): ChatWidgetMode {
   try {
     const value = sessionStorage.getItem(STORAGE_KEY);
@@ -17,5 +19,12 @@ export function writeChatWidgetMode(mode: ChatWidgetMode) {
     sessionStorage.setItem(STORAGE_KEY, mode);
   } catch {
     /* private mode / blocked storage */
+  }
+}
+
+export function requestOpenChat() {
+  writeChatWidgetMode("open");
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(CHAT_OPEN_EVENT));
   }
 }

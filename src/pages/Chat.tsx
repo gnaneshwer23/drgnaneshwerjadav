@@ -6,19 +6,18 @@ const Chat = () => {
   return (
     <main className="flex min-h-dvh flex-col bg-background">
       <Navbar />
-      <div className="container mx-auto flex max-w-6xl flex-1 flex-col px-4 pb-16 pt-24 sm:px-6 sm:pt-28">
-        <p className="eyebrow">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
-          Guide
+      <div className="container mx-auto flex max-w-3xl flex-1 flex-col px-4 pb-16 pt-24 sm:px-6 sm:pt-28">
+        <p className="font-mono text-[11px] font-medium tracking-[0.18em] text-muted-foreground">
+          GUIDE
         </p>
-        <h1 className="display max-w-3xl text-foreground">
-          Ask about the work, the products, and the books in progress.
+        <h1 className="font-heading mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          Ask DrJadav
         </h1>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-          This guide answers from Gnaneshwer’s public profile and compact notes
-          on his Product Book 2026 manuscripts. It will say when it does not know.
+        <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
+          Answers from Gnaneshwer’s public profile and Product Book 2026 notes.
+          It will say when it does not know. Payment stays on /book — not here.
         </p>
-        <div className="mt-8 flex min-h-0 flex-1 flex-col rounded-[1.75rem] bg-card p-4 shadow-card sm:mt-10 sm:p-6 md:p-8">
+        <div className="mt-8 flex min-h-0 flex-1 flex-col">
           <ChatTranscript layout="page" />
         </div>
       </div>

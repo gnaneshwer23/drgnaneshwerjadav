@@ -11,6 +11,7 @@ import Books from "./pages/Books";
 import Book from "./pages/Book";
 import Course from "./pages/Course";
 import Frameworks from "./pages/Frameworks";
+import Shelf from "./pages/Shelf";
 import NotFound from "./pages/NotFound";
 import ChatWidget from "./components/ChatWidget";
 
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/books" element={<Books />} />
+              <Route path="/shelf" element={<Shelf />} />
               <Route path="/course" element={<Course />} />
               <Route path="/courses" element={<Navigate to="/course" replace />} />
               <Route path="/book" element={<Book />} />

@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { site } from "@/data/site";
 import { storefront } from "@/data/commerce";
@@ -29,10 +28,9 @@ const ContactSection = () => {
           </p>
           <Link
             to="/book"
-            className="mt-8 inline-flex min-h-11 items-center gap-1 text-sm font-medium text-foreground underline decoration-foreground/30 underline-offset-[6px] hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="mt-8 inline-flex min-h-11 items-center rounded-full bg-navy px-6 text-sm font-medium text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Book a consult
-            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
           <p className="mt-10 text-sm text-muted-foreground">
             {site.location} · LinkedIn and GitHub in the footer

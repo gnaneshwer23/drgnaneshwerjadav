@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto flex max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="min-w-0">
           <p className="font-heading text-lg font-bold">{site.brand}</p>
-          <p className="mt-1 text-sm text-white/55">
+          <p className="mt-1 font-mono text-[11px] tracking-[0.16em] text-white/55">
             {site.role} · {site.location}
           </p>
           <nav
@@ -16,11 +16,12 @@ const Footer = () => {
           >
             {[
               { label: "Work", to: "/#work" },
+              { label: "Shelf", to: "/shelf" },
               { label: "Books", to: "/books" },
               { label: "Course", to: "/course" },
               { label: "Frameworks", to: "/frameworks" },
-              { label: "Book", to: "/book" },
-              { label: "Chat", to: "/chat" },
+              { label: "Consult", to: "/book" },
+              { label: "Ask", to: "/chat" },
             ].map((item) => (
               <Link
                 key={item.to}

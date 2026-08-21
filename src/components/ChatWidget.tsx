@@ -1,8 +1,9 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MessageCircle, Minus } from "lucide-react";
+import { Minus } from "lucide-react";
 import ChatTranscript from "@/components/ChatTranscript";
 import {
+  CHAT_OPEN_EVENT,
   readChatWidgetMode,
   writeChatWidgetMode,
   type ChatWidgetMode,
@@ -20,6 +21,12 @@ const ChatWidget = () => {
     writeChatWidgetMode(next);
   };
 
+  useEffect(() => {
+    const onOpen = () => setPersistedMode("open");
+    window.addEventListener(CHAT_OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(CHAT_OPEN_EVENT, onOpen);
+  }, []);
+
   if (location.pathname === "/chat") return null;
 
   const open = mode === "open";
@@ -31,31 +38,31 @@ const ChatWidget = () => {
           role="dialog"
           aria-modal="false"
           aria-labelledby={titleId}
-          className="pointer-events-auto absolute inset-x-0 bottom-0 flex h-[min(70dvh,36rem)] flex-col overflow-hidden rounded-t-3xl border border-border bg-card shadow-card md:inset-auto md:bottom-5 md:right-5 md:h-[min(32rem,70dvh)] md:w-[min(24rem,calc(100vw-2.5rem))] md:rounded-2xl"
+          className="pointer-events-auto absolute inset-x-0 bottom-0 flex h-[min(70dvh,36rem)] flex-col overflow-hidden rounded-t-3xl border border-border bg-card md:inset-auto md:bottom-5 md:right-5 md:h-[min(32rem,70dvh)] md:w-[min(24rem,calc(100vw-2.5rem))] md:rounded-2xl"
         >
-          <div className="flex flex-wrap items-center justify-between gap-1 border-b border-border px-2 py-1.5">
+          <div className="flex flex-wrap items-center justify-between gap-1 bg-navy px-2 py-1.5 text-white">
             <div className="min-w-0 flex-1 px-2 py-1">
               <p
                 id={titleId}
-                className="font-heading truncate text-base font-semibold text-foreground"
+                className="font-heading truncate text-base font-semibold"
               >
                 Ask DrJadav
               </p>
-              <p className="truncate text-xs text-muted-foreground">
-                Work, products, and books
+              <p className="truncate font-mono text-[10px] tracking-[0.14em] text-white/60">
+                GUIDE · WORK, PRODUCTS, BOOKS
               </p>
             </div>
             <div className="flex shrink-0 items-center">
               <Link
                 to="/chat"
-                className="inline-flex min-h-11 items-center rounded-lg px-3 text-xs font-medium text-foreground underline underline-offset-4 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="inline-flex min-h-11 items-center rounded-lg px-3 font-mono text-[10px] tracking-wide text-white underline underline-offset-4 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                Full page
+                Full desk
               </Link>
               <button
                 type="button"
                 onClick={() => setPersistedMode("minimized")}
-                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 text-xs font-medium text-foreground hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 font-mono text-[10px] tracking-wide text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 aria-label="Minimise chat"
               >
                 <Minus className="h-4 w-4" aria-hidden="true" />
@@ -75,9 +82,12 @@ const ChatWidget = () => {
           onClick={() => setPersistedMode("open")}
           aria-expanded={false}
           aria-label="Open chat"
-          className="pointer-events-auto absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-card transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="pointer-events-auto absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-navy px-4 text-sm font-medium text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          <MessageCircle className="h-5 w-5" aria-hidden="true" />
+          <span
+            className="h-1.5 w-1.5 rounded-full bg-saffron"
+            aria-hidden="true"
+          />
           Ask
         </button>
       )}

@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { site } from "@/data/site";
 
-const storefrontLinks = [
-  { label: "Books", to: "/books", match: ["/books"] },
-  { label: "Course", to: "/course", match: ["/course", "/courses"] },
-  { label: "Frameworks", to: "/frameworks", match: ["/frameworks"] },
-  { label: "Chat", to: "/chat", match: ["/chat"] },
-] as const;
-
+const shelfMatch = ["/shelf", "/books", "/course", "/courses", "/frameworks"];
 const consultMatch = ["/book", "/consultation"];
 
 const linkClass = (active = false) =>
@@ -23,6 +17,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const onHome = location.pathname === "/";
+  const shelfActive = shelfMatch.includes(location.pathname);
   const consultActive = consultMatch.includes(location.pathname);
 
   useEffect(() => {
@@ -67,25 +62,18 @@ const Navbar = () => {
               Work
             </Link>
           )}
-          {storefrontLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={linkClass(link.match.includes(location.pathname))}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <Link to="/shelf" className={linkClass(shelfActive)}>
+            Shelf
+          </Link>
         </div>
 
         <div className="hidden justify-end lg:flex">
           <Link
             to="/book"
-            className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-foreground underline decoration-foreground/30 underline-offset-[6px] transition-colors hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex min-h-11 items-center rounded-full bg-navy px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             aria-current={consultActive ? "page" : undefined}
           >
-            Book
-            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            Consult
           </Link>
         </div>
 
@@ -116,23 +104,19 @@ const Navbar = () => {
               >
                 Work
               </a>
-              {storefrontLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex min-h-11 items-center text-sm font-medium text-foreground"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              <Link
+                to="/shelf"
+                onClick={() => setMobileOpen(false)}
+                className="flex min-h-11 items-center text-sm font-medium text-foreground"
+              >
+                Shelf
+              </Link>
               <Link
                 to="/book"
                 onClick={() => setMobileOpen(false)}
-                className="mt-1 mb-2 inline-flex min-h-11 w-fit items-center gap-1 text-sm font-medium text-foreground underline underline-offset-[6px]"
+                className="mt-1 mb-2 inline-flex min-h-11 w-fit items-center rounded-full bg-navy px-5 text-sm font-medium text-white"
               >
-                Book
-                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                Consult
               </Link>
             </div>
           </motion.div>

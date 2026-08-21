@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import PersonalHero from "@/components/PersonalHero";
 import WorkSection from "@/components/WorkSection";
+import FeaturedShelf from "@/components/FeaturedShelf";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -21,6 +22,7 @@ const Index = () => {
       <Navbar />
       <PersonalHero />
       <WorkSection />
+      <FeaturedShelf />
       <AboutSection />
       <ContactSection />
       <Footer />

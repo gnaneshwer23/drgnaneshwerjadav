@@ -16,6 +16,8 @@ export default {
       fontFamily: {
         heading: ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
         body: ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['Newsreader', 'Georgia', 'serif'],
+        mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",

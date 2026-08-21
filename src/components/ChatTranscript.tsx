@@ -3,11 +3,20 @@ import { DefaultChatTransport } from "ai";
 import { useMemo, useState } from "react";
 import { ArrowUp, Square } from "lucide-react";
 import { chatStarterPrompts } from "@/lib/chat-prompts";
-import { ChatHandoff, ChatLinkedText } from "@/lib/chat-links";
+import { ChatActions } from "@/lib/chat-links";
+import { citedSources } from "@/lib/chat-intent";
+import { MessageResponse } from "@/components/ai-elements/message";
 
 type ChatTranscriptProps = {
   layout?: "page" | "widget";
 };
+
+function messageText(message: { parts: Array<{ type: string; text?: string }> }) {
+  return message.parts
+    .filter((part) => part.type === "text")
+    .map((part) => part.text ?? "")
+    .join("\n");
+}
 
 const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
   const transport = useMemo(
@@ -26,12 +35,18 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
   };
 
   const isPage = layout === "page";
+  const userMessages = messages
+    .filter((message) => message.role === "user")
+    .map(messageText);
+  const lastAssistant = [...messages]
+    .reverse()
+    .find((message) => message.role === "assistant");
 
   return (
-    <div className={`flex min-h-0 flex-1 flex-col ${isPage ? "gap-8" : "gap-4"}`}>
+    <div className={`flex min-h-0 flex-1 flex-col ${isPage ? "gap-6" : "gap-4"}`}>
       <div
         className={`min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain pr-1 ${
-          isPage ? "max-h-[min(55vh,32rem)]" : ""
+          isPage ? "max-h-[min(62vh,36rem)]" : ""
         }`}
         aria-live="polite"
       >
@@ -47,50 +62,82 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
               Ask about the work, the books, or how to book a DrJadav consult.
             </p>
             <div className="flex flex-wrap gap-2">
-              {chatStarterPrompts.map((prompt) => (
+              {chatStarterPrompts.map((item) => (
                 <button
-                  key={prompt}
+                  key={item.prompt}
                   type="button"
-                  onClick={() => submit(prompt)}
-                  className="min-h-11 rounded-full border border-border bg-card px-4 py-2 text-left text-sm text-foreground transition-colors hover:border-foreground/40"
+                  onClick={() => submit(item.prompt)}
+                  className="min-h-11 rounded-full border border-border bg-card px-4 py-2 text-left font-mono text-[11px] tracking-wide text-foreground transition-colors hover:border-foreground/40"
                 >
-                  {prompt}
+                  {item.label}
                 </button>
               ))}
             </div>
           </div>
         )}
 
-        {messages.map((message) => (
-          <article
-            key={message.id}
-            className={
-              message.role === "user"
-                ? "ml-8 rounded-2xl bg-secondary px-4 py-3"
-                : "mr-4 border-l-2 border-foreground/15 pl-4"
-            }
-          >
-            <p className="mb-1 text-[11px] font-medium text-muted-foreground">
-              {message.role === "user" ? "You" : "DrJadav"}
-            </p>
-            <div className="space-y-3 text-sm leading-relaxed text-foreground md:text-[15px]">
-              {message.parts.map((part, index) =>
-                part.type === "text" ? (
-                  <p key={`${message.id}-${index}`} className="whitespace-pre-wrap">
-                    <ChatLinkedText text={part.text} />
-                  </p>
-                ) : null,
-              )}
-            </div>
-            {message.role === "assistant" &&
-              messages[messages.length - 1]?.id === message.id &&
-              status === "ready" && <ChatHandoff />}
-          </article>
-        ))}
+        {messages.map((message) => {
+          const text = messageText(message);
+          const isLastAssistant =
+            message.role === "assistant" && lastAssistant?.id === message.id;
+          const streaming = isLastAssistant && busy;
+          const sources =
+            message.role === "assistant" && isLastAssistant && status === "ready"
+              ? citedSources(text)
+              : [];
 
-        {status === "submitted" && (
-          <p className="text-sm text-muted-foreground">Thinking…</p>
-        )}
+          return (
+            <article
+              key={message.id}
+              className={
+                message.role === "user"
+                  ? "ml-8 rounded-2xl bg-secondary px-4 py-3"
+                  : "mr-4"
+              }
+            >
+              <p className="mb-1 font-mono text-[10px] font-medium tracking-[0.14em] text-muted-foreground">
+                {message.role === "user" ? "YOU" : "GUIDE"}
+                {streaming ? " · STREAMING" : ""}
+              </p>
+              <div
+                className={`space-y-3 text-sm leading-relaxed text-foreground md:text-[15px] ${
+                  streaming ? "streaming-caret" : ""
+                }`}
+              >
+                {message.parts.map((part, index) =>
+                  part.type === "text" ? (
+                    <p key={`${message.id}-${index}`} className="whitespace-pre-wrap">
+                      <MessageResponse>{part.text}</MessageResponse>
+                    </p>
+                  ) : null,
+                )}
+              </div>
+              {sources.length > 0 ? (
+                <p className="mt-3 font-mono text-[10px] tracking-[0.12em] text-muted-foreground">
+                  SOURCE · {sources.join(" · ")}
+                </p>
+              ) : null}
+              {message.role === "assistant" &&
+                isLastAssistant &&
+                status === "ready" && (
+                  <ChatActions
+                    userMessages={userMessages}
+                    lastAssistant={text}
+                  />
+                )}
+            </article>
+          );
+        })}
+
+        {status === "submitted" && messages.at(-1)?.role === "user" ? (
+          <p className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground">
+            <span
+              className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-saffron"
+              aria-hidden="true"
+            />
+            STREAMING
+          </p>
+        ) : null}
         {error && (
           <p className="text-sm text-destructive">
             The guide could not reply. Check that AI Gateway is enabled, then try again.
@@ -137,7 +184,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
             type="submit"
             disabled={!input.trim()}
             aria-label="Send message"
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-full bg-primary text-primary-foreground disabled:opacity-40"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full bg-navy text-white disabled:opacity-40"
           >
             <ArrowUp className="h-4 w-4" />
           </button>
