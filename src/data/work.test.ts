@@ -3,6 +3,7 @@ import { FLAGSHIP_SLUGS, flagships, work, workBySlug } from "@/data/work";
 import { omittedClaims, proofStrip } from "@/data/evidence";
 import { experience } from "@/data/experience";
 import { education } from "@/data/education";
+import { sitePagesKnowledge } from "@/data/chat-knowledge";
 
 describe("work inventory", () => {
   it("features Fluent Institute, DeliverX, and Aksh Health", () => {
@@ -48,5 +49,27 @@ describe("experience vs education", () => {
     expect(
       education.some((item) => item.credential.startsWith("Postdoctoral")),
     ).toBe(true);
+  });
+});
+
+describe("DrJadav site digest", () => {
+  it("covers the eight public pages and live flagship URLs", () => {
+    const digest = sitePagesKnowledge();
+    for (const path of [
+      "/projects",
+      "/experience",
+      "/education",
+      "/skills",
+      "/books",
+      "/course",
+      "/frameworks",
+      "/book",
+    ]) {
+      expect(digest).toContain(path);
+    }
+    expect(digest).toContain("https://fluent.institute");
+    expect(digest).toContain("https://www.deliverx.dev");
+    expect(digest).toContain("https://akshhealth.com");
+    expect(digest).toContain("FlowPilot is not listed");
   });
 });

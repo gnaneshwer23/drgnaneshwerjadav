@@ -1,18 +1,35 @@
 export const chatStarterPrompts = [
   {
-    label: "What should I read first?",
+    label: "Live projects",
+    prompt:
+      "What are the live projects — Fluent Institute, DeliverX, and Aksh Health?",
+  },
+  {
+    label: "Experience",
+    prompt: "Walk me through his experience in LinkedIn order.",
+  },
+  {
+    label: "Education",
+    prompt: "What is his education?",
+  },
+  {
+    label: "Skills",
+    prompt: "What skills does he list?",
+  },
+  {
+    label: "Books",
     prompt: "What should I read first?",
   },
   {
-    label: "I want to build an app — what would he say?",
-    prompt: "I want to build an app — what would he say?",
+    label: "Course",
+    prompt: "Is there a course I can join?",
   },
   {
-    label: "Book the 50-minute consult",
+    label: "Framework",
+    prompt: "What is the Decide Then Build framework?",
+  },
+  {
+    label: "Book a consult",
     prompt: "How do I book the 50-minute consult?",
-  },
-  {
-    label: "Open Decide Then Build",
-    prompt: "Tell me about Decide Then Build and where to open it.",
   },
 ] as const;

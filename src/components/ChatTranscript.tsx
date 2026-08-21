@@ -60,7 +60,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
                   : "text-sm leading-relaxed text-muted-foreground"
               }
             >
-              Talk with DrJadav about the work, the books, or how to book a consult.
+              Talk with DrJadav about projects, experience, education, skills, books, the course, frameworks, or a consult.
             </p>
             <div className="flex flex-wrap gap-2">
               {chatStarterPrompts.map((item) => (

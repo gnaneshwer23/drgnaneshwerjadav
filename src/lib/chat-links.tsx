@@ -14,6 +14,15 @@ const ALLOWED_HOSTS = new Set([
   "checkout.stripe.com",
   "gnaneshwerjadav.com",
   "www.gnaneshwerjadav.com",
+  "fluent.institute",
+  "www.fluent.institute",
+  "deliverx.dev",
+  "www.deliverx.dev",
+  "akshhealth.com",
+  "www.akshhealth.com",
+  "linkedin.com",
+  "www.linkedin.com",
+  "github.com",
 ]);
 
 function isAllowedHref(href: string): boolean {
