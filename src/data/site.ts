@@ -24,13 +24,6 @@ export type WorkItem = {
 export const work: WorkItem[] = [
   {
     number: "01",
-    title: "Accountable Hindustan",
-    category: "EdTech · Workforce",
-    description:
-      "Past product: a career operating system for converting education into employability, skills into trust, and potential into mobility.",
-  },
-  {
-    number: "02",
     title: "Aksh Health",
     category: "HealthTech · Clinical",
     description:
@@ -38,7 +31,7 @@ export const work: WorkItem[] = [
     href: "https://akshhealth.com",
   },
   {
-    number: "03",
+    number: "02",
     title: "Fluent Institute",
     category: "EdTech · Learning",
     description:
@@ -46,7 +39,7 @@ export const work: WorkItem[] = [
     href: "https://fluent.institute",
   },
   {
-    number: "04",
+    number: "03",
     title: "DeliverX",
     category: "Product · Operations",
     description:

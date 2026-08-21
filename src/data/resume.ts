@@ -45,14 +45,6 @@ export const resume = {
     },
     {
       role: "Founder & Product Leader",
-      organisation: "Accountable Hindustan",
-      place: "UK",
-      period: "Jan 2025 – Present",
-      summary:
-        "Civic-tech and career OS integrating healthcare, education, and public policy.",
-    },
-    {
-      role: "Founder & Product Leader",
       organisation: "Mind Mesh AI Solutions Pvt Ltd",
       place: "India",
       period: "Mar 2025 – Present",
