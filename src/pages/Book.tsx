@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { storefront } from "@/data/commerce";
 import { site } from "@/data/site";
 import StorefrontLayout from "@/components/StorefrontLayout";
@@ -8,7 +7,6 @@ import PageShell, {
   PageLead,
   PageTitle,
 } from "@/components/PageShell";
-import OfferingsNav from "@/components/OfferingsNav";
 import Seo from "@/components/Seo";
 import {
   readConsultProgress,
@@ -48,7 +46,6 @@ const Book = () => {
           via Stripe. The session is confirmed when both steps are done — in
           that order.
         </PageLead>
-        <OfferingsNav />
 
         <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
           {consult.minutes}-minute strategy session
@@ -172,8 +169,8 @@ const Book = () => {
               plain language.
             </li>
             <li>
-              A decision frame from the books (Decide Then Build, Build Before
-              You Scale) applied to your case, not a manuscript dump.
+              A decision frame applied to your case — not a pep talk or a
+              manuscript dump.
             </li>
             <li>
               Clear next moves, and whether a longer engagement is even worth
@@ -182,14 +179,6 @@ const Book = () => {
           </ul>
           <p className="mt-8 text-sm text-muted-foreground">
             This is product and delivery counsel, not medical or legal advice.
-            Prefer to start with a book or a waitlist?{" "}
-            <Link
-              to="/books"
-              className="font-medium text-foreground underline-offset-4 hover:underline"
-            >
-              Browse books
-            </Link>
-            .
           </p>
         </section>
       </PageShell>

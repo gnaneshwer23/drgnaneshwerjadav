@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import StorefrontLayout from "@/components/StorefrontLayout";
 import PageShell, { Eyebrow, PageLead, PageTitle } from "@/components/PageShell";
-import OfferingsNav from "@/components/OfferingsNav";
 import Seo from "@/components/Seo";
 
 const seoByPath: Record<string, { title: string; description: string; eyebrow: string }> = {
@@ -51,7 +50,6 @@ const ShelfFrame = ({ title, lead, children }: ShelfFrameProps) => {
         <Eyebrow>{seo.eyebrow}</Eyebrow>
         <PageTitle>{title}</PageTitle>
         <PageLead>{lead}</PageLead>
-        <OfferingsNav />
         {children}
       </PageShell>
     </StorefrontLayout>

@@ -30,7 +30,7 @@ const Course = () => {
   return (
     <ShelfFrame
       title="A DrJadav course is coming. Not live yet."
-      lead={`There is no LMS, no fake syllabus, and no invented curriculum. When a cohort opens it will sit on the same operating ideas as the books — deciding before building, and delivering in the age of AI. Join the waitlist and we will email you from ${site.email}.`}
+      lead={`There is no LMS, no fake syllabus, and no invented curriculum. When a cohort opens, join the waitlist and we will email you from ${site.email}.`}
     >
       <section className="mt-16 max-w-md border-t border-border pt-12">
         <h2 className="font-heading text-xl font-medium tracking-[-0.03em] text-foreground">

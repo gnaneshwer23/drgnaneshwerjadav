@@ -27,7 +27,7 @@ function BuyControl({
       className="inline-flex min-h-11 items-center text-[13px] tracking-[-0.01em] text-muted-foreground"
       aria-disabled="true"
     >
-      {label} · link tomorrow
+      {label} · coming soon
     </span>
   );
 }
@@ -69,8 +69,8 @@ function BookRow({ book, index }: { book: BookOffer; index: number }) {
 const Books = () => {
   return (
     <ShelfFrame
-      title="Ten titles. Buy links tomorrow."
-      lead="Eight Product Book 2026 manuscripts plus two forthcoming slots. Short public summaries are downloadable. Amazon and Gumroad URLs are empty until they are pasted in tomorrow — nothing invented."
+      title="Operating manuals you can actually use."
+      lead="Ten titles from HealthTech, EdTech, delivery, and the wider shelf. Download a short summary for each. Buy links appear when a title is for sale."
     >
       <ol className="mt-16 divide-y divide-border border-y border-border">
         {storefront.books.map((book, index) => (

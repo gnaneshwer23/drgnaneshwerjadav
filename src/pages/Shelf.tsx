@@ -19,7 +19,7 @@ const Shelf = () => {
           Product Book 2026
         </h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-          Eight Product Book 2026 titles plus two forthcoming slots. {liveBooks > 0 ? `${liveBooks} live on Gumroad.` : "Buy links go live tomorrow."}
+          Ten titles. {liveBooks > 0 ? `${liveBooks} with a live buy link.` : "Buy links appear when each title is for sale."}
         </p>
         <Link
           to="/books"

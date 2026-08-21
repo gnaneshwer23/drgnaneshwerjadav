@@ -19,8 +19,8 @@ const Frameworks = () => {
             {first.title}
           </h2>
           <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-muted-foreground">
-            {first.subtitle}. The decision loop from the book, as a one-pager
-            and deck you can actually run.
+            {first.subtitle}. The Decide Then Build loop as a one-pager and
+            deck you can actually run.
           </p>
           <div className="mt-8">
             {first.gumroadUrl ? (
