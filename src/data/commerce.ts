@@ -176,12 +176,23 @@ function formatPrice(price: number, currency: string): string {
   }
 }
 
+function readUrl(value: string | undefined, fallback: string): string | null {
+  if (value === undefined) return liveUrl(fallback);
+  return liveUrl(value);
+}
+
 export function resolveCommerce(env: EnvMap): Storefront {
-  const minutes = readNumber(env.VITE_CONSULT_MINUTES, 45);
-  const price = readNumber(env.VITE_CONSULT_PRICE, 250);
+  const minutes = readNumber(env.VITE_CONSULT_MINUTES, 50);
+  const price = readNumber(env.VITE_CONSULT_PRICE, 50);
   const currency = (env.VITE_CONSULT_CURRENCY?.trim() || "GBP").toUpperCase();
-  const calendarUrl = liveUrl(env.VITE_CALENDAR_URL);
-  const stripeUrl = liveUrl(env.VITE_STRIPE_CONSULT_URL);
+  const calendarUrl = readUrl(
+    env.VITE_CALENDAR_URL,
+    "https://calendar.google.com/calendar/u/0/r?pli=1",
+  );
+  const stripeUrl = readUrl(
+    env.VITE_STRIPE_CONSULT_URL,
+    "https://buy.stripe.com/7sYcMY0dmfjB3miby4b7y00",
+  );
 
   return {
     consult: {
