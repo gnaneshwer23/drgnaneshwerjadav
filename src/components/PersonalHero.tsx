@@ -21,18 +21,16 @@ const PersonalHero = () => {
           </motion.p>
 
           <h1 className="mt-7">
-            {["Dr", "Gnaneshwer", "Jadav"].map((word, i) => (
-              <span key={word} className="block overflow-hidden">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.04 + i * 0.06, ease }}
-                  className="block whitespace-nowrap font-heading text-[clamp(2.85rem,9.4vw,6.5rem)] font-medium leading-[0.92] tracking-[-0.042em] text-[#f4f1ea]"
-                >
-                  {word}
-                </motion.span>
-              </span>
-            ))}
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.7, delay: 0.04, ease }}
+                className="block whitespace-nowrap font-heading text-[clamp(1.2rem,6.2vw,2.85rem)] font-medium leading-none tracking-[-0.04em] text-[#f4f1ea] lg:text-[clamp(1.7rem,3.4vw,2.85rem)]"
+              >
+                Dr. Gnaneshwer Jadav
+              </motion.span>
+            </span>
           </h1>
 
           <motion.p
