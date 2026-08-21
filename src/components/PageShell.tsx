@@ -62,7 +62,7 @@ export const PrimaryCta = ({
   disabled?: boolean;
 }) => {
   const className =
-    "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-navy px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40";
+    "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40";
 
   const inner = (
     <>

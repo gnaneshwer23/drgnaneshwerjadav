@@ -1,4 +1,4 @@
-import { work } from "./site";
+import { flagships } from "./work";
 
 /**
  * Public profile facts. LinkedIn (https://www.linkedin.com/in/gnaneshwer-jadav/)
@@ -110,11 +110,11 @@ export const resume = {
       ],
     },
   ],
-  selectedWork: work.map((item) => ({
+  selectedWork: flagships.map((item) => ({
     title: item.title,
     category: item.category,
-    summary: item.description,
-    href: item.href,
+    summary: item.summary,
+    href: item.href ?? `/work/${item.slug}`,
   })),
   notes: [
     "LinkedIn public page was loginwalled in this workspace; headline, about fragment, Akeno company description, Kent MBA, and school names come from the public LinkedIn listing. Full experience dates were not extractable from LinkedIn HTML.",

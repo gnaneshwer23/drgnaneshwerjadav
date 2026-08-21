@@ -19,19 +19,27 @@ const ContactSection = () => {
             Consult
           </p>
           <h2 className="display mx-auto max-w-2xl text-foreground">
-            A decision to make? {storefront.consult.minutes} minutes.{" "}
+            Let’s talk. {storefront.consult.minutes} minutes.{" "}
             {storefront.consult.priceLabel}.
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-muted-foreground">
             Product leadership, AI-enabled systems, or building in regulated
-            domains — pick a slot, then pay.
+            domains — pick a slot, then pay. Or write.
           </p>
-          <Link
-            to="/book"
-            className="mt-8 inline-flex min-h-11 items-center rounded-full bg-navy px-6 text-sm font-medium text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            Book a consult
-          </Link>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/book"
+              className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              Book a consult
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex min-h-11 items-center rounded-full border border-border px-6 text-sm font-medium text-foreground"
+            >
+              Contact
+            </Link>
+          </div>
           <p className="mt-10 text-sm text-muted-foreground">
             {site.location} · LinkedIn and GitHub in the footer
           </p>

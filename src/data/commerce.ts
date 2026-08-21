@@ -278,6 +278,6 @@ ${bookLines.join("\n")}
 Frameworks:
 ${frameworkLines.join("\n")}
 Courses: coming soon. No LMS, curriculum, modules, or price yet. Waitlist at /course (alias /courses). Do not invent a syllabus.
-Site paths: /shelf (shop index), /book (consult; alias /consultation), /books (books), /course (waitlist), /frameworks (Decide Then Build first SKU), /about (timeline), /chat (expanded Ask desk).
+Site paths: /work (library), /think, /systems, /about, /cv, /contact, /shelf (shop index), /book (consult; alias /consultation), /books (books), /course (waitlist), /frameworks (Decide Then Build first SKU), /chat (expanded Ask desk). Let’s talk → /book.
 `.trim();
 }

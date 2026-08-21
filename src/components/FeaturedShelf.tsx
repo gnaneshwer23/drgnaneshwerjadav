@@ -14,8 +14,8 @@ const FeaturedShelf = () => {
         <div className="flex flex-wrap items-end justify-between gap-4 border-t border-border pt-12">
           <div>
             <p className="eyebrow">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-navy" />
-              Shelf
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
+              Think · Shelf
             </p>
             <h2 className="display max-w-xl text-foreground">
               Operating manuals, not airport business theatre.

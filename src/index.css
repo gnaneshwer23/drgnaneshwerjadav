@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    /* Operator Desk — warm paper, navy chrome, saffron only on live AI */
-    --background: 36 28% 96%;
-    --foreground: 222 32% 12%;
+    /* Editorial monochrome — ink on warm paper; saffron only as a restrained mark */
+    --background: 40 18% 97%;
+    --foreground: 0 0% 8%;
 
     --card: 40 33% 98%;
     --card-foreground: 222 32% 12%;
@@ -21,7 +21,7 @@
     --secondary-foreground: 222 32% 12%;
 
     --muted: 36 16% 91%;
-    --muted-foreground: 222 12% 38%;
+    --muted-foreground: 0 0% 32%;
 
     --accent: 222 40% 12%;
     --accent-foreground: 40 33% 98%;
@@ -35,10 +35,10 @@
 
     --radius: 1.25rem;
 
-    --saffron: 28 82% 48%;
+    --saffron: 28 55% 42%;
     --saffron-light: 28 72% 62%;
     --saffron-glow: 28 82% 42%;
-    --navy: 222 40% 12%;
+    --navy: 0 0% 8%;
     --navy-light: 222 32% 18%;
     --navy-dark: 222 44% 8%;
     --emerald: 158 28% 32%;
@@ -165,6 +165,18 @@
 
   .shadow-saffron {
     box-shadow: var(--shadow-saffron);
+  }
+
+  .cinematic-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cinematic-grain {
+      display: none;
+    }
   }
 
   .streaming-caret::after {

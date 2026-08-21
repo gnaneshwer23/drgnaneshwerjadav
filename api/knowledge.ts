@@ -4,15 +4,22 @@ import { commerceKnowledge, storefront } from "../src/data/commerce";
 import { resumeKnowledge } from "../src/data/resume";
 
 export const PROFILE_KNOWLEDGE = `
-Dr Gnaneshwer Jadav (brand: DrJadav) is a product and programme leader based in London.
+Dr Gnaneshwer Jadav (brand: DrJadav) is an AI Product & Programme Leader based in London.
+Hero line: “I build intelligent products for complex problems.”
 Public LinkedIn (https://www.linkedin.com/in/gnaneshwer-jadav/): “Product & Programme Leader | AI-Enabled HealthTech & EdTech | Regulated Systems | PhD · MBA · Patent Holder.”
-About (LinkedIn, truncated publicly): he builds and delivers regulated AI-enabled digital platforms — from 0→1 products in HealthTech and EdTech.
-Background: pharmacy (Kakatiya / Telangana), medical biotechnology (Siena), immunology PhD (Verona, 2019), MBA Healthcare Management (University of Kent, 2021). Indian Patent #439306 is mentioned in one manuscript — do not treat that as independently verified; the Oct 2025 CV lists a separate granted UK/EU Healthcare Management System patent.
+About (LinkedIn): he builds and delivers regulated AI-enabled digital platforms — from 0→1 products in HealthTech and EdTech.
+Narrative: SCIENCE → PRODUCT → AI → DELIVERY → IMPACT.
+Background: pharmacy (Kakatiya / Telangana), medical biotechnology (Siena), immunology PhD (Verona, 2019), MBA Healthcare Management (University of Kent, 2021). UK/EU healthcare management system patent (2022, granted per CV). Indian Patent #439306 is mentioned in one manuscript — do not treat that as independently verified; do not merge patents.
 
-Public work:
-- Aksh Health (akshhealth.com) — UK–India healthcare platforms, clinical workflow, NHS/EU clinical AI.
-- Fluent Institute (fluent.institute) — simulation-based learning and career-readiness.
-- DeliverX (deliverx.dev) — project and delivery systems; AI-native project delivery intelligence.
+Public flagships (verified names only):
+- Vigil-MODI — AI-assisted regulatory OS for CDSCO / NDHM–ABDM. LinkedIn Apr 2026. Do not quote unverified 40–60% cycle-time figures as fact.
+- Aksh Health (akshhealth.com) — UK–India clinical workflow AI, in development. Do not quote $8.5M / 50 engineers / 99.9% uptime as results — those are targets.
+- Akeno Health — founder, Jul 2021 – Apr 2025 (dated CV). LinkedIn: diabetes/chronic-care platform. CV: SUS 82, 93% task completion, 2 pilot clinics, 600+ encounters, £3,000 pre-seed — self-reported CV figures.
+- Elevare — career-readiness / simulation product; public A/B test (LinkedIn Nov 2025). In development.
+
+Library (found on prior site, GitHub, or local docs — not headline metrics): Nexus, WoundX, PRISM, ClinicEase, Skill-Bridge, Vitalis, MethodIQ, Fluent Institute, DeliverX, Delivery Intelligence. FlowPilot is not listed — not found.
+
+Do not claim 60+ MVPs or 22–75% gains. Publications: list only what is on /research; resume.html says 6+; public index shows fewer confirmed titles.
 
 Contact:
 - Website: https://gnaneshwerjadav.com
@@ -20,6 +27,8 @@ Contact:
 - GitHub: https://github.com/gnaneshwer23
 - Email: gnaneshwer.jadav@gmail.com
 - Location: London
+- Consult: /book · Let’s talk
+- Work library: /work · Think: /think · Systems: /systems · CV: /cv
 
 He uses AI as a product-building accelerator with humans in the loop. Some manuscripts use the name Gnaneshwer Singh; treat that as the same author.
 `.trim();

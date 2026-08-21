@@ -1,51 +1,52 @@
 export const site = {
   name: "Dr Gnaneshwer Jadav",
+  navName: "Gnaneshwer Jadav",
   brand: "DrJadav",
   shortName: "GJ",
-  role: "Product & programme leader",
+  role: "AI Product & Programme Leader",
+  hero: "I build intelligent products for complex problems.",
   tagline:
-    "I build and deliver regulated AI-enabled digital platforms — from 0→1 products in HealthTech and EdTech.",
+    "From immunology labs to regulated digital platforms — HealthTech, EdTech, and AI systems that have to work in the real world.",
   location: "London",
   email: "gnaneshwer.jadav@gmail.com",
   url: "https://gnaneshwerjadav.com",
   github: "https://github.com/gnaneshwer23",
   linkedin: "https://www.linkedin.com/in/gnaneshwer-jadav/",
-  credentials: "PhD · MBA · patent holder",
+  credentials: "PhD · MBA · Patent holder",
+  defaultTitle: "Gnaneshwer Jadav — AI Product & Programme Leader",
+  defaultDescription:
+    "AI Product & Programme Leader. I build intelligent products for complex problems across HealthTech, EdTech, and regulated systems. PhD immunology. Based in London.",
 } as const;
 
-export type WorkItem = {
-  number: string;
-  title: string;
-  category: string;
-  description: string;
-  href?: string;
-};
+export const audiences = [
+  {
+    id: "recruiters",
+    label: "Recruiters",
+    line: "Scientist-operator who ships: PhD immunology, MBA healthcare, patented product work.",
+  },
+  {
+    id: "healthtech",
+    label: "HealthTech & pharma",
+    line: "Clinical depth, FHIR / HL7, human-governed AI in regulated environments.",
+  },
+  {
+    id: "founders",
+    label: "Founders & investors",
+    line: "0→1 platforms with programme discipline — discovery through delivery.",
+  },
+  {
+    id: "leaders",
+    label: "Product & tech leaders",
+    line: "Decide, then build. AI as an accelerator. Humans stay in the loop.",
+  },
+] as const;
 
-export const work: WorkItem[] = [
-  {
-    number: "01",
-    title: "Aksh Health",
-    category: "HealthTech · Clinical",
-    description:
-      "UK–India healthcare platforms spanning clinical workflow, regulated operations, and AI-assisted decision support.",
-    href: "https://akshhealth.com",
-  },
-  {
-    number: "02",
-    title: "Fluent Institute",
-    category: "EdTech · Learning",
-    description:
-      "Simulation-based learning and career-readiness programmes designed around real capability, not certificates.",
-    href: "https://fluent.institute",
-  },
-  {
-    number: "03",
-    title: "DeliverX",
-    category: "Product · Operations",
-    description:
-      "Project and delivery systems for turning narrative intent into mapped, accountable execution.",
-    href: "https://www.deliverx.dev",
-  },
+export const narrative = [
+  { id: "science", label: "Science", detail: "Pharmacy, medical biotechnology, immunology PhD." },
+  { id: "product", label: "Product", detail: "0→1 HealthTech and EdTech platforms." },
+  { id: "ai", label: "AI", detail: "Human-governed agents in regulated workflows." },
+  { id: "delivery", label: "Delivery", detail: "Programme leadership from roadmap to rollout." },
+  { id: "impact", label: "Impact", detail: "Pilots, patents, and products that leave the lab." },
 ] as const;
 
 export const focusAreas = [

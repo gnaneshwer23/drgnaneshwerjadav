@@ -8,6 +8,7 @@ import PageShell, {
   PageLead,
   PageTitle,
 } from "@/components/PageShell";
+import Seo from "@/components/Seo";
 import {
   readConsultProgress,
   writeConsultProgress,
@@ -30,6 +31,11 @@ const Book = () => {
 
   return (
     <StorefrontLayout>
+      <Seo
+        title="Consult"
+        description={`${consult.minutes}-minute strategy session, ${consult.priceLabel}. Calendar, then Stripe.`}
+        path="/book"
+      />
       <PageShell>
         <Eyebrow>Consultation</Eyebrow>
         <PageTitle>
@@ -65,12 +71,12 @@ const Book = () => {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => mark("slot")}
-                  className="inline-flex min-h-11 items-center rounded-full bg-navy px-6 text-sm font-medium text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   Pick a slot
                 </a>
               ) : (
-                <span className="inline-flex min-h-11 items-center rounded-full bg-navy/40 px-6 text-sm font-medium text-white">
+                <span className="inline-flex min-h-11 items-center rounded-full bg-foreground/40 px-6 text-sm font-medium text-background">
                   Calendar link coming
                 </span>
               )}

@@ -13,23 +13,22 @@ const AboutSection = () => {
           className="max-w-2xl"
         >
           <p className="eyebrow">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-navy" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
             About
           </p>
           <h2 className="display text-foreground">
-            Biology to product. Regulated domains to shipped software.
+            Biology to product. Constraint to shipped system.
           </h2>
           <div className="mt-6 max-w-xl space-y-4 text-base leading-[1.75] text-muted-foreground sm:mt-8">
             <p>
-              Product and programme leader in AI-enabled HealthTech and
-              EdTech, working in regulated systems. I build and deliver
-              regulated AI-enabled digital platforms — from 0→1 products.
+              AI Product & Programme Leader. I build intelligent products for
+              complex problems — HealthTech, EdTech, and regulated systems
+              where a model cannot own the decision.
             </p>
             <p>
-              Background spans pharmacy, biotechnology, and immunology (PhD),
-              with an MBA in healthcare management. I use AI as a
-              product-building accelerator — synthesising research, drafting
-              specs, prototyping workflows, and keeping humans in the loop.
+              Pharmacy, medical biotechnology, immunology (PhD), MBA in
+              healthcare. AI is an accelerator: research, specs, prototypes.
+              Humans stay in the loop.
             </p>
             <p>Based in {site.location}.</p>
           </div>
@@ -53,7 +52,7 @@ const AboutSection = () => {
                     key={item}
                     className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
                   >
-                    <span className="mt-1.5 inline-flex h-1.5 w-1.5 shrink-0 rounded-full bg-navy" />
+                    <span className="mt-1.5 inline-flex h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" />
                     {item}
                   </p>
                 ))}

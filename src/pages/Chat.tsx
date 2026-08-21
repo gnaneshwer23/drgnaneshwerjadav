@@ -1,10 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatTranscript from "@/components/ChatTranscript";
+import Seo from "@/components/Seo";
 
 const Chat = () => {
   return (
     <main className="flex min-h-dvh flex-col bg-background">
+      <Seo
+        title="Ask"
+        description="Ask about Gnaneshwer’s work, books, and consult. Payment stays on /book."
+        path="/chat"
+      />
       <Navbar />
       <div className="container mx-auto flex max-w-3xl flex-1 flex-col px-4 pb-16 pt-24 sm:px-6 sm:pt-28">
         <p className="font-mono text-[11px] font-medium tracking-[0.18em] text-muted-foreground">
