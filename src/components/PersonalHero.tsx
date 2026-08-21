@@ -1,15 +1,29 @@
 import { motion } from "framer-motion";
 import { site } from "@/data/site";
-import Portrait from "@/components/Portrait";
 import { requestOpenChat } from "@/lib/chat-widget-state";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+const lines = [
+  {
+    label: "Science",
+    text: "Pharmaceutical sciences, medical biotechnology, immunology.",
+  },
+  {
+    label: "Domain",
+    text: "Healthcare, clinical systems, and life sciences.",
+  },
+  {
+    label: "Build",
+    text: "AI product and programme leadership across technology.",
+  },
+] as const;
 
 const PersonalHero = () => {
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden pb-20 pt-28 sm:pt-32">
       <div className="pointer-events-none absolute inset-0 cinematic-grain" aria-hidden="true" />
-      <div className="site-wrap relative z-10 grid w-full items-center gap-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-16">
+      <div className="site-wrap relative z-10 grid w-full items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-20">
         <div className="min-w-0">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -58,14 +72,23 @@ const PersonalHero = () => {
           </motion.button>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
+        <motion.dl
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease }}
-          className="relative mx-auto w-full max-w-[16.5rem] sm:max-w-[19rem] lg:max-w-[22rem]"
+          transition={{ duration: 0.55, delay: 0.2, ease }}
+          className="max-w-sm space-y-6 lg:justify-self-end"
         >
-          <Portrait tone="ink" />
-        </motion.div>
+          {lines.map((line) => (
+            <div key={line.label} className="border-t border-white/[0.08] pt-4">
+              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/50">
+                {line.label}
+              </dt>
+              <dd className="mt-2 text-[15px] leading-relaxed tracking-[-0.015em] text-[#f4f1ea]/80">
+                {line.text}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
       </div>
     </section>
   );
