@@ -15,7 +15,7 @@ const seoByPath: Record<string, { title: string; description: string; eyebrow: s
   "/books": {
     title: "Books",
     description:
-      "Eight Product Book 2026 titles. Buy on Gumroad when a URL is published.",
+      "Ten titles. Buy on Amazon or Gumroad when a URL is published.",
     eyebrow: "Books",
   },
   "/frameworks": {

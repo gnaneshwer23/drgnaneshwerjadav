@@ -37,11 +37,11 @@ Add the same `VITE_*` keys to `.env.local` **and** the Vercel project (Productio
 | `VITE_CONSULT_CURRENCY` | `GBP` |
 | `VITE_CALENDAR_URL` | Google Appointment Schedule `https://calendar.app.google/…` |
 | `VITE_STRIPE_CONSULT_URL` | Stripe Payment Link `https://buy.stripe.com/…` |
-| `VITE_GUMROAD_*` | One Gumroad `https://…` per book, or leave empty / `coming-next-week` |
+| `VITE_GUMROAD_*` / `VITE_AMAZON_*` | Live `https://…` per book, or leave empty. You can also paste URLs into `buyLinks` in `src/data/commerce.ts`. |
 
-Books: `VITE_GUMROAD_BUILD_BEFORE_YOU_SCALE`, `VITE_GUMROAD_DECIDE_THEN_BUILD`, `VITE_GUMROAD_DELIVER_VALUE`, `VITE_GUMROAD_DHARMA_IN_THE_DARK`, `VITE_GUMROAD_HUMAN_OS`, `VITE_GUMROAD_MEANINGFUL_LIFE`, `VITE_GUMROAD_BIOLOGY_OF_OPPORTUNITY`, `VITE_GUMROAD_COMPLETE_PRODUCT`. Optional framework: `VITE_GUMROAD_FRAMEWORK_DECIDE_THEN_BUILD`.
+Books: `VITE_GUMROAD_BUILD_BEFORE_YOU_SCALE`, `VITE_GUMROAD_DECIDE_THEN_BUILD`, `VITE_GUMROAD_DELIVER_VALUE`, `VITE_GUMROAD_DHARMA_IN_THE_DARK`, `VITE_GUMROAD_HUMAN_OS`, `VITE_GUMROAD_MEANINGFUL_LIFE`, `VITE_GUMROAD_BIOLOGY_OF_OPPORTUNITY`, `VITE_GUMROAD_COMPLETE_PRODUCT`, plus optional `VITE_GUMROAD_SHADOW_WHO_GOT_LOST` and `VITE_GUMROAD_BOOK_10`. Matching `VITE_AMAZON_*` keys exist. Optional framework: `VITE_GUMROAD_FRAMEWORK_DECIDE_THEN_BUILD`.
 
-Empty buy URLs show “Goes live next week”. The chatbot will not invent Amazon links.
+Empty buy URLs show “link tomorrow”. The chatbot will not invent Amazon links. Short summaries download from `/books/{slug}.md`; swap in a PDF via `downloadHref`.
 
 ## Deploy
 

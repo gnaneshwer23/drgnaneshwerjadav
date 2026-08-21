@@ -5,6 +5,7 @@ import { experience } from "@/data/experience";
 import { education } from "@/data/education";
 import { sitePagesKnowledge } from "@/data/chat-knowledge";
 import { avatarKnowledge } from "@/data/avatar-knowledge";
+import { storefront } from "@/data/commerce";
 
 describe("work inventory", () => {
   it("features Fluent Institute, DeliverX, and Aksh Health", () => {
@@ -74,6 +75,14 @@ describe("DrJadav site digest", () => {
     expect(digest).toContain("PRODUCT CONCEPTS");
     expect(digest).toContain("Product management");
     expect(digest).toContain("Node.js + docx");
+  });
+
+  it("lists ten books with empty buy links until published", () => {
+    expect(storefront.books).toHaveLength(10);
+    expect(storefront.books.filter((book) => book.forthcoming)).toHaveLength(2);
+    expect(storefront.books[8]?.title).toBe("The Shadow Who Got Lost at Night");
+    expect(storefront.books[9]?.title).toBe("Book 10");
+    expect(storefront.books.every((book) => book.downloadHref)).toBe(true);
   });
 
   it("encodes fact vs concept rules from the avatar knowledge base", () => {

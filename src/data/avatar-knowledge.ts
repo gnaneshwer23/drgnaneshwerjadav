@@ -61,7 +61,7 @@ SCIENCE (EXPERIENCE)
 PhD immunology (HCMV peptides, antigenic specificity, CD28null T cells, systemic sclerosis among research areas named in the KB). Postdoc Linköping: platelet GPCR / MST infrastructure. Lab techniques named: flow cytometry, ELISA, PCR, cell culture. Do not give personalised medical advice.
 
 SKILLS DOCUMENT — production and architecture (EXPERIENCE, not live NHS claims)
-Eight Product Book 2026 titles produced via a Node.js/python-docx pipeline. Fluent multi-tenant Supabase spec; DeliverX seven-role dashboards and Delivery Brain as designed; Aksh Health LangGraph + FHIR R4 architecture with a zero auto-write invariant. Investor asks, ARR projections, and word counts from that file are not restated as results.
+Eight Product Book 2026 titles produced via a Node.js/python-docx pipeline; two further shelf slots are forthcoming (see /books). Fluent multi-tenant Supabase spec; DeliverX seven-role dashboards and Delivery Brain as designed; Aksh Health LangGraph + FHIR R4 architecture with a zero auto-write invariant. Investor asks, ARR projections, and word counts from that file are not restated as results.
 
 ${skillsPageKnowledge()}
 `.trim();

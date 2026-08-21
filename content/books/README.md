@@ -18,3 +18,13 @@ Unpublished Word files downloaded from Google Drive for later reference. **Do no
 | The Complete Product | `The_Complete_Product.docx` | `1hC2SQGAbuf4C3sH-ZueYFhR808OX5PD9` | 1.1 MB |
 
 Compact public notes for the chatbot live in `api/knowledge.ts`. Full manuscripts stay only on disk.
+
+## Public summaries and buy links (site)
+
+Short downloadable summaries live in `public/books/{slug}.md` (not the Word files).
+
+To go live tomorrow:
+
+1. **Buy links** — paste a live `https://…` into `buyLinks.amazon` or `buyLinks.gumroad` on that title in `src/data/commerce.ts` (or set `VITE_AMAZON_*` / `VITE_GUMROAD_*`). Leave empty to keep “link tomorrow”.
+2. **PDF summary** — drop `public/books/{slug}.pdf` and set `downloadHref` to `/books/{slug}.pdf`. Do not commit `.docx` manuscripts.
+

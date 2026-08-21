@@ -8,7 +8,7 @@ const offerings = [
     n: "01",
     label: "Books",
     to: "/books",
-    line: "Eight operating manuals. Gumroad when a URL is published.",
+    line: "Ten titles. Buy links go live when a URL is published.",
   },
   {
     n: "02",
