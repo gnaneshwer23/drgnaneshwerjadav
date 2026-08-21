@@ -16,6 +16,21 @@ function waitlistMailto(name: string, email: string) {
   return `mailto:${site.email}?subject=${subject}&body=${body}`;
 }
 
+const terrain = [
+  {
+    label: "Science",
+    text: "Pharmaceutical sciences, medical biotechnology, and immunology — the stack he trained in, not a module list.",
+  },
+  {
+    label: "Domain",
+    text: "Healthcare, clinical systems, and life sciences. Teaching stays educational. It is not medical advice.",
+  },
+  {
+    label: "Build",
+    text: "AI product and programme leadership across technology: decide, then make a working loop, with a human on the hook.",
+  },
+] as const;
+
 const Course = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,8 +45,27 @@ const Course = () => {
   return (
     <ShelfFrame
       title="A DrJadav course is coming. Not live yet."
-      lead={`There is no LMS, no fake syllabus, and no invented curriculum. When a cohort opens, join the waitlist and we will email you from ${site.email}.`}
+      lead="For people building intelligent products in regulated, scientific work. Science → Product → AI → Delivery. No LMS, no start date, and no price until a cohort actually opens."
     >
+      <dl className="mt-16 max-w-xl space-y-8 border-t border-border pt-12">
+        {terrain.map((item) => (
+          <div key={item.label}>
+            <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+              {item.label}
+            </dt>
+            <dd className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+              {item.text}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      <p className="mt-10 max-w-xl text-[13px] leading-relaxed text-muted-foreground">
+        Further courses in those areas will land here when they exist. Until
+        then this page is a waitlist — join it and we will email you from{" "}
+        {site.email}.
+      </p>
+
       <section className="mt-16 max-w-md border-t border-border pt-12">
         <h2 className="font-heading text-xl font-medium tracking-[-0.03em] text-foreground">
           Join the waitlist

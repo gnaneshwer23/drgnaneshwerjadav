@@ -1,5 +1,10 @@
 export const chatStarterPrompts = [
   {
+    label: "Science",
+    prompt:
+      "What is his science background — pharmaceutical sciences, biotechnology, immunology?",
+  },
+  {
     label: "Live projects",
     prompt:
       "What are the live projects — Fluent Institute, DeliverX, and Aksh Health?",
@@ -33,3 +38,10 @@ export const chatStarterPrompts = [
     prompt: "How do I book the 50-minute consult?",
   },
 ] as const;
+
+/** Compact dock: offerings + one science cue. Full desk keeps the rest. */
+export const chatWidgetPrompts = chatStarterPrompts.filter((item) =>
+  ["Science", "Books", "Course", "Framework", "Book a consult"].includes(
+    item.label,
+  ),
+);

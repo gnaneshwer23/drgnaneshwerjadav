@@ -1,6 +1,22 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { storefront } from "@/data/commerce";
 import ShelfFrame from "@/components/ShelfFrame";
+
+const beats = [
+  {
+    label: "Name the decision",
+    text: "AI made execution cheap without making deciding easy. The failure mode moved upstream: shipping the wrong thing, faster.",
+  },
+  {
+    label: "Name the constraint",
+    text: "Clinical, regulatory, ethical, or a hiring manager’s bar. The constraint is the brief — not a backlog of features.",
+  },
+  {
+    label: "Build the smallest loop",
+    text: "One artefact that would change that decision. Specs without a prototype are theatre; prototypes without a decision are toys. Humans stay on the hook.",
+  },
+] as const;
 
 const Frameworks = () => {
   const first = storefront.frameworks[0];
@@ -8,7 +24,7 @@ const Frameworks = () => {
   return (
     <ShelfFrame
       title="Operating artefacts, not slide theatre."
-      lead="Paid one-pagers and PPT decks you can drop into a real team. First SKU is Decide Then Build. Buy on Gumroad when a URL is published. Until then it stays coming soon."
+      lead="Paid one-pagers and decks you can drop into a real team. First SKU is Decide Then Build — the sequence used on HealthTech and EdTech work. Buy on Gumroad when a URL is published."
     >
       {first ? (
         <article className="mt-16 border-t border-border pt-12">
@@ -19,9 +35,34 @@ const Frameworks = () => {
             {first.title}
           </h2>
           <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-muted-foreground">
-            {first.subtitle}. The Decide Then Build loop as a one-pager and
-            deck you can actually run.
+            When building is cheap, the decision is the product. The loop as a
+            one-pager and PPT you can actually run — not a thirteen-stage dump.
           </p>
+
+          <dl className="mt-10 max-w-xl space-y-8">
+            {beats.map((beat) => (
+              <div key={beat.label}>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                  {beat.label}
+                </dt>
+                <dd className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+                  {beat.text}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="mt-8 max-w-lg text-[13px] leading-relaxed text-muted-foreground">
+            The same argument is a book on the shelf.{" "}
+            <Link
+              to="/books#decide-then-build"
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+            >
+              Decide Then Build
+            </Link>
+            .
+          </p>
+
           <div className="mt-8">
             {first.gumroadUrl ? (
               <a

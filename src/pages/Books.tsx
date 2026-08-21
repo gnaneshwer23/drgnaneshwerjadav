@@ -22,19 +22,19 @@ function BuyControl({
       </a>
     );
   }
-  return (
-    <span
-      className="inline-flex min-h-11 items-center text-[13px] tracking-[-0.01em] text-muted-foreground"
-      aria-disabled="true"
-    >
-      {label} · coming soon
-    </span>
-  );
+  return null;
 }
 
 function BookRow({ book, index }: { book: BookOffer; index: number }) {
+  const hasBuy = Boolean(
+    book.buyLinks.amazon || book.buyLinks.gumroad || book.buyLinks.other,
+  );
+
   return (
-    <li className="grid gap-4 py-9 sm:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] sm:items-start sm:gap-12">
+    <li
+      id={book.slug}
+      className="grid scroll-mt-28 gap-4 py-9 sm:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] sm:items-start sm:gap-12"
+    >
       <div className="min-w-0">
         <p className="font-mono text-[11px] tracking-[0.12em] text-muted-foreground">
           {String(index + 1).padStart(2, "0")}
@@ -51,6 +51,12 @@ function BookRow({ book, index }: { book: BookOffer; index: number }) {
       <div className="flex flex-col gap-1 sm:items-end sm:text-right">
         <BuyControl href={book.buyLinks.amazon} label="Buy on Amazon" />
         <BuyControl href={book.buyLinks.gumroad} label="Buy on Gumroad" />
+        <BuyControl href={book.buyLinks.other} label="Buy" />
+        {!hasBuy ? (
+          <span className="inline-flex min-h-11 items-center text-[13px] tracking-[-0.01em] text-muted-foreground">
+            Buy links when published
+          </span>
+        ) : null}
         {book.downloadHref ? (
           <a
             href={book.downloadHref}

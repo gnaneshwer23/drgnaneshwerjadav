@@ -80,7 +80,7 @@ const Navbar = () => {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            className="flex min-h-10 min-w-10 items-center justify-center rounded-full lg:hidden"
+            className="flex min-h-10 min-w-10 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 lg:hidden"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -94,7 +94,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-auto absolute left-4 right-4 top-[4.25rem] overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0c0c0b] text-[#f4f1ea] sm:left-6 sm:right-6 lg:hidden"
+            className="pointer-events-auto absolute left-4 right-4 top-[4.25rem] max-h-[min(28rem,calc(100dvh-5.5rem))] overflow-y-auto overflow-x-hidden rounded-2xl border border-white/[0.08] bg-[#0c0c0b] text-[#f4f1ea] sm:left-6 sm:right-6 lg:hidden"
           >
             <div className="flex flex-col px-5 py-3">
               {primary.map((item) => (

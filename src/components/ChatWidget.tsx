@@ -1,6 +1,7 @@
 /**
  * Floating DrJadav dock. Avatar: src/assets/drjadav-chat.png
- * Overwrite that file to swap the chat illustration. Homepage portrait is profile.jpg.
+ * Overwrite that file to swap the chat illustration. Home no longer uses
+ * the circular profile portrait; About still does (profile.jpg).
  */
 import { useEffect, useId, useState } from "react";
 import { Link, useLocation } from "react-router-dom";

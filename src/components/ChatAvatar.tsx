@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 /**
  * DrJadav chat illustration: src/assets/drjadav-chat.png
  * Overwrite that file to swap the forthcoming / replacement chat photo.
- * Do not use this as the homepage professional portrait (that stays profile.jpg).
+ * Do not use this as a homepage professional portrait (home is type-only;
+ * About still uses profile.jpg).
  *
  * Circular crops zoom to Gnaneshwer’s face — upper-right of this drawing
  * (red cap, smile), not the toddler or the cricket bat.

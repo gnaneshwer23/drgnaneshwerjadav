@@ -404,7 +404,7 @@ Books (ten titles on /books. Buy only when a URL is listed; otherwise say links 
 ${bookLines.join("\n")}
 Frameworks:
 ${frameworkLines.join("\n")}
-Courses: coming soon. No LMS, curriculum, modules, or price yet. Waitlist at /course (alias /courses). Do not invent a syllabus.
+Courses: coming soon. Intended terrain (not a syllabus): pharmaceutical sciences, medical biotechnology, immunology, healthcare, life sciences, technology. No LMS, modules, start date, or price. Waitlist at /course (alias /courses).
 Site paths: /projects (Fluent Institute, DeliverX, Aksh Health; /work redirects here), /experience (roles + nested products), /education, /skills, /book (consult; alias /consultation), /books, /course (waitlist), /frameworks, /about, /cv, /chat (DrJadav desk). Let’s talk → /book.
 `.trim();
 }

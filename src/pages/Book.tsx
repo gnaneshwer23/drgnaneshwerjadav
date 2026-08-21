@@ -95,7 +95,7 @@ const Book = () => {
             </div>
           </li>
 
-          <li className={`py-8 ${slotHeld ? "" : "opacity-50"}`}>
+          <li className="py-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
               02 · Then pay
             </p>
@@ -129,7 +129,7 @@ const Book = () => {
             </div>
           </li>
 
-          <li className={`py-8 ${paid ? "" : "opacity-50"}`}>
+          <li className="py-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
               03 · Arrive with a real problem
             </p>

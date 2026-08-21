@@ -15,6 +15,7 @@ export default function Seo({
   jsonLd,
 }: SeoProps) {
   const url = `${site.url}${path === "/" ? "/" : path}`;
+  const image = `${site.url}/og.jpg`;
   const fullTitle = title
     ? path === "/"
       ? title
@@ -30,9 +31,11 @@ export default function Seo({
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
+      <meta property="og:image" content={image} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
       {jsonLd ? (
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}

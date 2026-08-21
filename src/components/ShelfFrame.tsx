@@ -14,17 +14,19 @@ const seoByPath: Record<string, { title: string; description: string; eyebrow: s
   "/books": {
     title: "Books",
     description:
-      "Ten titles. Buy on Amazon or Gumroad when a URL is published.",
+      "Ten titles. Download a summary. Buy on Amazon or Gumroad when a URL is published.",
     eyebrow: "Books",
   },
   "/frameworks": {
     title: "Framework",
-    description: "Decide Then Build — the operating sequence for the AI era.",
+    description:
+      "Decide Then Build — name the decision, name the constraint, then build the smallest loop.",
     eyebrow: "Framework",
   },
   "/course": {
     title: "Course",
-    description: "Course waitlist. Curriculum and price are not published yet.",
+    description:
+      "A DrJadav course is coming. Waitlist for teaching in science, healthcare, and technology. No syllabus or price yet.",
     eyebrow: "Course",
   },
 };

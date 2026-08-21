@@ -6,6 +6,7 @@ const primary = [
   { label: "Course", to: "/course" },
   { label: "Framework", to: "/frameworks" },
   { label: "Consultation", to: "/book" },
+  { label: "Contact", to: "/contact" },
 ] as const;
 
 const Footer = () => {

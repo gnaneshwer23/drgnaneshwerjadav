@@ -47,6 +47,18 @@ describe("inferChatActions", () => {
     expect(chips.some((chip) => chip.to === "/projects")).toBe(true);
   });
 
+  it("offers education for a science-background question", () => {
+    expect(
+      inferChatActions({
+        userMessages: [
+          "What is his science background — pharmaceutical sciences, biotechnology, immunology?",
+        ],
+        lastAssistant:
+          "BPharm, MSc medical biotechnology, PhD immunology. See /education.",
+      }).map((chip) => chip.to),
+    ).toContain("/education");
+  });
+
   it("offers education and experience pages", () => {
     expect(
       inferChatActions({

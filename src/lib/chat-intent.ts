@@ -29,7 +29,7 @@ const PROJECTS =
 const EXPERIENCE =
   /\b(experience|roles?|linkedin order|career|employers?|worked)\b/i;
 const EDUCATION =
-  /\b(education|degree|phd|mba|postdoc|university|kent|verona|siena|kakatiya|linköping|linkoping)\b/i;
+  /\b(education|degree|phd|mba|postdoc|university|kent|verona|siena|kakatiya|linköping|linkoping|science background|pharmaceutical|biotech|immunolog)\b/i;
 const SKILLS = /\b(skills?|capabilities|fhir|hl7|competenc)/i;
 
 const FLAGSHIP_HINTS: Array<{

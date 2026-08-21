@@ -2,7 +2,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useMemo, useState } from "react";
 import { ArrowUp, Square } from "lucide-react";
-import { chatStarterPrompts } from "@/lib/chat-prompts";
+import { chatStarterPrompts, chatWidgetPrompts } from "@/lib/chat-prompts";
 import { ChatActions } from "@/lib/chat-links";
 import { citedSources } from "@/lib/chat-intent";
 import { MessageResponse } from "@/components/ai-elements/message";
@@ -63,7 +63,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
               Talk with DrJadav about projects, experience, education, skills, books, the course, frameworks, or a consult.
             </p>
             <div className="flex flex-wrap gap-2">
-              {chatStarterPrompts.map((item) => (
+              {(isPage ? chatStarterPrompts : chatWidgetPrompts).map((item) => (
                 <button
                   key={item.prompt}
                   type="button"
