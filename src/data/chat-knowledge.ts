@@ -1,6 +1,7 @@
 import { education } from "./education";
 import { experience } from "./experience";
 import { resume } from "./resume";
+import { skillsPageKnowledge } from "./skills";
 import { flagships, library } from "./work";
 
 const statusLabel: Record<string, string> = {
@@ -33,10 +34,6 @@ function educationLine(item: (typeof education)[number]) {
 
 /** Compact site digest for the DrJadav server prompt. Do not import from the chat UI. */
 export function sitePagesKnowledge(): string {
-  const skills = resume.skills.map((skill) => `- ${skill}`).join("\n");
-  const focus = resume.focus
-    .map((group) => `- ${group.title}: ${group.items.join("; ")}`)
-    .join("\n");
   const notes = resume.notes
     .filter((note) => !/do not list it as employment/i.test(note))
     .map((note) => `- ${note}`)
@@ -54,12 +51,12 @@ SITE PAGES (use these paths in answers — one matching link, not a dump of all 
 - Consultation: /book  (alias /consultation)
 
 PROJECTS (/projects)
-Three flagships dominate. Give the live URL when asked about a named flagship. Do not quote $8.5M, 50 engineers, 99.9% uptime, 60+ MVPs, or 22–75% gains as results.
+Three flagships dominate. Give the live URL when asked about a named flagship. Do not quote $8.5M, 50 engineers, 99.9% uptime, or 22–75% gains as results. 60+ MVPs and 22–27% figures exist only as claimed/contextual (avatar KB §35) — never as home headlines.
 ${flagships.map(flagshipLine).join("\n")}
 
 Quieter library (not competing with flagships; nested under roles on /experience):
 ${library.map(libraryLine).join("\n")}
-FlowPilot is not listed — not found. Accountable Hindustan is not routed from this site.
+FlowPilot, Loopd, OrchestrAI, DocAssistAI, BuildCopilot, and Healthy Bharat are PRODUCT CONCEPTS in the avatar library unless a live URL exists on this site. Accountable Hindustan is a company name, not a routed section.
 
 EXPERIENCE (/experience) — LinkedIn order. Postdoctoral work is education, not here.
 ${experience.map(roleLine).join("\n")}
@@ -67,11 +64,7 @@ ${experience.map(roleLine).join("\n")}
 EDUCATION (/education) — academic only.
 ${education.map(educationLine).join("\n")}
 
-SKILLS (/skills) — listed, no progress bars or scores.
-${skills}
-
-Focus areas:
-${focus}
+${skillsPageKnowledge()}
 
 Honesty notes:
 ${notes}

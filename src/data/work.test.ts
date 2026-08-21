@@ -4,6 +4,7 @@ import { omittedClaims, proofStrip } from "@/data/evidence";
 import { experience } from "@/data/experience";
 import { education } from "@/data/education";
 import { sitePagesKnowledge } from "@/data/chat-knowledge";
+import { avatarKnowledge } from "@/data/avatar-knowledge";
 
 describe("work inventory", () => {
   it("features Fluent Institute, DeliverX, and Aksh Health", () => {
@@ -70,6 +71,18 @@ describe("DrJadav site digest", () => {
     expect(digest).toContain("https://fluent.institute");
     expect(digest).toContain("https://www.deliverx.dev");
     expect(digest).toContain("https://akshhealth.com");
-    expect(digest).toContain("FlowPilot is not listed");
+    expect(digest).toContain("PRODUCT CONCEPTS");
+    expect(digest).toContain("Product management");
+    expect(digest).toContain("Node.js + docx");
+  });
+
+  it("encodes fact vs concept rules from the avatar knowledge base", () => {
+    const avatar = avatarKnowledge();
+    expect(avatar).toContain("FACT:");
+    expect(avatar).toContain("PRODUCT CONCEPT:");
+    expect(avatar).toContain("Never present a ChatGPT brainstorm as a launched product");
+    expect(avatar).toContain("Loopd");
+    expect(avatar).toContain("FlowPilot");
+    expect(avatar).toContain("claimed");
   });
 });

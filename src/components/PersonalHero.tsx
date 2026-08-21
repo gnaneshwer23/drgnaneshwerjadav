@@ -26,7 +26,7 @@ const PersonalHero = () => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.7, delay: 0.04, ease }}
-                className="block whitespace-nowrap font-heading text-[clamp(1.2rem,6.2vw,2.85rem)] font-medium leading-none tracking-[-0.04em] text-[#f4f1ea] lg:text-[clamp(1.7rem,3.4vw,2.85rem)]"
+                className="home-display block text-[#f4f1ea]"
               >
                 Dr. Gnaneshwer Jadav
               </motion.span>

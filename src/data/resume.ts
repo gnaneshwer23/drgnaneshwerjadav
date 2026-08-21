@@ -1,4 +1,5 @@
 import { flagships } from "./work";
+import { skillMatrix } from "./skills";
 
 /**
  * Public profile facts. LinkedIn (https://www.linkedin.com/in/gnaneshwer-jadav/)
@@ -72,17 +73,7 @@ export const resume = {
         "Platelet GPCR / haemato-immunology research; presented at Swedish Haematology Congress 2021 (resume.html). Oct 2025 CV groups university research 2013–2021; dates above are from resume.html.",
     },
   ],
-  skills: [
-    "Product & programme leadership",
-    "Regulated AI-enabled platforms",
-    "HealthTech and EdTech product",
-    "Product discovery and roadmapping",
-    "FHIR / HL7 and healthcare data standards",
-    "AI product integration (LLMs, agentic workflows)",
-    "GTM and commercialisation",
-    "Cross-functional leadership",
-    "GDPR / clinical safety awareness",
-  ],
+  skills: skillMatrix,
   focus: [
     {
       title: "HealthTech platforms",

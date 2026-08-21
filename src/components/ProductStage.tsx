@@ -58,7 +58,7 @@ const ProductStage = () => {
               <span className="font-mono text-[11px] tracking-[0.12em] text-white/50">
                 {item.n}
               </span>
-              <span className="product-row-title min-w-0 text-[#f4f1ea]">
+              <span className="home-display min-w-0 text-[#f4f1ea]">
                 {item.label}
               </span>
               <span className="col-start-2 max-w-md text-[13px] leading-relaxed text-white/55 lg:col-start-auto lg:max-w-none lg:justify-self-end lg:text-right lg:text-sm">
