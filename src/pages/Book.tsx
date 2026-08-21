@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import { storefront } from "@/data/commerce";
 import { site } from "@/data/site";
 import StorefrontLayout from "@/components/StorefrontLayout";
@@ -28,7 +27,7 @@ const Book = () => {
           that order.
         </PageLead>
 
-        <p className="mt-8 font-heading text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+        <p className="mt-8 font-heading text-4xl font-bold tracking-tight text-foreground md:text-5xl">
           {consult.priceLabel}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -38,16 +37,14 @@ const Book = () => {
         <div className="mt-10 flex flex-wrap gap-3">
           {consult.hasCalendar ? (
             <PrimaryCta href={consult.calendarUrl ?? undefined} external>
-              01 · Pick a slot
-              <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              Pick a slot
             </PrimaryCta>
           ) : (
             <PrimaryCta disabled>Calendar link coming</PrimaryCta>
           )}
           {consult.hasStripe ? (
             <SecondaryCta href={consult.stripeUrl ?? undefined} external>
-              02 · Then pay {consult.priceLabel}
-              <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              Then pay {consult.priceLabel}
             </SecondaryCta>
           ) : (
             <SecondaryCta disabled>Stripe link coming</SecondaryCta>
@@ -75,28 +72,29 @@ const Book = () => {
         <ol className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              number: "01",
+              label: "01",
               title: "Pick a slot",
               body: "Open the Google Appointment Schedule and choose a time. That holds the slot on both calendars.",
             },
             {
-              number: "02",
+              label: "02",
               title: "Then pay",
               body: `Pay ${consult.priceLabel} on the Stripe Payment Link. The consult is confirmed only after payment.`,
             },
             {
-              number: "03",
+              label: "03",
               title: "Arrive with a real problem",
               body: "Bring the product, team, or decision you are stuck on. You leave with a short DrJadav take and next moves.",
             },
           ].map((step) => (
-            <li key={step.number}>
-              <div className="flex aspect-[4/3] items-end rounded-2xl bg-secondary p-5">
-                <span className="font-heading text-5xl font-semibold tabular-nums text-foreground/15 sm:text-6xl">
-                  {step.number}
-                </span>
-              </div>
-              <h2 className="font-heading mt-5 text-xl font-semibold tracking-tight text-foreground">
+            <li
+              key={step.label}
+              className="rounded-[1.75rem] bg-secondary p-8"
+            >
+              <p className="text-sm font-medium text-muted-foreground">
+                {step.label}
+              </p>
+              <h2 className="font-heading mt-4 text-xl font-bold tracking-tight text-foreground">
                 {step.title}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -107,7 +105,7 @@ const Book = () => {
         </ol>
 
         <section className="mt-16 max-w-2xl border-t border-border pt-12">
-          <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground">
+          <h2 className="font-heading text-2xl font-bold tracking-tight text-foreground">
             What you get
           </h2>
           <ul className="mt-6 space-y-3 text-base leading-relaxed text-muted-foreground">

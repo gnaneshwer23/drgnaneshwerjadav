@@ -52,7 +52,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
                   key={prompt}
                   type="button"
                   onClick={() => submit(prompt)}
-                  className="min-h-11 rounded-full border border-border bg-card px-4 py-2 text-left text-sm text-foreground transition-colors hover:border-saffron/50 hover:text-saffron"
+                  className="min-h-11 rounded-full border border-border bg-card px-4 py-2 text-left text-sm text-foreground transition-colors hover:border-foreground/40"
                 >
                   {prompt}
                 </button>
@@ -66,11 +66,11 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
             key={message.id}
             className={
               message.role === "user"
-                ? "ml-8 rounded-2xl border border-saffron/20 bg-saffron/10 px-4 py-3"
-                : "mr-4 border-l-2 border-saffron/40 pl-4"
+                ? "ml-8 rounded-2xl bg-secondary px-4 py-3"
+                : "mr-4 border-l-2 border-foreground/15 pl-4"
             }
           >
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-saffron">
+            <p className="mb-1 text-[11px] font-medium text-muted-foreground">
               {message.role === "user" ? "You" : "DrJadav"}
             </p>
             <div className="space-y-3 text-sm leading-relaxed text-foreground md:text-[15px]">

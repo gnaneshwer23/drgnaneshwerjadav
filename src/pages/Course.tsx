@@ -53,28 +53,20 @@ const Course = () => {
         <ol className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              number: "01",
               title: "Coming soon",
               body: "No recorded modules, prices, or start dates yet. This page will change when there is something real to enrol in.",
             },
             {
-              number: "02",
               title: "Same operating ideas",
               body: "The course will draw on Product Book 2026 — Decide Then Build, Build Before You Scale — not a generic AI certificate.",
             },
             {
-              number: "03",
               title: "Waitlist only",
               body: "Leave a name and email. Your mail app opens a message to Gnaneshwer. Nothing is stored on this site.",
             },
           ].map((item) => (
-            <li key={item.number}>
-              <div className="flex aspect-[4/3] items-end rounded-2xl bg-secondary p-5">
-                <span className="font-heading text-5xl font-semibold tabular-nums text-foreground/15 sm:text-6xl">
-                  {item.number}
-                </span>
-              </div>
-              <h2 className="font-heading mt-5 text-xl font-semibold tracking-tight text-foreground">
+            <li key={item.title} className="rounded-[1.75rem] bg-secondary p-8">
+              <h2 className="font-heading text-xl font-bold tracking-tight text-foreground">
                 {item.title}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -125,7 +117,7 @@ const Course = () => {
             </label>
             <button
               type="submit"
-              className="inline-flex min-h-11 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="inline-flex min-h-11 items-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               Open waitlist email
             </button>

@@ -13,12 +13,10 @@ import PageShell, {
 
 const About = () => {
   return (
-    <StorefrontLayout tone="paper">
+    <StorefrontLayout>
       <PageShell>
         <Eyebrow>About</Eyebrow>
-        <PageTitle>
-          {site.name}
-        </PageTitle>
+        <PageTitle>{site.name}</PageTitle>
         <PageLead>
           {resume.headline} · {resume.location}.
         </PageLead>
@@ -34,26 +32,54 @@ const About = () => {
         </div>
 
         <section className="mt-16 border-t border-border pt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-saffron">
+          <p className="eyebrow">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
             Now
           </p>
-          <div className="mt-6 grid gap-2 md:grid-cols-[8rem_1fr]">
-            <p className="font-heading text-sm font-semibold text-saffron">
-              Public profile
-            </p>
-            <div>
-              <h2 className="font-heading text-2xl font-bold text-foreground">
-                {resume.headline}
-              </h2>
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                {resume.about} {resume.current.summary}
-              </p>
-            </div>
-          </div>
+          <h2 className="font-heading mt-4 text-2xl font-bold text-foreground">
+            {resume.headline}
+          </h2>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
+            {resume.about} {resume.current.summary}
+          </p>
         </section>
 
         <section className="mt-16 border-t border-border pt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-saffron">
+          <p className="eyebrow">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
+            Experience
+          </p>
+          <ul className="mt-6 divide-y divide-border border-y border-border">
+            {resume.experience.map((item) => (
+              <li
+                key={`${item.organisation}-${item.period}`}
+                className="grid gap-3 py-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)_auto] md:items-start"
+              >
+                <div>
+                  <h3 className="font-heading text-lg font-bold text-foreground">
+                    {item.organisation}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {item.place} · {item.period}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">{item.role}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {item.summary}
+                  </p>
+                </div>
+                <p className="inline-flex h-8 items-center rounded-full bg-secondary px-3 text-xs font-medium text-muted-foreground">
+                  {item.place}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mt-16 border-t border-border pt-12">
+          <p className="eyebrow">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
             Education
           </p>
           <ul className="mt-6 divide-y divide-border border-y border-border">
@@ -69,7 +95,8 @@ const About = () => {
         </section>
 
         <section className="mt-16 border-t border-border pt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-saffron">
+          <p className="eyebrow">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
             Selected work
           </p>
           <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
@@ -77,18 +104,15 @@ const About = () => {
             history.
           </p>
           <ol className="mt-8 divide-y divide-border border-y border-border">
-            {resume.selectedWork.map((item, index) => (
+            {resume.selectedWork.map((item) => (
               <li key={item.title} className="py-8">
-                <p className="font-heading text-sm font-semibold tabular-nums text-saffron">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="font-heading mt-2 text-2xl font-bold text-foreground">
+                <h3 className="font-heading text-2xl font-bold text-foreground">
                   {item.href ? (
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="hover:text-saffron"
+                      className="hover:underline"
                     >
                       {item.title}
                     </a>
@@ -109,10 +133,7 @@ const About = () => {
 
         <section className="mt-16 grid gap-6 lg:grid-cols-3">
           {resume.focus.map((area) => (
-            <div
-              key={area.title}
-              className="rounded-2xl border border-border bg-card p-6 shadow-card"
-            >
+            <div key={area.title} className="rounded-[1.75rem] bg-secondary p-6">
               <h3 className="font-heading text-lg font-bold text-foreground">
                 {area.title}
               </h3>
@@ -120,8 +141,11 @@ const About = () => {
                 {area.items.map((item) => (
                   <li
                     key={item}
-                    className="text-sm leading-relaxed text-muted-foreground"
+                    className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
                   >
+                    <span className="mt-1.5 inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-foreground text-[9px] font-bold leading-none text-background">
+                      +
+                    </span>
                     {item}
                   </li>
                 ))}
@@ -130,8 +154,9 @@ const About = () => {
           ))}
         </section>
 
-        <section className="mt-16 rounded-2xl border border-border bg-secondary/50 p-6 md:p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-saffron">
+        <section className="mt-16 rounded-[1.75rem] bg-secondary p-6 md:p-8">
+          <p className="eyebrow">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
             What is not listed
           </p>
           <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
@@ -142,7 +167,7 @@ const About = () => {
           <p className="mt-6 text-sm text-muted-foreground">
             A {storefront.consult.minutes}-minute strategy session is{" "}
             {storefront.consult.priceLabel}.{" "}
-            <Link to="/book" className="font-medium text-saffron hover:underline">
+            <Link to="/book" className="font-medium text-foreground underline-offset-4 hover:underline">
               Book a consult
             </Link>
             .

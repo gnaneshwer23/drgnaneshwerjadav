@@ -48,14 +48,14 @@ const ChatWidget = () => {
             <div className="flex shrink-0 items-center">
               <Link
                 to="/chat"
-                className="inline-flex min-h-11 items-center rounded-lg px-3 text-xs font-semibold text-saffron hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
+                className="inline-flex min-h-11 items-center rounded-lg px-3 text-xs font-medium text-foreground underline underline-offset-4 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 Full page
               </Link>
               <button
                 type="button"
                 onClick={() => setPersistedMode("minimized")}
-                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 text-xs font-semibold text-foreground hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
+                className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 text-xs font-medium text-foreground hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label="Minimise chat"
               >
                 <Minus className="h-4 w-4" aria-hidden="true" />
@@ -75,7 +75,7 @@ const ChatWidget = () => {
           onClick={() => setPersistedMode("open")}
           aria-expanded={false}
           aria-label="Open chat"
-          className="pointer-events-auto absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-card transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="pointer-events-auto absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-card transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <MessageCircle className="h-5 w-5" aria-hidden="true" />
           Ask

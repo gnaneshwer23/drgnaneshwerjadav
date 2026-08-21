@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Syne', 'sans-serif'],
-        body: ['Manrope', 'sans-serif'],
+        heading: ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
+        body: ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

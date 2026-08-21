@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type PageShellProps = {
@@ -21,7 +22,10 @@ const PageShell = ({ children, className }: PageShellProps) => {
 };
 
 export const Eyebrow = ({ children }: { children: ReactNode }) => (
-  <p className="eyebrow">{children}</p>
+  <p className="eyebrow">
+    <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" aria-hidden="true" />
+    {children}
+  </p>
 );
 
 export const PageTitle = ({
@@ -39,7 +43,7 @@ export const PageLead = ({
   children: ReactNode;
   tone?: "navy" | "paper";
 }) => (
-  <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+  <p className="mt-4 max-w-2xl text-base leading-[1.75] text-muted-foreground">
     {children}
   </p>
 );
@@ -58,7 +62,14 @@ export const PrimaryCta = ({
   disabled?: boolean;
 }) => {
   const className =
-    "inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40";
+    "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40";
+
+  const inner = (
+    <>
+      {children}
+      {external ? <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /> : null}
+    </>
+  );
 
   if (disabled) {
     return (
@@ -70,7 +81,7 @@ export const PrimaryCta = ({
   if (to) {
     return (
       <Link to={to} className={className}>
-        {children}
+        {inner}
       </Link>
     );
   }
@@ -81,7 +92,7 @@ export const PrimaryCta = ({
       rel={external ? "noreferrer" : undefined}
       className={className}
     >
-      {children}
+      {inner}
     </a>
   );
 };
@@ -102,7 +113,14 @@ export const SecondaryCta = ({
   disabled?: boolean;
 }) => {
   const className =
-    "inline-flex min-h-11 items-center justify-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+    "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+  const inner = (
+    <>
+      {children}
+      {external ? <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /> : null}
+    </>
+  );
 
   if (disabled) {
     return (
@@ -114,7 +132,7 @@ export const SecondaryCta = ({
   if (to) {
     return (
       <Link to={to} className={className}>
-        {children}
+        {inner}
       </Link>
     );
   }
@@ -125,7 +143,7 @@ export const SecondaryCta = ({
       rel={external ? "noreferrer" : undefined}
       className={className}
     >
-      {children}
+      {inner}
     </a>
   );
 };

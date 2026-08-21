@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { site } from "@/data/site";
 
@@ -43,16 +43,16 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         scrolled || mobileOpen
           ? "border-b border-border bg-background/90 backdrop-blur-xl"
-          : "bg-background/70"
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 md:h-[4.5rem]">
+      <div className="container mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto] items-center gap-3 px-4 sm:px-6 md:h-[4.5rem] lg:grid-cols-[1fr_auto_1fr]">
         <Link
           to="/"
           className="flex min-h-11 min-w-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label={`${site.name} home`}
         >
-          <span className="font-heading truncate text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+          <span className="font-heading truncate text-base font-bold tracking-tight text-foreground sm:text-lg">
             {site.brand}
           </span>
         </Link>
@@ -76,12 +76,16 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+        </div>
+
+        <div className="hidden justify-end lg:flex">
           <Link
             to="/book"
-            className="inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-foreground underline decoration-foreground/30 underline-offset-[6px] transition-colors hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             aria-current={consultActive ? "page" : undefined}
           >
             Book
+            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
         </div>
 
@@ -90,7 +94,7 @@ const Navbar = () => {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-foreground lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="flex min-h-11 min-w-11 items-center justify-center justify-self-end rounded-full text-foreground lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -125,9 +129,10 @@ const Navbar = () => {
               <Link
                 to="/book"
                 onClick={() => setMobileOpen(false)}
-                className="mt-1 mb-2 inline-flex min-h-11 w-fit items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground"
+                className="mt-1 mb-2 inline-flex min-h-11 w-fit items-center gap-1 text-sm font-medium text-foreground underline underline-offset-[6px]"
               >
                 Book
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             </div>
           </motion.div>
