@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
-        body: ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['Satoshi', 'system-ui', 'sans-serif'],
+        body: ['Satoshi', 'system-ui', 'sans-serif'],
         serif: ['Newsreader', 'Georgia', 'serif'],
         mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
       },

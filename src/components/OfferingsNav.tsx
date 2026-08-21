@@ -12,7 +12,7 @@ export default function OfferingsNav() {
   const location = useLocation();
 
   return (
-    <nav className="mt-8 flex flex-wrap gap-2" aria-label="Offerings">
+    <nav className="mt-10 flex flex-wrap gap-x-7 gap-y-2" aria-label="Offerings">
       {items.map((item) => {
         const active =
           location.pathname === item.to ||
@@ -22,10 +22,8 @@ export default function OfferingsNav() {
             key={item.to}
             to={item.to}
             className={cn(
-              "inline-flex min-h-11 items-center rounded-full px-4 font-mono text-[11px] font-medium tracking-wide",
-              active
-                ? "bg-foreground text-background"
-                : "border border-border bg-card text-foreground hover:border-foreground/30",
+              "nav-link inline-flex min-h-11 items-center text-[13px] tracking-[-0.01em]",
+              active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
             )}
             aria-current={active ? "page" : undefined}
           >

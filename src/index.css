@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* Editorial monochrome — ink on warm paper; saffron only as a restrained mark */
-    --background: 40 18% 97%;
+    --background: 42 22% 95%;
     --foreground: 0 0% 8%;
 
     --card: 40 33% 98%;
@@ -112,7 +112,10 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: Satoshi, Inter, system-ui, sans-serif;
+    font-family: Satoshi, system-ui, sans-serif;
+    font-feature-settings: "kern" 1;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
     touch-action: manipulation;
   }
 
@@ -122,9 +125,9 @@
   h4,
   h5,
   h6 {
-    font-family: Satoshi, Inter, system-ui, sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-family: Satoshi, system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.04em;
   }
 }
 
@@ -134,11 +137,15 @@
   }
 
   .eyebrow {
-    @apply mb-4 inline-flex items-center gap-2 text-sm font-medium text-foreground;
+    @apply mb-5 font-mono text-[11px] font-medium tracking-[0.14em] text-muted-foreground;
   }
 
   .display {
-    @apply font-heading text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem];
+    @apply font-heading text-[clamp(2rem,4.6vw,3.25rem)] font-medium leading-[1.08] tracking-[-0.04em];
+  }
+
+  .site-wrap {
+    @apply mx-auto w-full max-w-[72rem] px-6 sm:px-8;
   }
 
   .nav-link {
@@ -146,7 +153,7 @@
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: 0 1px;
-    transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
   }
 
   .nav-link:hover,
@@ -155,34 +162,33 @@
   }
 
   .home-ink {
-    background: #0b0b0b;
-    color: #f3efe7;
+    background: #0c0c0b;
+    color: #f4f1ea;
+  }
+
+  .home-ink ::selection {
+    background: rgb(244 241 234 / 0.16);
+    color: #f4f1ea;
   }
 
   .product-row {
-    transition: padding 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+    transition: background-color 0.25s ease;
   }
 
-  .product-row:hover {
-    padding-left: 0.35rem;
+  @media (hover: hover) {
+    .product-row:hover {
+      background-color: rgb(255 255 255 / 0.028);
+    }
   }
 
   .product-row-title {
-    font-family: Satoshi, Inter, system-ui, sans-serif;
-    font-size: clamp(2.5rem, 8vw, 6.75rem);
+    font-family: Satoshi, system-ui, sans-serif;
+    font-size: clamp(2.15rem, 6vw, 5rem);
     font-weight: 500;
-    letter-spacing: -0.05em;
-    line-height: 0.88;
-  }
-
-  .portrait-float {
-    animation: portrait-float 6s ease-in-out infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .portrait-float {
-      animation: none;
-    }
+    letter-spacing: -0.045em;
+    line-height: 1;
   }
 
   .font-display-italic {
@@ -213,11 +219,7 @@
 
   .cinematic-grain {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
-    opacity: 0.04;
-    mix-blend-mode: multiply;
-  }
-
-  .home-ink .cinematic-grain {
+    opacity: 0.018;
     mix-blend-mode: overlay;
   }
 
@@ -262,16 +264,6 @@
 @keyframes streaming-caret {
   50% {
     opacity: 0;
-  }
-}
-
-@keyframes portrait-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-14px);
   }
 }
 

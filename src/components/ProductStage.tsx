@@ -32,42 +32,40 @@ const offerings = [
 
 const ProductStage = () => {
   return (
-    <section className="relative px-4 pb-24 pt-8 sm:px-8 sm:pb-32">
+    <section className="relative pb-24 pt-4 sm:pb-32">
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mx-auto mb-10 max-w-6xl font-mono text-[11px] uppercase tracking-[0.22em] text-white/40"
+        className="site-wrap mb-8 font-mono text-[11px] uppercase tracking-[0.14em] text-white/50"
       >
         The work you can buy
       </motion.p>
-      <ol className="mx-auto max-w-6xl">
+      <ol className="site-wrap">
         {offerings.map((item, i) => (
           <motion.li
             key={item.to}
-            initial={{ opacity: 0, y: 36 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-            className="border-t border-white/10 last:border-b"
+            viewport={{ once: true, margin: "-8%" }}
+            transition={{ duration: 0.45, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
+            className="border-t border-white/[0.08] last:border-b"
           >
             <Link
               to={item.to}
-              className="product-row group grid grid-cols-[auto_minmax(0,1fr)_auto] items-baseline gap-4 py-7 sm:gap-8 sm:py-9"
+              className="product-row group grid grid-cols-[2.25rem_minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-2 py-7 lg:grid-cols-[2.75rem_auto_minmax(0,1fr)_auto] lg:items-center lg:gap-x-8 lg:py-9"
             >
-              <span className="font-mono text-[11px] tracking-[0.16em] text-white/35">
+              <span className="font-mono text-[11px] tracking-[0.12em] text-white/50">
                 {item.n}
               </span>
-              <span className="min-w-0">
-                <span className="product-row-title block text-white">
-                  {item.label}
-                </span>
-                <span className="mt-2 block max-w-lg text-sm text-white/45 sm:text-base">
-                  {item.line}
-                </span>
+              <span className="product-row-title min-w-0 text-[#f4f1ea]">
+                {item.label}
+              </span>
+              <span className="col-start-2 max-w-md text-[13px] leading-relaxed text-white/55 lg:col-start-auto lg:max-w-none lg:justify-self-end lg:text-right lg:text-sm">
+                {item.line}
               </span>
               <ArrowUpRight
-                className="h-7 w-7 shrink-0 text-white/30 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white"
+                className="col-start-3 row-start-1 h-5 w-5 shrink-0 self-center text-white/40 transition-colors duration-300 group-hover:text-[#f4f1ea] lg:col-start-auto lg:row-start-auto"
                 aria-hidden="true"
               />
             </Link>

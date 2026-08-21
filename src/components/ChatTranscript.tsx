@@ -68,7 +68,7 @@ const ChatTranscript = ({ layout = "page" }: ChatTranscriptProps) => {
                   key={item.prompt}
                   type="button"
                   onClick={() => submit(item.prompt)}
-                  className="min-h-11 rounded-full border border-border bg-card px-4 py-2 text-left font-mono text-[11px] tracking-wide text-foreground transition-colors hover:border-foreground/40"
+                  className="min-h-11 rounded-full border border-border px-3.5 py-2 text-left text-[12px] tracking-[-0.01em] text-foreground transition-colors hover:border-foreground/40"
                 >
                   {item.label}
                 </button>

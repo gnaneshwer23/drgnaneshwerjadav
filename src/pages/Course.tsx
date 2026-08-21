@@ -1,7 +1,6 @@
 import { type FormEvent, useState } from "react";
 import { site } from "@/data/site";
 import ShelfFrame from "@/components/ShelfFrame";
-import { SecondaryCta } from "@/components/PageShell";
 
 const WAITLIST_SUBJECT = "Course waitlist";
 
@@ -33,15 +32,11 @@ const Course = () => {
       title="A DrJadav course is coming. Not live yet."
       lead={`There is no LMS, no fake syllabus, and no invented curriculum. When a cohort opens it will sit on the same operating ideas as the books — deciding before building, and delivering in the age of AI. Join the waitlist and we will email you from ${site.email}.`}
     >
-      <div className="mt-8 flex flex-wrap gap-3">
-        <SecondaryCta to="/books">Shop books</SecondaryCta>
-      </div>
-
-      <section className="mt-16 max-w-xl border-t border-border pt-12">
-        <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground">
+      <section className="mt-16 max-w-md border-t border-border pt-12">
+        <h2 className="font-heading text-xl font-medium tracking-[-0.03em] text-foreground">
           Join the waitlist
         </h2>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
           Submitting opens your email client. If that fails, write to{" "}
           <a
             className="font-medium text-foreground underline-offset-4 hover:underline"
@@ -52,20 +47,24 @@ const Course = () => {
           with the subject “Course waitlist”.
         </p>
 
-        <form className="mt-8 space-y-4" onSubmit={onSubmit}>
+        <form className="mt-8 space-y-5" onSubmit={onSubmit}>
           <label className="block">
-            <span className="text-sm font-medium text-foreground">Name</span>
+            <span className="text-[13px] font-medium tracking-[-0.01em] text-foreground">
+              Name
+            </span>
             <input
               type="text"
               name="name"
               autoComplete="name"
               value={name}
               onChange={(event) => setName(event.target.value)}
-              className="mt-2 flex min-h-11 w-full rounded-xl border border-border bg-card px-4 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="mt-2 flex min-h-11 w-full rounded-lg border border-border bg-background px-3.5 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
             />
           </label>
           <label className="block">
-            <span className="text-sm font-medium text-foreground">Email</span>
+            <span className="text-[13px] font-medium tracking-[-0.01em] text-foreground">
+              Email
+            </span>
             <input
               type="email"
               name="email"
@@ -73,18 +72,18 @@ const Course = () => {
               required
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="mt-2 flex min-h-11 w-full rounded-xl border border-border bg-card px-4 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="mt-2 flex min-h-11 w-full rounded-lg border border-border bg-background px-3.5 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
             />
           </label>
           <button
             type="submit"
-            className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex min-h-11 items-center rounded-full bg-foreground px-5 text-[13px] font-medium tracking-[-0.01em] text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Open waitlist email
           </button>
         </form>
         {opened ? (
-          <p className="mt-4 text-sm text-muted-foreground">
+          <p className="mt-4 text-[13px] text-muted-foreground">
             If a compose window did not open, email {site.email} directly.
           </p>
         ) : null}

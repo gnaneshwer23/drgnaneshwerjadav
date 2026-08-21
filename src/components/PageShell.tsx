@@ -12,7 +12,7 @@ const PageShell = ({ children, className }: PageShellProps) => {
   return (
     <div
       className={cn(
-        "container mx-auto flex max-w-6xl flex-1 flex-col px-4 pb-24 pt-28 sm:px-6 sm:pt-32",
+        "site-wrap flex flex-1 flex-col pb-24 pt-28 sm:pt-32",
         className,
       )}
     >
@@ -22,10 +22,7 @@ const PageShell = ({ children, className }: PageShellProps) => {
 };
 
 export const Eyebrow = ({ children }: { children: ReactNode }) => (
-  <p className="eyebrow">
-    <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" aria-hidden="true" />
-    {children}
-  </p>
+  <p className="eyebrow uppercase">{children}</p>
 );
 
 export const PageTitle = ({
@@ -43,7 +40,7 @@ export const PageLead = ({
   children: ReactNode;
   tone?: "navy" | "paper";
 }) => (
-  <p className="mt-4 max-w-2xl text-base leading-[1.75] text-muted-foreground">
+  <p className="mt-5 max-w-xl text-[15px] leading-[1.7] text-muted-foreground text-pretty">
     {children}
   </p>
 );
@@ -62,7 +59,7 @@ export const PrimaryCta = ({
   disabled?: boolean;
 }) => {
   const className =
-    "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40";
+    "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-foreground px-5 py-2.5 text-[13px] font-medium tracking-[-0.01em] text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40";
 
   const inner = (
     <>
@@ -113,7 +110,7 @@ export const SecondaryCta = ({
   disabled?: boolean;
 }) => {
   const className =
-    "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+    "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border border-border bg-transparent px-5 py-2.5 text-[13px] font-medium tracking-[-0.01em] text-foreground transition-colors hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
   const inner = (
     <>

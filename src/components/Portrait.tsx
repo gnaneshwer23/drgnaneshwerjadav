@@ -25,9 +25,11 @@ export default function Portrait({
       <div
         className={cn(
           "portrait-frame relative overflow-hidden rounded-full",
-          tone === "ink" ? "bg-transparent" : "bg-white",
+          tone === "ink"
+            ? "bg-transparent ring-1 ring-white/10"
+            : "bg-white",
           size === "hero"
-            ? "mx-auto aspect-square w-full max-w-[20rem] sm:max-w-[22rem] lg:max-w-[26rem]"
+            ? "mx-auto aspect-square w-full max-w-[16.5rem] sm:max-w-[19rem] lg:max-w-[22rem]"
             : "aspect-square w-40 sm:w-48",
         )}
       >

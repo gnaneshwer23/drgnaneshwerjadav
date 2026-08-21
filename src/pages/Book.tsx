@@ -50,19 +50,19 @@ const Book = () => {
         </PageLead>
         <OfferingsNav />
 
-        <p className="mt-8 font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
+        <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
           {consult.minutes}-minute strategy session
         </p>
-        <p className="mt-2 font-heading text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+        <p className="mt-3 font-heading text-[clamp(2.25rem,5vw,3.25rem)] font-medium tracking-[-0.04em] text-foreground">
           {consult.priceLabel}
         </p>
 
-        <ol className="mt-12 space-y-0 divide-y divide-border border-y border-border">
+        <ol className="mt-12 divide-y divide-border border-y border-border">
           <li className="py-8">
-            <p className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
               01 · Pick a slot
             </p>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
               Open the Google Appointment Schedule and choose a time. That
               holds the slot on both calendars.
             </p>
@@ -73,7 +73,7 @@ const Book = () => {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => mark("slot")}
-                  className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="inline-flex min-h-11 items-center rounded-full bg-foreground px-5 text-[13px] font-medium tracking-[-0.01em] text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   Pick a slot
                 </a>
@@ -99,10 +99,10 @@ const Book = () => {
           </li>
 
           <li className={`py-8 ${slotHeld ? "" : "opacity-50"}`}>
-            <p className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
               02 · Then pay
             </p>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
               Pay {consult.priceLabel} on the Stripe Payment Link. Do not pay
               first. The consult is confirmed only after payment.
             </p>
@@ -113,7 +113,7 @@ const Book = () => {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => mark("paid")}
-                  className="inline-flex min-h-11 items-center rounded-full border border-border bg-card px-6 text-sm font-medium text-foreground hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="inline-flex min-h-11 items-center rounded-full border border-border px-5 text-[13px] font-medium tracking-[-0.01em] text-foreground hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   Pay {consult.priceLabel}
                 </a>
@@ -133,10 +133,10 @@ const Book = () => {
           </li>
 
           <li className={`py-8 ${paid ? "" : "opacity-50"}`}>
-            <p className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
               03 · Arrive with a real problem
             </p>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
               Bring the product, team, or decision you are stuck on. You leave
               with a short DrJadav take and next moves.
             </p>
@@ -163,10 +163,10 @@ const Book = () => {
         ) : null}
 
         <section className="mt-16 max-w-2xl border-t border-border pt-12">
-          <h2 className="font-heading text-2xl font-bold tracking-tight text-foreground">
+          <h2 className="font-heading text-xl font-medium tracking-[-0.03em] text-foreground">
             What you get
           </h2>
-          <ul className="mt-6 space-y-3 text-base leading-relaxed text-muted-foreground">
+          <ul className="mt-6 space-y-3 text-[15px] leading-relaxed text-muted-foreground">
             <li>
               A short read of the situation — what {site.brand} thinks, in
               plain language.
