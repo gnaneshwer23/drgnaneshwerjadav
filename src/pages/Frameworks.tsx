@@ -21,7 +21,7 @@ const Frameworks = () => {
           <p className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
             First SKU
           </p>
-          <h2 className="font-serif mt-3 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+          <h2 className="font-heading mt-3 text-[clamp(2rem,5vw,3.5rem)] font-medium tracking-tight text-foreground">
             {first.title}
           </h2>
           <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">

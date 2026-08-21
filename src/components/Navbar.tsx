@@ -5,93 +5,61 @@ import { Link, useLocation } from "react-router-dom";
 import { site } from "@/data/site";
 import ChatAvatar from "@/components/ChatAvatar";
 
-const practice = [
-  { label: "Projects", to: "/projects", match: ["/projects", "/work"] },
-  { label: "Experience", to: "/experience", match: ["/experience"] },
-  { label: "Education", to: "/education", match: ["/education"] },
-  { label: "Skills", to: "/skills", match: ["/skills"] },
-] as const;
-
-const offerings = [
+const primary = [
   { label: "Books", to: "/books", match: ["/books"] },
   { label: "Course", to: "/course", match: ["/course"] },
   { label: "Framework", to: "/frameworks", match: ["/frameworks"] },
   { label: "Consultation", to: "/book", match: ["/book", "/consultation"] },
 ] as const;
 
-const pages = [...practice, ...offerings];
-
-const linkClass = (active = false) =>
-  `inline-flex min-h-11 items-center text-[11px] font-medium uppercase tracking-[0.12em] transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-    active ? "text-foreground" : "text-muted-foreground"
-  }`;
+const overflow = [
+  { label: "Projects", to: "/projects" },
+  { label: "Experience", to: "/experience" },
+  { label: "Education", to: "/education" },
+  { label: "Skills", to: "/skills" },
+] as const;
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
 
   const isActive = (match: readonly string[]) =>
-    match.some((prefix) =>
-      prefix === "/work" || prefix === "/projects"
-        ? location.pathname === prefix ||
-          location.pathname.startsWith(`${prefix}/`)
-        : location.pathname === prefix ||
-          location.pathname.startsWith(`${prefix}/`),
+    match.some(
+      (prefix) =>
+        location.pathname === prefix ||
+        location.pathname.startsWith(`${prefix}/`),
     );
 
   return (
     <motion.nav
-      initial={{ y: -8, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.28 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled || mobileOpen
-          ? "border-b border-border bg-background/85 backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-4"
     >
-      <div className="container mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-0 px-4 py-1 sm:px-6 lg:min-h-16">
+      <div
+        className="pointer-events-auto flex w-full max-w-5xl items-center gap-3 rounded-full border border-white/10 bg-neutral-950/80 px-2 py-1.5 text-white shadow-[0_18px_50px_-28px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+      >
         <Link
           to="/"
-          className="flex min-h-11 min-w-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="nav-link flex min-h-11 min-w-0 items-center px-3 text-[12px] font-medium tracking-[0.08em] sm:text-[13px]"
           aria-label={`${site.navName} home`}
         >
-          <span className="truncate font-heading text-[13px] font-semibold uppercase tracking-[0.14em] text-foreground sm:text-sm">
-            {site.navName}
-          </span>
+          <span className="truncate uppercase">{site.navName}</span>
         </Link>
 
-        <div className="hidden min-w-0 flex-1 flex-wrap items-center justify-center gap-x-4 xl:gap-x-5 lg:flex">
-          {practice.map((item) => (
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-7 md:flex">
+          {primary.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className={linkClass(isActive(item.match))}
-              aria-current={isActive(item.match) ? "page" : undefined}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <span
-            className="hidden h-3 w-px bg-border xl:inline-block"
-            aria-hidden="true"
-          />
-          {offerings.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={linkClass(isActive(item.match))}
+              className={`nav-link inline-flex min-h-11 items-center text-[13px] transition-opacity ${
+                isActive(item.match) ? "opacity-100" : "opacity-60 hover:opacity-100"
+              }`}
               aria-current={isActive(item.match) ? "page" : undefined}
             >
               {item.label}
@@ -99,37 +67,21 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="ml-auto hidden items-center gap-3 lg:flex">
-          <Link
-            to="/chat"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card pl-1.5 pr-3 text-[11px] font-medium uppercase tracking-[0.12em] text-foreground hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            aria-current={location.pathname === "/chat" ? "page" : undefined}
-          >
-            <ChatAvatar size="sm" />
-            DrJadav
-          </Link>
-          <Link
-            to="/contact"
-            className={linkClass(location.pathname === "/contact")}
-          >
-            Contact
-          </Link>
-          <a
-            href={site.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className={linkClass()}
-          >
-            LinkedIn
-          </a>
-        </div>
+        <Link
+          to="/chat"
+          className="ml-auto hidden min-h-11 items-center gap-2 rounded-full bg-white/10 pl-1 pr-3 text-[13px] md:inline-flex"
+          aria-current={location.pathname === "/chat" ? "page" : undefined}
+        >
+          <ChatAvatar size="sm" />
+          DrJadav
+        </Link>
 
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          className="ml-auto flex min-h-11 min-w-11 items-center justify-center rounded-full text-foreground lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="ml-auto flex min-h-11 min-w-11 items-center justify-center rounded-full md:hidden"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -138,42 +90,40 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileOpen ? (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-border bg-background lg:hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="pointer-events-auto absolute left-3 right-3 top-[4.5rem] overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 text-white md:hidden"
           >
-            <div className="container mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6">
-              {pages.map((item) => (
+            <div className="flex flex-col px-4 py-3">
+              {primary.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="flex min-h-11 items-center text-sm font-medium text-foreground"
+                  className="flex min-h-11 items-center text-base"
                 >
                   {item.label}
                 </Link>
               ))}
               <Link
                 to="/chat"
-                className="flex min-h-11 items-center gap-2 text-sm font-medium text-foreground"
+                className="flex min-h-11 items-center gap-2 text-base"
               >
                 <ChatAvatar size="sm" />
                 DrJadav
               </Link>
-              <Link
-                to="/contact"
-                className="flex min-h-11 items-center text-sm font-medium text-foreground"
-              >
-                Contact
-              </Link>
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="flex min-h-11 items-center text-sm font-medium text-foreground"
-              >
-                LinkedIn
-              </a>
+              <p className="mt-3 border-t border-white/10 pt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
+                Ask DrJadav, or open
+              </p>
+              {overflow.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="flex min-h-11 items-center text-sm text-white/55"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </motion.div>
         ) : null}

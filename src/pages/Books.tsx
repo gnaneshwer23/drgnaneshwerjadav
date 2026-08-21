@@ -17,7 +17,7 @@ const Books = () => {
       <ol className="mt-16 divide-y divide-border border-y border-border">
         {storefront.books.map((book) => (
           <li key={book.slug} className="flex flex-col py-10">
-            <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+            <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-medium tracking-tight text-foreground">
               {book.title}
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">{book.subtitle}</p>

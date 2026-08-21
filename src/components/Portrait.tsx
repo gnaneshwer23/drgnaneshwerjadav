@@ -12,14 +12,20 @@ import { cn } from "@/lib/utils";
 type PortraitProps = {
   className?: string;
   size?: "hero" | "about";
+  tone?: "paper" | "ink";
 };
 
-export default function Portrait({ className, size = "hero" }: PortraitProps) {
+export default function Portrait({
+  className,
+  size = "hero",
+  tone = "paper",
+}: PortraitProps) {
   return (
     <figure className={cn("mx-auto w-full", className)}>
       <div
         className={cn(
-          "portrait-frame relative overflow-hidden rounded-full bg-white",
+          "portrait-frame relative overflow-hidden rounded-full",
+          tone === "ink" ? "bg-transparent" : "bg-white",
           size === "hero"
             ? "mx-auto aspect-square w-full max-w-[20rem] sm:max-w-[22rem] lg:max-w-[26rem]"
             : "aspect-square w-40 sm:w-48",

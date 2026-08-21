@@ -12,7 +12,7 @@ const PageShell = ({ children, className }: PageShellProps) => {
   return (
     <div
       className={cn(
-        "container mx-auto flex max-w-6xl flex-1 flex-col px-4 pb-24 pt-24 sm:px-6 sm:pt-28",
+        "container mx-auto flex max-w-6xl flex-1 flex-col px-4 pb-24 pt-28 sm:px-6 sm:pt-32",
         className,
       )}
     >

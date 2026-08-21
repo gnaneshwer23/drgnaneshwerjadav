@@ -14,7 +14,7 @@ const Chat = () => {
         path="/chat"
       />
       <Navbar />
-      <div className="container mx-auto flex max-w-3xl flex-1 flex-col px-4 pb-16 pt-24 sm:px-6 sm:pt-28">
+      <div className="container mx-auto flex max-w-3xl flex-1 flex-col px-4 pb-16 pt-28 sm:px-6 sm:pt-32">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-card">
           <div className="pointer-events-none absolute inset-0">
             <img
