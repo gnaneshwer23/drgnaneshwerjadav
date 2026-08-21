@@ -247,7 +247,7 @@ export function bookBySlug(slug: string): BookOffer | undefined {
 export function commerceKnowledge(data: Storefront = storefront): string {
   const consultBits = [
     `Consult: ${data.consult.minutes}-minute DrJadav strategy session, ${data.consult.priceLabel}.`,
-    "Visitors book on Google Calendar, then complete payment via Stripe. Site path: /book.",
+    "Visitors pick a slot on Google Calendar, then pay via Stripe — in that order. Site path: /book (alias /consultation).",
     data.consult.hasCalendar
       ? `Google Calendar appointment URL: ${data.consult.calendarUrl}`
       : "Google Calendar URL is not published yet. Send people to /book and email gnaneshwer.jadav@gmail.com.",
@@ -277,6 +277,7 @@ Books (Gumroad only when a URL is listed; otherwise coming next week):
 ${bookLines.join("\n")}
 Frameworks:
 ${frameworkLines.join("\n")}
-Site paths: /book (consult), /books (shelf), /frameworks (stub), /about (timeline).
+Courses: coming soon. No LMS, curriculum, modules, or price yet. Waitlist at /course (alias /courses). Do not invent a syllabus.
+Site paths: /book (consult; alias /consultation), /books (shelf), /course (waitlist), /frameworks (Decide Then Build first SKU), /about (timeline).
 `.trim();
 }

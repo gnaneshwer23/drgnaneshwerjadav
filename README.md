@@ -47,4 +47,4 @@ Empty buy URLs show “Goes live next week”. The chatbot will not invent Amazo
 
 Linked to Vercel project `drgnsneshwerjadav`. Pushes to `main` create deployments.
 
-Homepage is the personal portfolio. Chat is at [`/chat`](https://gnaneshwerjadav.com/chat) and as a floating widget. Shop URLs (`/book`, `/books`, `/about`, `/frameworks`) remain available.
+Homepage is the personal portfolio. Chat is at [`/chat`](https://gnaneshwerjadav.com/chat) and as a floating widget. Shop URLs: `/books`, `/course` (alias `/courses`), `/frameworks`, `/book` (alias `/consultation`). `/about` remains available.

@@ -2,12 +2,13 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 const TOKEN =
-  /https:\/\/[^\s)]+|\/(?:book|books|about|frameworks|chat)(?:#[\w-]*)?/g;
+  /https:\/\/[^\s)]+|\/(?:book|books|about|frameworks|chat|course|courses|consultation)(?:#[\w-]*)?/g;
 
 const ALLOWED_HOSTS = new Set([
   "gumroad.com",
   "www.gumroad.com",
   "calendar.google.com",
+  "calendar.app.google.com",
   "buy.stripe.com",
   "checkout.stripe.com",
   "gnaneshwerjadav.com",
@@ -44,7 +45,7 @@ export function ChatLinkedText({ text }: { text: string }) {
         <Link
           key={`i-${index}`}
           to={href}
-          className="font-medium text-saffron underline-offset-2 hover:underline"
+          className="font-medium text-foreground underline-offset-2 hover:underline"
         >
           {href}
         </Link>,
@@ -56,7 +57,7 @@ export function ChatLinkedText({ text }: { text: string }) {
           href={href}
           target="_blank"
           rel="noreferrer"
-          className="font-medium text-saffron underline-offset-2 hover:underline"
+          className="font-medium text-foreground underline-offset-2 hover:underline"
         >
           {href}
         </a>,
@@ -75,6 +76,9 @@ export function ChatLinkedText({ text }: { text: string }) {
   return <>{nodes}</>;
 }
 
+const handoffClass =
+  "inline-flex min-h-9 items-center rounded-full border border-border px-4 py-1.5 text-xs font-semibold text-foreground hover:border-foreground/30";
+
 export function ChatHandoff() {
   return (
     <div className="mt-3 flex flex-wrap gap-2">
@@ -84,11 +88,14 @@ export function ChatHandoff() {
       >
         Book a consult
       </Link>
-      <Link
-        to="/books"
-        className="inline-flex min-h-9 items-center rounded-full border border-border px-4 py-1.5 text-xs font-semibold text-foreground hover:border-saffron/50 hover:text-saffron"
-      >
+      <Link to="/books" className={handoffClass}>
         Shop books
+      </Link>
+      <Link to="/course" className={handoffClass}>
+        Course waitlist
+      </Link>
+      <Link to="/frameworks" className={handoffClass}>
+        Frameworks
       </Link>
     </div>
   );

@@ -11,41 +11,24 @@ import PageShell, {
   SecondaryCta,
 } from "@/components/PageShell";
 
-const steps = [
-  {
-    number: "01",
-    title: "Book on Google Calendar",
-    body: "Pick a slot on the appointment schedule. That holds the time on both calendars.",
-  },
-  {
-    number: "02",
-    title: "Complete payment via Stripe",
-    body: "Pay the published fee on the Stripe Payment Link. The session is confirmed when both steps are done.",
-  },
-  {
-    number: "03",
-    title: "Arrive with a real problem",
-    body: "Bring the product, team, or decision you are stuck on. You leave with a short DrJadav take and next moves — not a generic teardown.",
-  },
-] as const;
-
 const Book = () => {
   const { consult } = storefront;
 
   return (
-    <StorefrontLayout tone="paper">
+    <StorefrontLayout>
       <PageShell>
-        <Eyebrow>Consult</Eyebrow>
+        <Eyebrow>Consultation</Eyebrow>
         <PageTitle>
-          {consult.minutes} minutes with {site.brand}.
+          {consult.minutes} minutes with {site.brand}. {consult.priceLabel}.
         </PageTitle>
         <PageLead>
           A paid strategy session for founders and product leaders who need a
-          decision, not a pep talk. Book on Google Calendar, then complete
-          payment via Stripe.
+          decision, not a pep talk. Pick a slot on Google Calendar, then pay
+          via Stripe. The session is confirmed when both steps are done — in
+          that order.
         </PageLead>
 
-        <p className="font-display-italic mt-8 text-4xl text-saffron md:text-5xl">
+        <p className="mt-8 font-heading text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
           {consult.priceLabel}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -55,7 +38,7 @@ const Book = () => {
         <div className="mt-10 flex flex-wrap gap-3">
           {consult.hasCalendar ? (
             <PrimaryCta href={consult.calendarUrl ?? undefined} external>
-              Book on Google Calendar
+              01 · Pick a slot
               <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </PrimaryCta>
           ) : (
@@ -63,36 +46,57 @@ const Book = () => {
           )}
           {consult.hasStripe ? (
             <SecondaryCta href={consult.stripeUrl ?? undefined} external>
-              Pay via Stripe
+              02 · Then pay {consult.priceLabel}
               <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </SecondaryCta>
           ) : (
-            <SecondaryCta disabled>
-              Stripe link coming
-            </SecondaryCta>
+            <SecondaryCta disabled>Stripe link coming</SecondaryCta>
           )}
         </div>
 
-        {!consult.hasCalendar && !consult.hasStripe && (
+        {!consult.hasCalendar && !consult.hasStripe ? (
           <p className="mt-4 max-w-xl text-sm text-muted-foreground">
             Scheduling and payment links are not published yet. Email{" "}
-            <a className="text-saffron hover:underline" href={`mailto:${site.email}`}>
+            <a
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+              href={`mailto:${site.email}`}
+            >
               {site.email}
             </a>{" "}
             in the meantime.
           </p>
+        ) : (
+          <p className="mt-4 max-w-xl text-sm text-muted-foreground">
+            Do not pay first. Hold a time, then complete the Stripe Payment
+            Link.
+          </p>
         )}
 
-        <ol className="mt-16 grid gap-4 md:grid-cols-3">
-          {steps.map((step) => (
-            <li
-              key={step.number}
-              className="rounded-[1.5rem] border border-border bg-card p-6 shadow-card"
-            >
-              <p className="font-display-italic text-2xl text-saffron">
-                {step.number}
-              </p>
-              <h2 className="font-heading mt-4 text-xl font-medium text-foreground">
+        <ol className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              number: "01",
+              title: "Pick a slot",
+              body: "Open the Google Appointment Schedule and choose a time. That holds the slot on both calendars.",
+            },
+            {
+              number: "02",
+              title: "Then pay",
+              body: `Pay ${consult.priceLabel} on the Stripe Payment Link. The consult is confirmed only after payment.`,
+            },
+            {
+              number: "03",
+              title: "Arrive with a real problem",
+              body: "Bring the product, team, or decision you are stuck on. You leave with a short DrJadav take and next moves.",
+            },
+          ].map((step) => (
+            <li key={step.number}>
+              <div className="flex aspect-[4/3] items-end rounded-2xl bg-secondary p-5">
+                <span className="font-heading text-5xl font-semibold tabular-nums text-foreground/15 sm:text-6xl">
+                  {step.number}
+                </span>
+              </div>
+              <h2 className="font-heading mt-5 text-xl font-semibold tracking-tight text-foreground">
                 {step.title}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -103,19 +107,38 @@ const Book = () => {
         </ol>
 
         <section className="mt-16 max-w-2xl border-t border-border pt-12">
-          <h2 className="font-heading text-2xl font-medium text-foreground">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground">
             What you get
           </h2>
           <ul className="mt-6 space-y-3 text-base leading-relaxed text-muted-foreground">
-            <li>A short read of the situation — what {site.brand} thinks, in plain language.</li>
-            <li>A decision frame from the books (Decide Then Build, Build Before You Scale) applied to your case, not a manuscript dump.</li>
-            <li>Clear next moves, and whether a longer engagement is even worth it.</li>
+            <li>
+              A short read of the situation — what {site.brand} thinks, in
+              plain language.
+            </li>
+            <li>
+              A decision frame from the books (Decide Then Build, Build Before
+              You Scale) applied to your case, not a manuscript dump.
+            </li>
+            <li>
+              Clear next moves, and whether a longer engagement is even worth
+              it.
+            </li>
           </ul>
           <p className="mt-8 text-sm text-muted-foreground">
             This is product and delivery counsel, not medical or legal advice.
-            Prefer to start with a book?{" "}
-            <Link to="/books" className="text-saffron hover:underline">
+            Prefer to start with a book or a waitlist?{" "}
+            <Link
+              to="/books"
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+            >
               Shop the shelf
+            </Link>
+            {" · "}
+            <Link
+              to="/course"
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+            >
+              Course waitlist
             </Link>
             .
           </p>

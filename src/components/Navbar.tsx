@@ -4,11 +4,14 @@ import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { site } from "@/data/site";
 
-const homeLinks = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
+const storefrontLinks = [
+  { label: "Books", to: "/books", match: ["/books"] },
+  { label: "Course", to: "/course", match: ["/course", "/courses"] },
+  { label: "Frameworks", to: "/frameworks", match: ["/frameworks"] },
+  { label: "Chat", to: "/chat", match: ["/chat"] },
+] as const;
+
+const consultMatch = ["/book", "/consultation"];
 
 const linkClass = (active = false) =>
   `inline-flex min-h-11 items-center text-sm font-medium transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
@@ -20,6 +23,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const onHome = location.pathname === "/";
+  const consultActive = consultMatch.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 16);
@@ -54,36 +58,28 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
-          {homeLinks.map((link) =>
-            onHome ? (
-              <a key={link.label} href={link.href} className={linkClass()}>
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.label}
-                to={`/${link.href}`}
-                className={linkClass()}
-              >
-                {link.label}
-              </Link>
-            ),
+          {onHome ? (
+            <a href="#work" className={linkClass()}>
+              Work
+            </a>
+          ) : (
+            <Link to="/#work" className={linkClass()}>
+              Work
+            </Link>
           )}
-          <Link
-            to="/books"
-            className={linkClass(location.pathname === "/books")}
-          >
-            Books
-          </Link>
-          <Link
-            to="/chat"
-            className={linkClass(location.pathname === "/chat")}
-          >
-            Chat
-          </Link>
+          {storefrontLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={linkClass(link.match.includes(location.pathname))}
+            >
+              {link.label}
+            </Link>
+          ))}
           <Link
             to="/book"
             className="inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-current={consultActive ? "page" : undefined}
           >
             Book
           </Link>
@@ -109,30 +105,23 @@ const Navbar = () => {
             className="overflow-hidden border-b border-border bg-background lg:hidden"
           >
             <div className="container mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6">
-              {homeLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={onHome ? link.href : `/${link.href}`}
+              <a
+                href={onHome ? "#work" : "/#work"}
+                onClick={() => setMobileOpen(false)}
+                className="flex min-h-11 items-center text-sm font-medium text-foreground"
+              >
+                Work
+              </a>
+              {storefrontLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
                   onClick={() => setMobileOpen(false)}
                   className="flex min-h-11 items-center text-sm font-medium text-foreground"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <Link
-                to="/books"
-                onClick={() => setMobileOpen(false)}
-                className="flex min-h-11 items-center text-sm font-medium text-foreground"
-              >
-                Books
-              </Link>
-              <Link
-                to="/chat"
-                onClick={() => setMobileOpen(false)}
-                className="flex min-h-11 items-center text-sm font-medium text-foreground"
-              >
-                Chat
-              </Link>
               <Link
                 to="/book"
                 onClick={() => setMobileOpen(false)}

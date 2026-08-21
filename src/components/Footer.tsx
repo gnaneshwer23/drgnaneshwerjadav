@@ -18,9 +18,11 @@ const Footer = () => {
           aria-label="Footer"
         >
           {[
-            { label: "Chat", to: "/chat" },
             { label: "Books", to: "/books" },
+            { label: "Course", to: "/course" },
+            { label: "Frameworks", to: "/frameworks" },
             { label: "Book", to: "/book" },
+            { label: "Chat", to: "/chat" },
           ].map((item) => (
             <Link
               key={item.to}
