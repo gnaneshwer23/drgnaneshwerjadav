@@ -35,8 +35,8 @@ const About = () => {
           <p>{resume.about}</p>
           <p>
             Pharmacy, medical biotechnology, immunology, then healthcare MBA —
-            then 0→1 product work. Education, roles, and the three live
-            products each have their own page.
+            then 0→1 product work. Education, roles, and the live projects
+            each have their own page.
           </p>
         </div>
         <div className="mt-10 flex flex-wrap gap-3">

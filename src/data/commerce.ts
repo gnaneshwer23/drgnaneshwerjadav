@@ -405,6 +405,6 @@ ${bookLines.join("\n")}
 Frameworks:
 ${frameworkLines.join("\n")}
 Courses: coming soon. Intended terrain (not a syllabus): pharmaceutical sciences, medical biotechnology, immunology, healthcare, life sciences, technology. No LMS, modules, start date, or price. Waitlist at /course (alias /courses).
-Site paths: /projects (Fluent Institute, DeliverX, Aksh Health; /work redirects here), /experience (roles + nested products), /education, /skills, /book (consult; alias /consultation), /books, /course (waitlist), /frameworks, /about, /cv, /chat (DrJadav desk). Let’s talk → /book.
+Site paths: /projects (live: Immune Super Intelligence, Aksh Health, DeliverX; Fluent Institute also live; /work redirects here), /experience (roles + nested products), /education, /skills, /book (consult; alias /consultation), /books, /course (waitlist), /frameworks, /about, /cv, /chat (DrJadav desk). Let’s talk → /book.
 `.trim();
 }

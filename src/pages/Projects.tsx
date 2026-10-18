@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import StorefrontLayout from "@/components/StorefrontLayout";
 import PageShell, { Eyebrow, PageLead, PageTitle } from "@/components/PageShell";
 import Seo from "@/components/Seo";
-import { flagships, library } from "@/data/work";
+import { flagships, library, liveProjects } from "@/data/work";
 
 const statusLabel: Record<string, string> = {
   SHIPPED: "Live",
@@ -17,19 +17,70 @@ const Projects = () => {
     <StorefrontLayout>
       <Seo
         title="Projects"
-        description="Fluent Institute, DeliverX, and Aksh Health — the three live products. Other work sits in a quieter library."
+        description="Live projects: Immune Super Intelligence, Aksh Health, and DeliverX. Fluent Institute and other work sit below."
         path="/projects"
       />
       <PageShell>
         <Eyebrow>Projects</Eyebrow>
-        <PageTitle>Three live products. The rest is a library.</PageTitle>
+        <PageTitle>Live projects. The rest is a library.</PageTitle>
         <PageLead>
-          Fluent Institute, DeliverX, and Aksh Health — each with a live link.
-          Everything else is nested under roles on Experience, listed quietly
-          below.
+          Immune Super Intelligence, Aksh Health, and DeliverX — each with a
+          live link. Fluent Institute is also live. Everything else is nested
+          under roles on Experience, listed quietly below.
         </PageLead>
 
-        <ol className="mt-12">
+        <section className="mt-12 border-t border-border pt-10" aria-labelledby="live-projects">
+          <p
+            id="live-projects"
+            className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground"
+          >
+            Live projects
+          </p>
+          <ol className="mt-6">
+            {liveProjects.map((item, i) => (
+              <li
+                key={item.href}
+                className="flex flex-col gap-3 border-t border-border py-6 last:border-b sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+              >
+                <div className="min-w-0">
+                  <p className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h2 className="font-serif mt-2 text-[clamp(1.5rem,3vw,2.25rem)] font-medium italic tracking-tight text-foreground">
+                    {item.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {item.slug ? "Live product" : "Live project"}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-foreground px-6 text-sm font-medium text-background"
+                  >
+                    Visit live site
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                  {item.slug ? (
+                    <Link
+                      to={`/work/${item.slug}`}
+                      className="inline-flex min-h-11 items-center rounded-full border border-border px-6 text-sm font-medium"
+                    >
+                      Case study
+                    </Link>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <p className="mt-16 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+          Selected work
+        </p>
+        <ol className="mt-6">
           {flagships.map((item, i) => (
             <li
               key={item.slug}
@@ -73,7 +124,7 @@ const Projects = () => {
             Library
           </p>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Nested in roles — not competing with the three live products.
+            Nested in roles — not competing with the live projects.
           </p>
           <ul className="mt-8 divide-y divide-border border-y border-border">
             {library.map((item) => (

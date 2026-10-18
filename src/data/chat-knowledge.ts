@@ -2,7 +2,7 @@ import { education } from "./education";
 import { experience } from "./experience";
 import { resume } from "./resume";
 import { skillsPageKnowledge } from "./skills";
-import { flagships, library } from "./work";
+import { flagships, library, liveProjects } from "./work";
 
 const statusLabel: Record<string, string> = {
   SHIPPED: "live",
@@ -51,7 +51,9 @@ SITE PAGES (use these paths in answers — one matching link, not a dump of all 
 - Consultation: /book  (alias /consultation)
 
 PROJECTS (/projects)
-Three flagships dominate. Give the live URL when asked about a named flagship. Do not quote $8.5M, 50 engineers, 99.9% uptime, or 22–75% gains as results. 60+ MVPs and 22–27% figures exist only as claimed/contextual (avatar KB §35) — never as home headlines.
+Live product URLs (give these when asked about a named live project):
+${liveProjects.map((item) => `- ${item.title} — live project — ${item.href}`).join("\n")}
+Three flagships also have case studies. Give the live URL when asked about a named flagship. Do not quote $8.5M, 50 engineers, 99.9% uptime, or 22–75% gains as results. 60+ MVPs and 22–27% figures exist only as claimed/contextual (avatar KB §35) — never as home headlines.
 ${flagships.map(flagshipLine).join("\n")}
 
 Quieter library (not competing with flagships; nested under roles on /experience):

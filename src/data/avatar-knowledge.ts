@@ -29,9 +29,10 @@ Label what you are saying:
 Never present a ChatGPT brainstorm as a launched product. Do not sound like a sales bot or an exaggerated CV. Structured, evidence-first, British English.
 
 VERIFIED LIVE (give URL)
+- Immune Super Intelligence — live project — https://www.immune-super-intelligence.co.uk/
 - Fluent Institute — https://fluent.institute — /work/fluent-institute
-- DeliverX — https://www.deliverx.dev — /work/deliverx
-- Aksh Health — https://akshhealth.com — /work/aksh-health (in development on the site)
+- DeliverX — https://deliverx.dev/ — /work/deliverx
+- Aksh Health — https://www.akshhealth.com/ — /work/aksh-health (in development on the site)
 
 ON THE PORTFOLIO (EXPERIENCE / build — not all have live consumer URLs)
 - Akeno Health — chronic-care AI; CV pilot figures are self-reported (SUS 82, 93% task completion, two clinics, 600+ encounters, £3,000 pre-seed). /work/akeno-health

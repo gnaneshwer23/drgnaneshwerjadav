@@ -43,7 +43,7 @@ export const experience: ExperienceRole[] = [
       { slug: "methodiq", title: "MethodIQ" },
       { slug: "delivery-intelligence", title: "Delivery Intelligence" },
     ],
-    note: "Fluent Institute, DeliverX, and Aksh Health are the featured live products — see Work.",
+    note: "Immune Super Intelligence, DeliverX, Aksh Health, and Fluent Institute are listed as live projects — see Projects.",
   },
   {
     organisation: "AMDARI",

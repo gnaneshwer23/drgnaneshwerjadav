@@ -20,6 +20,8 @@ const ALLOWED_HOSTS = new Set([
   "www.deliverx.dev",
   "akshhealth.com",
   "www.akshhealth.com",
+  "immune-super-intelligence.co.uk",
+  "www.immune-super-intelligence.co.uk",
   "linkedin.com",
   "www.linkedin.com",
   "github.com",

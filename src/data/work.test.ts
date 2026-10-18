@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { FLAGSHIP_SLUGS, flagships, work, workBySlug } from "@/data/work";
+import {
+  FLAGSHIP_SLUGS,
+  flagships,
+  liveProjects,
+  work,
+  workBySlug,
+} from "@/data/work";
 import { omittedClaims, proofStrip } from "@/data/evidence";
 import { experience } from "@/data/experience";
 import { education } from "@/data/education";
@@ -16,8 +22,13 @@ describe("work inventory", () => {
     ]);
     expect(flagships.map((item) => item.href)).toEqual([
       "https://fluent.institute",
-      "https://www.deliverx.dev",
-      "https://akshhealth.com",
+      "https://deliverx.dev/",
+      "https://www.akshhealth.com/",
+    ]);
+    expect(liveProjects.map((item) => item.href)).toEqual([
+      "https://www.immune-super-intelligence.co.uk/",
+      "https://www.akshhealth.com/",
+      "https://deliverx.dev/",
     ]);
   });
 
@@ -70,8 +81,10 @@ describe("DrJadav site digest", () => {
       expect(digest).toContain(path);
     }
     expect(digest).toContain("https://fluent.institute");
-    expect(digest).toContain("https://www.deliverx.dev");
-    expect(digest).toContain("https://akshhealth.com");
+    expect(digest).toContain("https://deliverx.dev/");
+    expect(digest).toContain("https://www.akshhealth.com/");
+    expect(digest).toContain("https://www.immune-super-intelligence.co.uk/");
+    expect(digest).toContain("Immune Super Intelligence");
     expect(digest).toContain("PRODUCT CONCEPTS");
     expect(digest).toContain("Product management");
     expect(digest).toContain("Node.js + docx");

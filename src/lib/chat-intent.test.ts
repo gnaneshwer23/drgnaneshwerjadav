@@ -33,15 +33,17 @@ describe("inferChatActions", () => {
   it("offers live project URLs for named flagships", () => {
     const chips = inferChatActions({
       userMessages: [
-        "What are the live projects — Fluent Institute, DeliverX, and Aksh Health?",
+        "What are the live projects — Immune Super Intelligence, Aksh Health, and DeliverX?",
       ],
       lastAssistant:
-        "Fluent Institute is https://fluent.institute. DeliverX is https://www.deliverx.dev. Aksh Health is https://akshhealth.com.",
+        "Immune Super Intelligence is https://www.immune-super-intelligence.co.uk/. DeliverX is https://deliverx.dev/. Aksh Health is https://www.akshhealth.com/.",
     });
-    expect(chips.some((chip) => chip.href === "https://fluent.institute")).toBe(
-      true,
-    );
-    expect(chips.some((chip) => chip.href === "https://www.deliverx.dev")).toBe(
+    expect(
+      chips.some(
+        (chip) => chip.href === "https://www.immune-super-intelligence.co.uk/",
+      ),
+    ).toBe(true);
+    expect(chips.some((chip) => chip.href === "https://deliverx.dev/")).toBe(
       true,
     );
     expect(chips.some((chip) => chip.to === "/projects")).toBe(true);

@@ -1,4 +1,5 @@
 import { BOOK_CATALOG, storefront } from "@/data/commerce";
+import { liveProjects } from "@/data/work";
 
 export type ChatChip = {
   kind:
@@ -25,12 +26,15 @@ const READ =
 const COURSE = /\b(course|waitlist|cohort|lms|syllabus)\b/i;
 const FRAMEWORK = /\b(framework|one-pager|ppt|deck|operating artefact)\b/i;
 const PROJECTS =
-  /\b(projects?|flagship|fluent|deliverx|aksh|vigil-?modi|akeno|elevare|library)\b/i;
+  /\b(projects?|flagship|fluent|deliverx|aksh|immune|vigil-?modi|akeno|elevare|library)\b/i;
 const EXPERIENCE =
   /\b(experience|roles?|linkedin order|career|employers?|worked)\b/i;
 const EDUCATION =
   /\b(education|degree|phd|mba|postdoc|university|kent|verona|siena|kakatiya|linköping|linkoping|science background|pharmaceutical|biotech|immunolog)\b/i;
 const SKILLS = /\b(skills?|capabilities|fhir|hl7|competenc)/i;
+
+const liveHref = (title: string) =>
+  liveProjects.find((item) => item.title === title)?.href;
 
 const FLAGSHIP_HINTS: Array<{
   test: RegExp;
@@ -45,12 +49,19 @@ const FLAGSHIP_HINTS: Array<{
   {
     test: /deliverx|deliver x/,
     label: "Visit DeliverX",
-    href: "https://www.deliverx.dev",
+    href: liveHref("DeliverX") ?? "https://deliverx.dev/",
   },
   {
     test: /aksh/,
     label: "Visit Aksh Health",
-    href: "https://akshhealth.com",
+    href: liveHref("Aksh Health") ?? "https://www.akshhealth.com/",
+  },
+  {
+    test: /immune/,
+    label: "Visit Immune Super Intelligence",
+    href:
+      liveHref("Immune Super Intelligence") ??
+      "https://www.immune-super-intelligence.co.uk/",
   },
 ];
 

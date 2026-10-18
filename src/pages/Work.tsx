@@ -17,15 +17,16 @@ const Work = () => {
     <StorefrontLayout>
       <Seo
         title="Work"
-        description="Fluent Institute, DeliverX, and Aksh Health — the three live products."
+        description="Live projects: Immune Super Intelligence, Aksh Health, and DeliverX."
         path="/work"
       />
       <PageShell>
         <Eyebrow>Work</Eyebrow>
-        <PageTitle>Three live products. That is the selected work.</PageTitle>
+        <PageTitle>Live projects. That is the selected work.</PageTitle>
         <PageLead>
-          Fluent Institute, DeliverX, and Aksh Health. Everything else sits
-          under Experience — nested in roles, not competing here.
+          Immune Super Intelligence, Aksh Health, and DeliverX. Fluent Institute
+          is also live. Everything else sits under Experience — nested in roles,
+          not competing here.
         </PageLead>
 
         <ol className="mt-12">

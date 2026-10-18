@@ -7,7 +7,7 @@ export const chatStarterPrompts = [
   {
     label: "Live projects",
     prompt:
-      "What are the live projects — Fluent Institute, DeliverX, and Aksh Health?",
+      "What are the live projects — Immune Super Intelligence, Aksh Health, and DeliverX?",
   },
   {
     label: "Experience",

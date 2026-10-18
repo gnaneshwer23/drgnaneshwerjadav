@@ -82,8 +82,8 @@ export const work: WorkItem[] = [
     system:
       "HL7 ingestion, FHIR as system of record for trial/status artefacts, on-prem summarisation, clinician-facing output. Budget, headcount, and uptime figures published elsewhere are targets, not results.",
     outcome:
-      "Active build. Public site: akshhealth.com. No independently measured clinical outcome is claimed on this page.",
-    href: "https://akshhealth.com",
+      "Active build. Public site: www.akshhealth.com. No independently measured clinical outcome is claimed on this page.",
+    href: "https://www.akshhealth.com/",
     github: "https://github.com/gnaneshwer23/aksh-health",
     badges: [
       { kind: "ROLE", label: "Product & programme leader" },
@@ -369,7 +369,7 @@ export const work: WorkItem[] = [
       "Work mapping, role views, and AI-assisted delivery briefs with humans deciding.",
     outcome:
       "Public product site. No independently verified throughput metric is claimed.",
-    href: "https://www.deliverx.dev",
+    href: "https://deliverx.dev/",
     badges: [
       { kind: "ROLE", label: "Product" },
       { kind: "EVIDENCE", label: "Live site + local docs" },
@@ -398,6 +398,30 @@ export const work: WorkItem[] = [
       { kind: "ROLE", label: "Product" },
       { kind: "EVIDENCE", label: "Local Desktop archives" },
     ],
+  },
+];
+
+export type LiveProject = {
+  title: string;
+  href: string;
+  slug?: string;
+};
+
+/** Public live product URLs. Immune Super Intelligence has no case study in this repo. */
+export const liveProjects: LiveProject[] = [
+  {
+    title: "Immune Super Intelligence",
+    href: "https://www.immune-super-intelligence.co.uk/",
+  },
+  {
+    title: "Aksh Health",
+    href: "https://www.akshhealth.com/",
+    slug: "aksh-health",
+  },
+  {
+    title: "DeliverX",
+    href: "https://deliverx.dev/",
+    slug: "deliverx",
   },
 ];
 
